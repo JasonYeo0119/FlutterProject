@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "777664139411",
+    "project_id": "usmfoodsaver-c0a12",
+    "storage_bucket": "usmfoodsaver-c0a12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777664139411:android:f8e2f28d8a0b754deffd66",
+        "android_client_info": {
+          "package_name": "com.example.usmfoodsaver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzflsSnH60bEmBW1ExvrIMT0I11MSsJOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
