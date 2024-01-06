@@ -1,9 +1,11 @@
 plugins {
-    id "com.android.application"
+    id 'com.android.application' version '8.2.0' apply false
+    id 'com.android.library' version '8.2.0' apply false
+    id 'org.jetbrains.kotlin.android' version '1.9.20' apply false
+
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
     id "com.google.gms.google-services"
-    id "com.google.firebase.crashlytics"
 }
 
 def localProperties = new Properties()
@@ -23,6 +25,11 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 
 android {
