@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Reward Module/presentation/reward_system_screen/reward_system_screen.dart';
 import 'NormalProfile.dart';
 import 'StudentSignUp.dart';
 import 'UploadUserPhoto.dart';
@@ -19,6 +20,12 @@ class Createuserprofile extends StatelessWidget {
   void navigateNextPage3(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return Studentsignup();
+    }));
+  }
+
+  void navigateNextPage4(BuildContext ctx) {
+    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+      return RewardSystemScreen();
     }));
   }
 

@@ -9,8 +9,9 @@ class ViewReviewAndRating extends StatelessWidget {
       return HomepageStaff();
     }));
   }
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(BuildContext context){
+    return SingleChildScrollView(
+      child: Column(
       children: [
         Container(
           width: 390,
@@ -1179,6 +1180,7 @@ class ViewReviewAndRating extends StatelessWidget {
           ),
         ),
       ],
+      ),
     );
   }
 }

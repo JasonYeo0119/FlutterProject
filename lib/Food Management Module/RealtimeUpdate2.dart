@@ -1,8 +1,47 @@
 import "package:flutter/material.dart";
 import "HomepageStaff.dart";
 import "RealtimeUpdate.dart";
+import 'package:firebase_database/firebase_database.dart';
 
-class RealtimeUpdate2 extends StatelessWidget {
+class RealtimeUpdate2 extends StatefulWidget {
+  const RealtimeUpdate2({Key? key, required this.FoodMenukey}) : super(key: key);
+  final String FoodMenukey;
+
+  @override
+  State<RealtimeUpdate2> createState() => _RealtimeUpdate2State();
+}
+class _RealtimeUpdate2State extends State<RealtimeUpdate2> {
+
+  final foodname= TextEditingController();
+  final quantity= TextEditingController();
+  final storename=TextEditingController();
+  final address= TextEditingController();
+  final price= TextEditingController();
+  final remarks=TextEditingController();
+
+  late DatabaseReference dbRef;
+
+  @override
+  void initState() {
+    super.initState();
+    dbRef = FirebaseDatabase.instance.ref().child('FoodMenu');
+    getFoodMenuData();
+  }
+
+  //edit
+  void getFoodMenuData() async {
+    DataSnapshot snapshot = await dbRef.child(widget.FoodMenukey).get();
+
+    Map FoodMenu = snapshot.value as Map;
+
+    foodname.text = FoodMenu['Food Name'];
+    quantity.text = FoodMenu['Quantity'];
+    storename.text = FoodMenu['Store Name'];
+    address.text = FoodMenu['Address'];
+    price.text = FoodMenu['Price(RM)'];
+    remarks.text = FoodMenu['Remarks'];
+  }
+
   @override
   //go back
   void navigateNextPage(BuildContext ctx) {
@@ -11,17 +50,17 @@ class RealtimeUpdate2 extends StatelessWidget {
     }));
   }
   //delete button
-  void navigateNextPage2(BuildContext ctx) {
-    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return RealtimeUpdate();
-    }));
-  }
+  // void navigateNextPage2(BuildContext ctx) {
+  //   Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+  //     return RealtimeUpdate(FoodMenukey: '',);
+  //   }));
+  // }
   //save button
-  void navigateNextPage3(BuildContext ctx) {
-    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return RealtimeUpdate();
-    }));
-  }
+  // void navigateNextPage3(BuildContext ctx) {
+  //   Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+  //     return RealtimeUpdate(FoodMenukey: '',);
+  //   }));
+  // }
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -274,35 +313,35 @@ class RealtimeUpdate2 extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(  //save button
-                left: 308,
-                top: 251,
-                child: TextButton(
-                  onPressed: () {navigateNextPage3(context);},  //blue
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
-                child: Container(
-                  width: 55,
-                  height: 22,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFF41B8DE),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-                ),
-              ),
+              // Positioned(  //save button
+              //   left: 308,
+              //   top: 251,
+              //   child: TextButton(
+              //     onPressed: () {navigateNextPage3(context);},  //blue
+              //     style: TextButton.styleFrom(
+              //       padding: EdgeInsets.zero,
+              //     ),
+              //   child: Container(
+              //     width: 55,
+              //     height: 22,
+              //     decoration: ShapeDecoration(
+              //       color: Color(0xFF41B8DE),
+              //       shape: RoundedRectangleBorder(
+              //         side: BorderSide(width: 1),
+              //         borderRadius: BorderRadius.circular(5),
+              //       ),
+              //       shadows: [
+              //         BoxShadow(
+              //           color: Color(0x3F000000),
+              //           blurRadius: 4,
+              //           offset: Offset(0, 4),
+              //           spreadRadius: 0,
+              //         )
+              //       ],
+              //     ),
+              //   ),
+              //   ),
+              // ),
               Positioned(
                 left: 202,
                 top: 148,
@@ -345,129 +384,157 @@ class RealtimeUpdate2 extends StatelessWidget {
                   ),
                 ),
               ),
+              // Positioned(
+              //   left: 171,
+              //   top: 280,
+              //   child: Text(
+              //     'Quantity',
+              //     textAlign: TextAlign.center,
+              //     style: TextStyle(
+              //       color: Colors.black,
+              //       fontSize: 14,
+              //       fontFamily: 'Poppins',
+              //       fontWeight: FontWeight.w500,
+              //       height: 0.13,
+              //       letterSpacing: -0.50,
+              //     ),
+              //   ),
+              // ),
+              // Positioned(
+              //   left: 142,
+              //   top: 280,
+              //   child: SizedBox(
+              //     width: 10,
+              //     height: 10,
+              //     child: Text(
+              //       '-',
+              //       textAlign: TextAlign.center,
+              //       style: TextStyle(
+              //         color: Colors.black,
+              //         fontSize: 14,
+              //         fontFamily: 'Poppins',
+              //         fontWeight: FontWeight.w500,
+              //         height: 0.13,
+              //         letterSpacing: -0.50,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // Positioned(
+              //   left: 238,
+              //   top: 279,
+              //   child: SizedBox(
+              //     width: 10,
+              //     height: 10,
+              //     child: Text(
+              //       '+',
+              //       textAlign: TextAlign.center,
+              //       style: TextStyle(
+              //         color: Colors.black,
+              //         fontSize: 14,
+              //         fontFamily: 'Poppins',
+              //         fontWeight: FontWeight.w500,
+              //         height: 0.13,
+              //         letterSpacing: -0.50,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // Positioned(
+              //   left: 318,
+              //   top: 276,
+              //   child: SizedBox(
+              //     width: 43,
+              //     height: 8,
+              //     child: Text(
+              //       'Save',
+              //       textAlign: TextAlign.center,
+              //       style: TextStyle(
+              //         color: Colors.black,
+              //         fontSize: 10,
+              //         fontFamily: 'Poppins',
+              //         fontWeight: FontWeight.w500,
+              //         height: 0.25,
+              //         letterSpacing: -0.50,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // Positioned(  //delete button
+              //   left: 19,
+              //   top: 251,
+              //   child: TextButton(
+              //     onPressed: () {navigateNextPage2(context);},  //blue
+              //     style: TextButton.styleFrom(
+              //       padding: EdgeInsets.zero,
+              //     ),
+              //   child: Container(
+              //     width: 55,
+              //     height: 22,
+              //     decoration: ShapeDecoration(
+              //       color: Color(0xFFF49090),
+              //       shape: RoundedRectangleBorder(
+              //         side: BorderSide(width: 1),
+              //         borderRadius: BorderRadius.circular(5),
+              //       ),
+              //       shadows: [
+              //         BoxShadow(
+              //           color: Color(0x3F000000),
+              //           blurRadius: 4,
+              //           offset: Offset(0, 4),
+              //           spreadRadius: 0,
+              //         )
+              //       ],
+              //     ),
+              //   ),
+              //   ),
+              // ),
+              // Positioned(
+              //   left: 29,
+              //   top: 276,
+              //   child: SizedBox(
+              //     width: 43,
+              //     height: 8,
+              //     child: Text(
+              //       'Delete',
+              //       textAlign: TextAlign.center,
+              //       style: TextStyle(
+              //         color: Colors.black,
+              //         fontSize: 10,
+              //         fontFamily: 'Poppins',
+              //         fontWeight: FontWeight.w500,
+              //         height: 0.25,
+              //         letterSpacing: -0.50,
+              //       ),
+              //     ),
+              //   ),
+              // ),
               Positioned(
-                left: 171,
-                top: 280,
-                child: Text(
-                  'Quantity',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    height: 0.13,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 142,
-                top: 280,
-                child: SizedBox(
-                  width: 10,
-                  height: 10,
-                  child: Text(
-                    '-',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                      height: 0.13,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 238,
-                top: 279,
-                child: SizedBox(
-                  width: 10,
-                  height: 10,
-                  child: Text(
-                    '+',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                      height: 0.13,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 318,
-                top: 276,
-                child: SizedBox(
-                  width: 43,
-                  height: 8,
-                  child: Text(
-                    'Save',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 10,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                      height: 0.25,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(  //delete button
-                left: 19,
-                top: 251,
-                child: TextButton(
-                  onPressed: () {navigateNextPage2(context);},  //blue
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
-                child: Container(
-                  width: 55,
-                  height: 22,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFF49090),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-                ),
-              ),
-              Positioned(
-                left: 29,
-                top: 276,
-                child: SizedBox(
-                  width: 43,
-                  height: 8,
-                  child: Text(
-                    'Delete',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 10,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                      height: 0.25,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
+                left: 170,
+                top: 260,
+                child: MaterialButton(
+                  onPressed: () {
+
+                    Map<String, String> FoodMenu = {
+                      'Food Name': foodname.text,
+                      'Quantity': quantity.text,
+                      'Store Name': storename.text,
+                      'Address': address.text,
+                      'Price(RM)': price.text,
+                      'Remarks': remarks.text
+                    };
+
+                    dbRef.child(widget.FoodMenukey).update(FoodMenu)
+                        .then((value) => {
+                      Navigator.pop(context)
+                    });
+
+                  },
+                  child: const Text('Update'),
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  minWidth: 300,
+                  height: 40,
                 ),
               ),
             ],

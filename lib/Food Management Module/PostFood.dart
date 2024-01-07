@@ -1,8 +1,31 @@
 import "package:flutter/material.dart";
 import "DonePost.dart";
 import "HomepageStaff.dart";
+import 'package:firebase_database/firebase_database.dart';
 
-class PostFood extends StatelessWidget {
+class PostFood extends StatefulWidget {
+  const PostFood({Key? key}) : super(key: key);
+
+  @override
+  State<PostFood> createState() => _PostFoodState();
+}
+class _PostFoodState extends State<PostFood> {
+
+  final foodname= TextEditingController();
+  final quantity= TextEditingController();
+  final storename=TextEditingController();
+  final address= TextEditingController();
+  final price= TextEditingController();
+  final remarks=TextEditingController();
+
+  late DatabaseReference dbRef;
+
+  @override
+  void initState() {
+    super.initState();
+    dbRef = FirebaseDatabase.instance.ref().child('FoodMenu'); //represents the location 'Students' within the database
+  }
+
   @override
   //go back
   void navigateNextPage(BuildContext ctx) {
@@ -22,10 +45,11 @@ class PostFood extends StatelessWidget {
       return DonePost();
     }));
   }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
+    return Scaffold(
+      body: Container(
           width: 390,
           height: 777,
           clipBehavior: Clip.antiAlias,
@@ -105,6 +129,25 @@ class PostFood extends StatelessWidget {
                 ),
               ),
               Positioned(
+                  left: 118,
+                  top: 277,
+                  child: Container(
+                      width: 245,
+                      height: 34,
+                    child: TextField(
+                      controller: foodname,
+                      keyboardType: TextInputType.text,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter the food name...',
+                          hintStyle: TextStyle(fontSize: 15),
+                          contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
+                      ),
+                    ),
+                  ),
+                  ),
+              Positioned(
                 left: 119,
                 top: 277,
                 child: Transform(
@@ -149,6 +192,25 @@ class PostFood extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       side: BorderSide(width: 1),
                       borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 118,
+                top: 336,
+                child: Container(
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: quantity,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter the quantity...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
                     ),
                   ),
                 ),
@@ -203,6 +265,25 @@ class PostFood extends StatelessWidget {
                 ),
               ),
               Positioned(
+                left: 118,
+                top: 395,
+                child: Container(
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: storename,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter your store name...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
                 left: 119,
                 top: 395,
                 child: Transform(
@@ -247,6 +328,25 @@ class PostFood extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       side: BorderSide(width: 1),
                       borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 118,
+                top: 454,
+                child: Container(
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: address,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter your store address...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
                     ),
                   ),
                 ),
@@ -301,6 +401,25 @@ class PostFood extends StatelessWidget {
                 ),
               ),
               Positioned(
+                left: 118,
+                top: 513,
+                child: Container(
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: price,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter the price...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
                 left: 119,
                 top: 513,
                 child: Transform(
@@ -345,6 +464,25 @@ class PostFood extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       side: BorderSide(width: 1),
                       borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 118,
+                top: 572,
+                child: Container(
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: remarks,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter the remarks if any...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
                     ),
                   ),
                 ),
@@ -395,9 +533,10 @@ class PostFood extends StatelessWidget {
                 ),
                 width: 25,
                 height: 25,
+
               ),
               Positioned(
-                left: 201,
+                left: 196,
                 top: 682,
                 child: TextButton(
                   onPressed: () {navigateNextPage3(context);},  //blue
@@ -424,14 +563,39 @@ class PostFood extends StatelessWidget {
                 ),
                 ),
               ),
+
               Positioned(
-                left: 196,
-                top: 717,
-                child: TextButton(
-                  onPressed: () {navigateNextPage3(context);},  //blue
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
+                left: 154,
+                top: 620,
+              child: MaterialButton(
+                onPressed: (){
+                  Map<String, String> FoodMenu = {
+                    'Food Name': foodname.text,
+                    'Quantity': quantity.text,
+                    'Store Name': storename.text,
+                    'Address': address.text,
+                    'Price(RM)': price.text,
+                    'Remarks': remarks.text
+                  };
+                  dbRef.push().set(FoodMenu);
+                  //navigateNextPage3(context);
+                },
+                child: const Text('Confirm',
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+                ),
+                color: Colors.lightBlueAccent,
+                textColor: Colors.black,
+                minWidth: 80,
+                height: 40,
+                elevation: 6,
+                ),
+              ),
+
+              Positioned(
+                left: 190,
+                top: 720,
                 child: SizedBox(
                   width: 174,
                   height: 38,
@@ -449,7 +613,6 @@ class PostFood extends StatelessWidget {
                   ),
                   ),
                 ),
-              ),
               Positioned(
                 left: 24,
                 top: 682,
@@ -480,7 +643,7 @@ class PostFood extends StatelessWidget {
               ),
               Positioned(
                 left: 18,
-                top: 717,
+                top: 720,
                 child: TextButton(
                   onPressed: () {navigateNextPage2(context);},  //red cancel
                   style: TextButton.styleFrom(
@@ -507,7 +670,6 @@ class PostFood extends StatelessWidget {
             ],
           ),
         ),
-      ],
     );
   }
 }
