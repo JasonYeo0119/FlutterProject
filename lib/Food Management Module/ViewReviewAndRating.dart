@@ -10,12 +10,12 @@ class ViewReviewAndRating extends StatelessWidget {
     }));
   }
   Widget build(BuildContext context){
-    return SingleChildScrollView(
-      child: Column(
-      children: [
+    return Scaffold(
+      body: SingleChildScrollView(
+        child:
         Container(
           width: 390,
-          height: 1090,
+          height: 1500,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(color: Color(0xFFE5FFFC)),
           child: Stack(
@@ -998,7 +998,7 @@ class ViewReviewAndRating extends StatelessWidget {
                   width: 20,
                   height: 20,
                   decoration: ShapeDecoration(
-                    color: Color(0xFFFFD200),
+                    color: Color(0xFFD9D9D9),
                     shape: StarBorder(
                       points: 5,
                       innerRadiusRatio: 0.38,
@@ -1017,7 +1017,7 @@ class ViewReviewAndRating extends StatelessWidget {
                   width: 20,
                   height: 20,
                   decoration: ShapeDecoration(
-                    color: Color(0xFFFFD200),
+                    color: Color(0xFFD9D9D9),
                     shape: StarBorder(
                       points: 5,
                       innerRadiusRatio: 0.38,
@@ -1036,7 +1036,409 @@ class ViewReviewAndRating extends StatelessWidget {
                   width: 20,
                   height: 20,
                   decoration: ShapeDecoration(
+                    color: Color(0xFFD9D9D9),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 35,
+                top: 1074,
+                child: Container(
+                  width: 319,
+                  height: 111,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    shadows: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 53,
+                top: 1096,
+                child: Text(
+                  'Anonymous',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.13,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 139,
+                top: 1083,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
                     color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 159,
+                top: 1083,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 179,
+                top: 1083,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 199,
+                top: 1083,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 219,
+                top: 1083,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 35,
+                top: 1214,
+                child: Container(
+                  width: 319,
+                  height: 111,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    shadows: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 53,
+                top: 1236,
+                child: Text(
+                  'Anonymous',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.13,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 139,
+                top: 1223,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 159,
+                top: 1223,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 179,
+                top: 1223,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 199,
+                top: 1223,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 219,
+                top: 1223,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFD9D9D9),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 35,
+                top: 1354,
+                child: Container(
+                  width: 319,
+                  height: 111,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    shadows: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 53,
+                top: 1376,
+                child: Text(
+                  'Anonymous',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.13,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 139,
+                top: 1363,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 159,
+                top: 1363,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 179,
+                top: 1363,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFD200),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 199,
+                top: 1363,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFD9D9D9),
+                    shape: StarBorder(
+                      points: 5,
+                      innerRadiusRatio: 0.38,
+                      pointRounding: 0,
+                      valleyRounding: 0,
+                      rotation: 0,
+                      squash: 0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 219,
+                top: 1363,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFD9D9D9),
                     shape: StarBorder(
                       points: 5,
                       innerRadiusRatio: 0.38,
@@ -1084,7 +1486,7 @@ class ViewReviewAndRating extends StatelessWidget {
                 left: 274,
                 top: 816,
                 child: Text(
-                  '2 day ago',
+                  '2 days ago',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black.withOpacity(0.41999998688697815),
@@ -1100,7 +1502,55 @@ class ViewReviewAndRating extends StatelessWidget {
                 left: 274,
                 top: 956,
                 child: Text(
-                  '3 day ago',
+                  '3 days ago',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(0.41999998688697815),
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.13,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 274,
+                top: 1096,
+                child: Text(
+                  '5 days ago',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(0.41999998688697815),
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.13,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 274,
+                top: 1236,
+                child: Text(
+                  '6 days ago',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(0.41999998688697815),
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.13,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 274,
+                top: 1376,
+                child: Text(
+                  '7 days ago',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black.withOpacity(0.41999998688697815),
@@ -1179,7 +1629,6 @@ class ViewReviewAndRating extends StatelessWidget {
             ],
           ),
         ),
-      ],
       ),
     );
   }

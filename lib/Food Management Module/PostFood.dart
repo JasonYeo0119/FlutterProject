@@ -23,7 +23,7 @@ class _PostFoodState extends State<PostFood> {
   @override
   void initState() {
     super.initState();
-    dbRef = FirebaseDatabase.instance.ref().child('FoodMenu'); //represents the location 'Students' within the database
+    dbRef = FirebaseDatabase.instance.ref().child('FoodMenu'); //represents the location 'FoodMenu' within the database
   }
 
   @override
@@ -533,7 +533,6 @@ class _PostFoodState extends State<PostFood> {
                 ),
                 width: 25,
                 height: 25,
-
               ),
               Positioned(
                 left: 196,
@@ -578,7 +577,6 @@ class _PostFoodState extends State<PostFood> {
                     'Remarks': remarks.text
                   };
                   dbRef.push().set(FoodMenu);
-                  //navigateNextPage3(context);
                 },
                 child: const Text('Confirm',
                 style: TextStyle(

@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:usmfoodsaver/Membership%20System%20Module/Login.dart';
 import 'PostFood.dart';
 import 'Profile.dart';
 import 'RealtimeUpdate.dart';
 import 'ViewReviewAndRating.dart';
 
-class HomepageStaff extends StatelessWidget {
+class HomepageStaff extends StatefulWidget {
+  @override
+  State<HomepageStaff> createState() => _HomepageStaffState();
+}
+
+class _HomepageStaffState extends State<HomepageStaff> {
+
   @override
   //blue button
   void navigateNextPage(BuildContext ctx) {
@@ -34,9 +41,16 @@ class HomepageStaff extends StatelessWidget {
     }));
   }
 
+  //sign out
+  void navigateNextPage5(BuildContext ctx) {
+    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+      return Login();
+    }));
+  }
+
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return Scaffold(
+      body:
         Container(
           width: 390,
           height: 777,
@@ -229,7 +243,12 @@ class HomepageStaff extends StatelessWidget {
               ),
               Positioned(
                 left: 290,
-                top: 712,
+                top: 699,
+                child: TextButton(
+                  onPressed: () {navigateNextPage5(context);}, //yellow
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                  ),
                 child: Text(
                   'Sign out',
                   textAlign: TextAlign.center,
@@ -242,6 +261,7 @@ class HomepageStaff extends StatelessWidget {
                     letterSpacing: -0.50,
                   ),
                 ),
+              ),
               ),
               Positioned(
                 left: 8,
@@ -374,7 +394,6 @@ class HomepageStaff extends StatelessWidget {
             ],
           ),
         ),
-      ],
     );
   }
 }

@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "HomepageStaff.dart";
 import "RealtimeUpdate.dart";
 import 'package:firebase_database/firebase_database.dart';
 
@@ -43,27 +42,17 @@ class _RealtimeUpdate2State extends State<RealtimeUpdate2> {
   }
 
   @override
-  //go back
+  //X and red cancel
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return HomepageStaff();
+      return RealtimeUpdate();
     }));
   }
-  //delete button
-  // void navigateNextPage2(BuildContext ctx) {
-  //   Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-  //     return RealtimeUpdate(FoodMenukey: '',);
-  //   }));
-  // }
-  //save button
-  // void navigateNextPage3(BuildContext ctx) {
-  //   Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-  //     return RealtimeUpdate(FoodMenukey: '',);
-  //   }));
-  // }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return Scaffold(
+      body:
         Container(
           width: 390,
           height: 777,
@@ -87,7 +76,7 @@ class _RealtimeUpdate2State extends State<RealtimeUpdate2> {
                   width: 200,
                   height: 34,
                   child: Text(
-                    'Real-time update',
+                    'Update your post',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
@@ -101,58 +90,94 @@ class _RealtimeUpdate2State extends State<RealtimeUpdate2> {
                 ),
               ),
               Positioned(
-                left: 15,
-                top: 13,
-                child: TextButton(
-                  onPressed: () {navigateNextPage(context);},  //blue
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
-                child: Image.asset('lib/assets/images/cancel button.png'),
-                ),
-                  width: 25,
-                height: 25,
-              ),
-              Positioned(
-                left: 9,
-                top: 95,
+                left: 134,
+                top: 100,
                 child: Container(
-                  width: 371,
-                  height: 206,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFFFCD92),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  width: 122,
+                  height: 141,
+                  decoration: BoxDecoration(color: Color(0xB7D9D9D9)),
+                ),
+              ),
+              Positioned(
+                left: 141,
+                top: 141,
+                child: SizedBox(
+                  width: 108,
+                  child: Text(
+                    'Tap here to add photo',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      height: 1.5,
+                      letterSpacing: -0.50,
                     ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
                   ),
                 ),
               ),
               Positioned(
-                left: 133,
-                top: 171,
-                child: Icon(
-                  Icons.location_on,
-                  size: 25,
-                  color: Colors.black,
+                left: 26,
+                top: 277,
+                child: Container(
+                  width: 338,
+                  height: 34,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
                 ),
               ),
               Positioned(
-                left: 137,
-                top: 127,
+                left: 118,
+                top: 277,
+                child: Container(
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: foodname,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter the food name...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 119,
+                top: 277,
+                child: Transform(
+                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(1.57),
+                  child: Container(
+                    width: 33,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          width: 1,
+                          strokeAlign: BorderSide.strokeAlignCenter,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 39,
+                top: 297,
                 child: Text(
-                  'Economic Rice',
+                  'Food Name',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 13,
+                    fontSize: 14,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
                     height: 0.15,
@@ -161,360 +186,363 @@ class _RealtimeUpdate2State extends State<RealtimeUpdate2> {
                 ),
               ),
               Positioned(
-                left: 137,
-                top: 148,
-                child: Text(
-                  'Quantity',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    height: 0.17,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 160,
-                top: 244,
-                child: Text(
-                  'RM3.00',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 11,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.21,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 231,
-                top: 127,
-                child: Text(
-                  '(Uncle Hooi Cafe)',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    height: 0.17,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 160,
-                top: 215,
-                child: Text(
-                  'Rice, Vegetable, Meat, Egg',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 11,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.21,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 133,
-                top: 202,
-                child: Icon(
-                  Icons.bookmark,
-                  size: 25,
-                  color: Colors.black,
-                ),
-              ),
-              Positioned(
-                left: 160,
-                top: 174,
-                child: SizedBox(
-                  width: 208,
-                  height: 24,
-                  child: Text(
-                    'Cafeteria Aman, K09, Desasiswa Aman Damai, USM',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 11,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      height: 1,
-                      letterSpacing: -0.50,
+                left: 26,
+                top: 336,
+                child: Container(
+                  width: 338,
+                  height: 34,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(6),
                     ),
                   ),
                 ),
               ),
               Positioned(
-                left: 135,
-                top: 231,
-                child: Icon(
-                  Icons.sell,
-                  size: 22,
-                  color: Colors.black,
-                ),
-              ),
-              Positioned(
-                left: 193,
-                top: 135,
+                left: 118,
+                top: 336,
                 child: Container(
-                  width: 26,
-                  height: 22,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                  ),
-                ),
-              ),
-              Positioned(  // - button
-                left: 134,
-                top: 264,
-                child: Container(
-                  width: 26,
-                  height: 22,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFDB9A9A),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(  // + button
-                left: 230,
-                top: 264,
-                child: Container(
-                  width: 26,
-                  height: 22,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFF9ADBBF),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              // Positioned(  //save button
-              //   left: 308,
-              //   top: 251,
-              //   child: TextButton(
-              //     onPressed: () {navigateNextPage3(context);},  //blue
-              //     style: TextButton.styleFrom(
-              //       padding: EdgeInsets.zero,
-              //     ),
-              //   child: Container(
-              //     width: 55,
-              //     height: 22,
-              //     decoration: ShapeDecoration(
-              //       color: Color(0xFF41B8DE),
-              //       shape: RoundedRectangleBorder(
-              //         side: BorderSide(width: 1),
-              //         borderRadius: BorderRadius.circular(5),
-              //       ),
-              //       shadows: [
-              //         BoxShadow(
-              //           color: Color(0x3F000000),
-              //           blurRadius: 4,
-              //           offset: Offset(0, 4),
-              //           spreadRadius: 0,
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              //   ),
-              // ),
-              Positioned(
-                left: 202,
-                top: 148,
-                child: Text(
-                  '3',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.17,
-                    letterSpacing: -0.50,
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: quantity,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter the quantity...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
+                    ),
                   ),
                 ),
               ),
               Positioned(
-                left: 18,
-                top: 119,
-                child: SizedBox(
-                  width: 108,
-                  height: 125,
-                  child: Image.asset('lib/assets/images/food.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 22,
-                top: 257,
-                child: Container(
-                  width: 345,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 1,
-                        strokeAlign: BorderSide.strokeAlignCenter,
+                left: 119,
+                top: 336,
+                child: Transform(
+                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(1.57),
+                  child: Container(
+                    width: 33,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          width: 1,
+                          strokeAlign: BorderSide.strokeAlignCenter,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-              // Positioned(
-              //   left: 171,
-              //   top: 280,
-              //   child: Text(
-              //     'Quantity',
-              //     textAlign: TextAlign.center,
-              //     style: TextStyle(
-              //       color: Colors.black,
-              //       fontSize: 14,
-              //       fontFamily: 'Poppins',
-              //       fontWeight: FontWeight.w500,
-              //       height: 0.13,
-              //       letterSpacing: -0.50,
-              //     ),
-              //   ),
-              // ),
-              // Positioned(
-              //   left: 142,
-              //   top: 280,
-              //   child: SizedBox(
-              //     width: 10,
-              //     height: 10,
-              //     child: Text(
-              //       '-',
-              //       textAlign: TextAlign.center,
-              //       style: TextStyle(
-              //         color: Colors.black,
-              //         fontSize: 14,
-              //         fontFamily: 'Poppins',
-              //         fontWeight: FontWeight.w500,
-              //         height: 0.13,
-              //         letterSpacing: -0.50,
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              // Positioned(
-              //   left: 238,
-              //   top: 279,
-              //   child: SizedBox(
-              //     width: 10,
-              //     height: 10,
-              //     child: Text(
-              //       '+',
-              //       textAlign: TextAlign.center,
-              //       style: TextStyle(
-              //         color: Colors.black,
-              //         fontSize: 14,
-              //         fontFamily: 'Poppins',
-              //         fontWeight: FontWeight.w500,
-              //         height: 0.13,
-              //         letterSpacing: -0.50,
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              // Positioned(
-              //   left: 318,
-              //   top: 276,
-              //   child: SizedBox(
-              //     width: 43,
-              //     height: 8,
-              //     child: Text(
-              //       'Save',
-              //       textAlign: TextAlign.center,
-              //       style: TextStyle(
-              //         color: Colors.black,
-              //         fontSize: 10,
-              //         fontFamily: 'Poppins',
-              //         fontWeight: FontWeight.w500,
-              //         height: 0.25,
-              //         letterSpacing: -0.50,
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              // Positioned(  //delete button
-              //   left: 19,
-              //   top: 251,
-              //   child: TextButton(
-              //     onPressed: () {navigateNextPage2(context);},  //blue
-              //     style: TextButton.styleFrom(
-              //       padding: EdgeInsets.zero,
-              //     ),
-              //   child: Container(
-              //     width: 55,
-              //     height: 22,
-              //     decoration: ShapeDecoration(
-              //       color: Color(0xFFF49090),
-              //       shape: RoundedRectangleBorder(
-              //         side: BorderSide(width: 1),
-              //         borderRadius: BorderRadius.circular(5),
-              //       ),
-              //       shadows: [
-              //         BoxShadow(
-              //           color: Color(0x3F000000),
-              //           blurRadius: 4,
-              //           offset: Offset(0, 4),
-              //           spreadRadius: 0,
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              //   ),
-              // ),
-              // Positioned(
-              //   left: 29,
-              //   top: 276,
-              //   child: SizedBox(
-              //     width: 43,
-              //     height: 8,
-              //     child: Text(
-              //       'Delete',
-              //       textAlign: TextAlign.center,
-              //       style: TextStyle(
-              //         color: Colors.black,
-              //         fontSize: 10,
-              //         fontFamily: 'Poppins',
-              //         fontWeight: FontWeight.w500,
-              //         height: 0.25,
-              //         letterSpacing: -0.50,
-              //       ),
-              //     ),
-              //   ),
-              // ),
               Positioned(
-                left: 170,
-                top: 260,
+                left: 48,
+                top: 355,
+                child: Text(
+                  'Quantity',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.15,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 26,
+                top: 395,
+                child: Container(
+                  width: 338,
+                  height: 34,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 118,
+                top: 395,
+                child: Container(
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: storename,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter your store name...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 119,
+                top: 395,
+                child: Transform(
+                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(1.57),
+                  child: Container(
+                    width: 33,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          width: 1,
+                          strokeAlign: BorderSide.strokeAlignCenter,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 37,
+                top: 415,
+                child: Text(
+                  'Store Name',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.15,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 26,
+                top: 454,
+                child: Container(
+                  width: 338,
+                  height: 34,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 118,
+                top: 454,
+                child: Container(
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: address,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter your store address...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 119,
+                top: 454,
+                child: Transform(
+                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(1.57),
+                  child: Container(
+                    width: 33,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          width: 1,
+                          strokeAlign: BorderSide.strokeAlignCenter,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 47,
+                top: 473,
+                child: Text(
+                  'Address',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.15,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 26,
+                top: 513,
+                child: Container(
+                  width: 338,
+                  height: 34,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 118,
+                top: 513,
+                child: Container(
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: price,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter the price...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 119,
+                top: 513,
+                child: Transform(
+                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(1.57),
+                  child: Container(
+                    width: 33,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          width: 1,
+                          strokeAlign: BorderSide.strokeAlignCenter,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 42,
+                top: 533,
+                child: Text(
+                  'Price (RM)',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.15,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 26,
+                top: 572,
+                child: Container(
+                  width: 338,
+                  height: 34,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 118,
+                top: 572,
+                child: Container(
+                  width: 245,
+                  height: 34,
+                  child: TextField(
+                    controller: remarks,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        //labelText: 'Name',
+                        hintText: 'Please enter the remarks if any...',
+                        hintStyle: TextStyle(fontSize: 15),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 119,
+                top: 572,
+                child: Transform(
+                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(1.57),
+                  child: Container(
+                    width: 33,
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          width: 1,
+                          strokeAlign: BorderSide.strokeAlignCenter,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 46,
+                top: 591,
+                child: Text(
+                  'Remarks',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.15,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 15,
+                top: 13,
+                child: TextButton(
+                  onPressed: () {navigateNextPage(context);},  //blue
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                  ),
+                  child: Image.asset('lib/assets/images/cancel button.png'),
+                ),
+                width: 25,
+                height: 25,
+              ),
+              Positioned(
+                left: 154,
+                top: 630,
                 child: MaterialButton(
-                  onPressed: () {
-
+                  onPressed: (){
                     Map<String, String> FoodMenu = {
                       'Food Name': foodname.text,
                       'Quantity': quantity.text,
@@ -523,24 +551,81 @@ class _RealtimeUpdate2State extends State<RealtimeUpdate2> {
                       'Price(RM)': price.text,
                       'Remarks': remarks.text
                     };
-
                     dbRef.child(widget.FoodMenukey).update(FoodMenu)
-                        .then((value) => {
-                      Navigator.pop(context)
+                      .then((value) => {
+                        Navigator.pop(context),
+                        navigateNextPage(context)
                     });
-
                   },
-                  child: const Text('Update'),
-                  color: Colors.blue,
-                  textColor: Colors.white,
-                  minWidth: 300,
+                  child: const Text('Update',
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                  color: Colors.lightBlueAccent,
+                  textColor: Colors.black,
+                  minWidth: 80,
                   height: 40,
+                  elevation: 6,
+                ),
+              ),
+              Positioned(
+                left: 111,
+                top: 682,
+                child: TextButton(
+                  onPressed: () {navigateNextPage(context);},  //RED
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                  ),
+                  child: Container(
+                    width: 163,
+                    height: 64,
+                    decoration: ShapeDecoration(
+                      color: Color(0xFFDB9A9A),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      shadows: [
+                        BoxShadow(
+                          color: Color(0x3F000000),
+                          blurRadius: 4,
+                          offset: Offset(0, 4),
+                          spreadRadius: 0,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 105,
+                top: 720,
+                child: TextButton(
+                  onPressed: () {navigateNextPage(context);},  //red cancel
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                  ),
+                  child: SizedBox(
+                    width: 174,
+                    height: 38,
+                    child: Text(
+                      'Cancel',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                        height: 0.05,
+                        letterSpacing: -0.50,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
           ),
         ),
-      ],
     );
   }
 }
