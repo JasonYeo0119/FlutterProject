@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/Login.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/SignUp.dart';
 import 'CustomerService.dart';
-import 'Login.dart';
 import 'PrivacyPolicy.dart';
-import 'SignUp.dart';
 import 'TermsofService.dart';
 
 class HomePage extends StatelessWidget {
@@ -38,8 +38,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return Scaffold(
+        body: Container(
+        child: SingleChildScrollView(
+        child: Column(
+        children: [
         Container(
           width: 390,
           height: 777,
@@ -49,7 +52,7 @@ class HomePage extends StatelessWidget {
             children: [
               Positioned(
                 left: 110,
-                top: 603,
+                top: 610,
                 child: SizedBox(
                   width: 192,
                   height: 53,
@@ -105,7 +108,7 @@ class HomePage extends StatelessWidget {
               // Customer service button
               Positioned(
                   left: 165,
-                  top: 618,
+                  top: 628,
                   child: TextButton(
                     onPressed: () {
                       navigateNextPage3(context);
@@ -286,7 +289,7 @@ class HomePage extends StatelessWidget {
               // Terms of service button
               Positioned(
                 left: 195,
-                top: 676,
+                top: 686,
                 child: TextButton(
                   onPressed: () {
                     navigateNextPage4(context);
@@ -316,7 +319,7 @@ class HomePage extends StatelessWidget {
               // Privacy policy button
               Positioned(
                   left: 148,
-                  top: 700,
+                  top: 706,
                   child: TextButton(
                     onPressed: () {
                       navigateNextPage5(context);
@@ -363,6 +366,9 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ],
+    ),
+    )
+        ),
     );
   }
 }

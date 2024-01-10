@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:usmfoodsaver/Food%20Management%20Module/Profile.dart";
-import "HomepageStaff.dart";
+import "package:usmfoodsaver/Membership%20Module/Staff/staff_signup.dart";
 import 'package:firebase_database/firebase_database.dart';
 
 class SignupProfile extends StatefulWidget {
@@ -29,7 +29,7 @@ class _SignupProfileState extends State<SignupProfile> {
   //go back
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return HomepageStaff();
+      return StaffSignUp();
     }));
   }
   void navigateNextPage2(BuildContext ctx) {

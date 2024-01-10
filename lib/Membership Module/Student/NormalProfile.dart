@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import '../Reward Module/presentation/reward_system_screen/reward_system_screen.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 import 'CreateUserProfile.dart';
-import 'HomePage.dart';
-import 'PremiumPlan.dart';
 
-class Premiumprofile extends StatelessWidget {
-  void navigateNextPage(BuildContext ctx) {
+class Normalprofile extends StatelessWidget {
+  /*void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return Premiumplan();
     }));
-  }
+  }*/
 
   void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
@@ -23,11 +21,11 @@ class Premiumprofile extends StatelessWidget {
     }));
   }
 
-  void navigateNextPage4(BuildContext ctx) {
+  /*void navigateNextPage4(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return RewardSystemScreen();
     }));
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +77,8 @@ class Premiumprofile extends StatelessWidget {
                   size: 40,
                   color: Colors.black,
                 ),
+                width: 34,
+                height: 34,
               ),
               Positioned(
                 left: 215,
@@ -97,13 +97,13 @@ class Premiumprofile extends StatelessWidget {
                 ),
               ),
 
-              //Premium member button
+              // Normal member button
               Positioned(
                 left: 207,
                 top: 199,
                 child: TextButton(
                   onPressed: () {
-                    navigateNextPage(context);
+                   /* navigateNextPage(context);*/
                   },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,
@@ -112,7 +112,7 @@ class Premiumprofile extends StatelessWidget {
                     width: 157,
                     height: 37,
                     decoration: ShapeDecoration(
-                      color: Color(0xFFFB9A9A),
+                      color: Color(0xFF908E8E),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -129,10 +129,10 @@ class Premiumprofile extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 222,
+                left: 228,
                 top: 227,
                 child: Text(
-                  'Premium Member',
+                  'Normal Member',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,

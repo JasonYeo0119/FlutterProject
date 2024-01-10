@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
-import 'StaffLogin.dart';
-import 'StudentLogin.dart';
-import 'StudentSignUp.dart';
+import 'package:usmfoodsaver/Membership%20Module/Staff/staff_signin.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/student_signin.dart';
 
 class Login extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Studentlogin();
+      return StudentSignIn();
     }));
   }
 
   void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Stafflogin();
+      return StaffSignIn();
     }));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+      body: Container(
+        child: SingleChildScrollView(
+        child: Column(
       children: [
         Container(
           width: 390,
@@ -151,6 +153,9 @@ class Login extends StatelessWidget {
           ),
         ),
       ],
+    )
+    ),
+      )
     );
   }
 }

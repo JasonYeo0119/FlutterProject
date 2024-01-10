@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import '../Reward Module/presentation/reward_system_screen/reward_system_screen.dart';
-import 'CreateUserProfile.dart';
-import 'HomePage.dart';
-import 'PremiumPlan.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/UploadUserPhoto.dart';
 
-class Normalprofile extends StatelessWidget {
+
+class Createuserprofile extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Premiumplan();
+      return Normalprofile();
     }));
   }
 
   void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Createuserprofile();
+      return Uploaduserprofile();
     }));
   }
 
-  void navigateNextPage3(BuildContext ctx) {
+ /* void navigateNextPage3(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return HomePage();
+      return Studentsignup();
     }));
   }
 
@@ -27,11 +26,14 @@ class Normalprofile extends StatelessWidget {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return RewardSystemScreen();
     }));
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+      body: Container(
+        child: SingleChildScrollView(
+        child: Column(
       children: [
         Container(
           width: 390,
@@ -69,27 +71,14 @@ class Normalprofile extends StatelessWidget {
                   ),
                 ),
               ),
-
-              //Menu button
-              Positioned(
-                left: 321,
-                top: 2,
-                child: Icon(
-                  Icons.food_bank,
-                  size: 40,
-                  color: Colors.black,
-                ),
-                width: 34,
-                height: 34,
-              ),
               Positioned(
                 left: 215,
-                top: 130,
+                top: 120,
                 child: Text(
-                  'Yeo Min Sheng ',
+                  'Nickname',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color(0xFF908E8E),
                     fontSize: 20,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
@@ -98,62 +87,13 @@ class Normalprofile extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // Normal member button
-              Positioned(
-                left: 207,
-                top: 199,
-                child: TextButton(
-                  onPressed: () {
-                    navigateNextPage(context);
-                  },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
-                  child: Container(
-                    width: 157,
-                    height: 37,
-                    decoration: ShapeDecoration(
-                      color: Color(0xFF908E8E),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      shadows: [
-                        BoxShadow(
-                          color: Color(0x3F000000),
-                          blurRadius: 4,
-                          offset: Offset(0, 4),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 228,
-                top: 227,
-                child: Text(
-                  'Normal Member',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    height: 0.09,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
               Positioned(
                 left: 215,
-                top: 165,
+                top: 155,
                 child: Text(
-                  '157975',
-                  textAlign: TextAlign.center,
+                  'Matric No.',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color(0xFF908E8E),
                     fontSize: 20,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
@@ -176,54 +116,6 @@ class Normalprofile extends StatelessWidget {
                     decoration: TextDecoration.underline,
                     height: 0.06,
                     letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 25,
-                top: 80,
-                child: Image.asset('lib/assets/images/Oppa1.png'),
-                width: 170,
-                height: 170,
-              ),
-              Positioned(
-                left: 158,
-                top: 720,
-                child: Text(
-                  'Contact Us',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFF1C4BF2),
-                    fontSize: 17,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    decoration: TextDecoration.underline,
-                    height: 0.09,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 166,
-                top: 731,
-                child: TextButton(
-                  onPressed: () {
-                    navigateNextPage3(context);
-                  },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
-                  child: Text(
-                    'Log out',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xFFF21C1C),
-                      fontSize: 17,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      height: 0.09,
-                      letterSpacing: -0.50,
-                    ),
                   ),
                 ),
               ),
@@ -287,20 +179,12 @@ class Normalprofile extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
                   ),
                 ),
               ),
               Positioned(
-                left: 205,
-                top: 369,
+                left: 206,
+                top: 368,
                 child: Text(
                   'Order History',
                   textAlign: TextAlign.center,
@@ -315,7 +199,7 @@ class Normalprofile extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 194,
+                left: 196,
                 top: 390,
                 child: SizedBox(
                   width: 126,
@@ -344,14 +228,6 @@ class Normalprofile extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
                   ),
                 ),
               ),
@@ -391,10 +267,10 @@ class Normalprofile extends StatelessWidget {
                 ),
               ),
 
-              //Edit button
+              //Upload photo button
               Positioned(
-                left: 298,
-                top: 56,
+                left: 25,
+                top: 80,
                 child: TextButton(
                   onPressed: () {
                     navigateNextPage2(context);
@@ -403,12 +279,66 @@ class Normalprofile extends StatelessWidget {
                     padding: EdgeInsets.zero,
                   ),
                   child: Container(
-                    width: 80,
-                    height: 38,
+                    width: 170,
+                    height: 171,
                     decoration: ShapeDecoration(
-                      color: Color(0xFFFBEB9A),
+                      color: Color(0xFFD9D9D9),
+                      shape: OvalBorder(),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 83,
+                top: 135,
+                child: Opacity(
+                  opacity: 0.2,
+                  child: Image.asset('lib/assets/images/upload symbol.png'),
+                ),
+                width: 50,
+                height: 50,
+              ),
+              Positioned(
+                left: 88,
+                top: 149,
+                child: Container(
+                  width: 50,
+                  height: 43,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 43,
+                        child: Stack(children: []),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              //Confirm button
+              Positioned(
+                left: 108,
+                top: 593,
+                child: TextButton(
+                  onPressed: () {
+                    navigateNextPage(context);
+                  },
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                  ),
+                  child: Container(
+                    width: 175,
+                    height: 56,
+                    decoration: ShapeDecoration(
+                      color: Color(0xFFFB9A9A),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       shadows: [
                         BoxShadow(
@@ -423,21 +353,94 @@ class Normalprofile extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 273,
-                top: 85,
+                left: 130,
+                top: 630,
                 child: SizedBox(
                   width: 131,
                   height: 38,
                   child: Text(
-                    'Edit',
+                    'Confirm',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 18,
+                      fontSize: 24,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600,
-                      height: 0.09,
+                      height: 0.05,
                     ),
+                  ),
+                ),
+              ),
+
+              //Back button
+              Positioned(
+                  left: 0,
+                  top: 25,
+                  child: TextButton(
+                    onPressed: () {
+                      /*navigateNextPage3(context);*/
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: Transform(
+                      transform: Matrix4.identity()
+                        ..translate(0.0, 0.0)
+                        ..rotateZ(-1.57),
+                      child: Container(
+                        width: 24,
+                        height: 23,
+                        decoration: ShapeDecoration(
+                          color: Colors.black,
+                          shape: StarBorder.polygon(sides: 3),
+                        ),
+                      ),
+                    ),
+                  )),
+              Positioned(
+                left: 207,
+                top: 199,
+                child: Container(
+                  width: 157,
+                  height: 37,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFF908E8E),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 228,
+                top: 222,
+                child: Text(
+                  'Normal Member',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
+                    height: 0.09,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 158,
+                top: 720,
+                child: Text(
+                  'Contact Us',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xFF1C4BF2),
+                    fontSize: 17,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    decoration: TextDecoration.underline,
+                    height: 0.09,
+                    letterSpacing: -0.50,
                   ),
                 ),
               ),
@@ -445,6 +448,9 @@ class Normalprofile extends StatelessWidget {
           ),
         ),
       ],
+    )
+    )
+    )
     );
   }
 }

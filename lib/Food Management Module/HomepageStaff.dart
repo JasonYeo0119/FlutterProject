@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:usmfoodsaver/Membership%20System%20Module/Login.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'PostFood.dart';
 import 'Profile.dart';
 import 'RealtimeUpdate.dart';
 import 'ViewReviewAndRating.dart';
 
 class HomepageStaff extends StatefulWidget {
+  const HomepageStaff({Key? key}) : super(key: key);
   @override
   State<HomepageStaff> createState() => _HomepageStaffState();
 }
@@ -38,13 +40,6 @@ class _HomepageStaffState extends State<HomepageStaff> {
   void navigateNextPage4(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return Profile();
-    }));
-  }
-
-  //sign out
-  void navigateNextPage5(BuildContext ctx) {
-    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Login();
     }));
   }
 
@@ -245,23 +240,28 @@ class _HomepageStaffState extends State<HomepageStaff> {
                 left: 290,
                 top: 699,
                 child: TextButton(
-                  onPressed: () {navigateNextPage5(context);}, //yellow
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
-                child: Text(
-                  'Sign out',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFFF21C1C),
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.06,
-                    letterSpacing: -0.50,
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut().then((value) {
+                      print("Signed Out");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
+                    });
+                  },
+                  child: Text(
+                    'Sign out',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFFF21C1C),
+                      fontSize: 20,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      height: 0.06,
+                      letterSpacing: -0.50,
+                    ),
                   ),
                 ),
-              ),
               ),
               Positioned(
                 left: 8,

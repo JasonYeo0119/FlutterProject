@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:usmfoodsaver/Food%20Management%20Module/DonePost.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/HomepageStaff.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/PostFood.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/Profile.dart';
@@ -7,10 +8,12 @@ import 'package:usmfoodsaver/Food%20Management%20Module/RealtimeUpdate.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/RealtimeUpdate2.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/SignupProfile.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/ViewReviewAndRating.dart';
-import 'package:usmfoodsaver/Membership%20System%20Module/Login.dart';
-import 'package:usmfoodsaver/Membership%20System%20Module/SignUp.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/Login.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/TermsofService.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/student_signin.dart';
 import 'Food Management Module/EditProfile.dart';
-import 'Membership System Module/HomePage.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -33,7 +36,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-        home: ViewReviewAndRating()
+        home: HomePage()
     );
   }
 }

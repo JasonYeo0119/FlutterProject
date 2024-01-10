@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 import 'HomePage.dart';
 
 class Privacypolicy extends StatelessWidget {
@@ -10,7 +11,9 @@ class Privacypolicy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Scaffold(
+      body: Container(
+      child: SingleChildScrollView(
       child: Column(
         children: [
           Container(
@@ -69,24 +72,25 @@ class Privacypolicy extends StatelessWidget {
                 // Back button
                 Positioned(
                   left: 0,
-                  top: 25,
-                  child: TextButton(
-                    onPressed: () {
+                  top: 0,
+                  child: InkWell(
+                    onTap: () {
                       navigateNextPage(context);
                     },
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                    ),
-                    child: Transform(
-                      transform: Matrix4.identity()
-                        ..translate(0.0, 0.0)
-                        ..rotateZ(-1.57),
-                      child: Container(
-                        width: 24,
-                        height: 23,
-                        decoration: ShapeDecoration(
+                    borderRadius: BorderRadius.circular(12), // Adjust the value as needed
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                      ),
+                      child: Transform.rotate(
+                        angle: -1.57,
+                        child: Icon(
+                          Icons.arrow_upward,
+                          size:28,
                           color: Colors.black,
-                          shape: StarBorder.polygon(sides: 3),
                         ),
                       ),
                     ),
@@ -95,6 +99,10 @@ class Privacypolicy extends StatelessWidget {
                 Positioned(
                   left: 12,
                   top: 862,
+                  child: InkWell(
+                    onTap: () {
+                      launchEmail('usmfoodsaver@gmail.com');
+                    },
                   child: SizedBox(
                     width: 235,
                     height: 30,
@@ -111,11 +119,14 @@ class Privacypolicy extends StatelessWidget {
                     ),
                   ),
                 ),
+                )
               ],
             ),
           ),
         ],
       ),
+    )
+    )
     );
   }
 }
