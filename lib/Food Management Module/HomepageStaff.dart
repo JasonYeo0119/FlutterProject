@@ -237,8 +237,8 @@ class _HomepageStaffState extends State<HomepageStaff> {
                 ),
               ),
               Positioned(
-                left: 290,
-                top: 699,
+                left: 283,
+                top: 698,
                 child: TextButton(
                   onPressed: () {
                     FirebaseAuth.instance.signOut().then((value) {

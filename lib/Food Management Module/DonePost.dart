@@ -10,9 +10,8 @@ class DonePost extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Column(
-        children: [
+        return Scaffold(
+        body:
         Container(
           width: 390,
           height: 777,
@@ -590,8 +589,6 @@ class DonePost extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ],
         ),
     );
   }
