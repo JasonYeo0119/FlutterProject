@@ -14,6 +14,7 @@ import 'package:usmfoodsaver/Membership%20Module/HomePage/Login.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/TermsofService.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/student_signin.dart';
+import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
 import 'Food Management Module/EditProfile.dart';
 import 'firebase_options.dart';
 
@@ -32,13 +33,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-        home: HomepageStaff()
-    );
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: RewardSystem());
   }
 }
-

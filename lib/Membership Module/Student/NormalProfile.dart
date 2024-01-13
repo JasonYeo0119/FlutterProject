@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 import 'CreateUserProfile.dart';
+import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
 
 class Normalprofile extends StatelessWidget {
   /*void navigateNextPage(BuildContext ctx) {
@@ -21,11 +22,11 @@ class Normalprofile extends StatelessWidget {
     }));
   }
 
-  /*void navigateNextPage4(BuildContext ctx) {
+  void navigateNextPage4(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return RewardSystemScreen();
+      return RewardSystem();
     }));
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +104,7 @@ class Normalprofile extends StatelessWidget {
                 top: 199,
                 child: TextButton(
                   onPressed: () {
-                   /* navigateNextPage(context);*/
+                    /* navigateNextPage(context);*/
                   },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,
