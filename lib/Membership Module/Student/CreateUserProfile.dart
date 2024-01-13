@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile2.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 
-class CreateUserProfile2 extends StatefulWidget {
+class CreateUserProfile extends StatefulWidget {
   final String userEmail; // Add this line to receive the email address
 
-  const CreateUserProfile2({Key? key, required this.userEmail}) : super(key: key);
+  const CreateUserProfile({Key? key, required this.userEmail}) : super(key: key);
 
   @override
-  State<CreateUserProfile2> createState() => _CreateUserProfileState();
+  State<CreateUserProfile> createState() => _CreateUserProfileState();
 }
-class _CreateUserProfileState extends State<CreateUserProfile2> {
+class _CreateUserProfileState extends State<CreateUserProfile> {
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController matricNoController = TextEditingController();
@@ -371,7 +371,7 @@ class _CreateUserProfileState extends State<CreateUserProfile2> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Normalprofile2(), // Replace NormalProfileScreen with your actual profile screen widget
+                        builder: (context) => Normalprofile(), // Replace NormalProfileScreen with your actual profile screen widget
                       ),
                     );
                   },

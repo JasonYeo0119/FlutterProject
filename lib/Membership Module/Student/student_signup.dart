@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/Profile.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/SignupProfile.dart';
-import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile2.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile.dart';
 import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 import 'package:usmfoodsaver/Membership%20Module/utils/color_utils.dart';
 
@@ -116,7 +116,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                     });
                     // Navigate to the home screen or perform any other actions
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CreateUserProfile2(userEmail: _emailTextController.text)),
+                        MaterialPageRoute(builder: (context) => CreateUserProfile(userEmail: _emailTextController.text)),
                     );
                     })
                         .onError((error, stackTrace) {

@@ -4,6 +4,8 @@ import 'package:usmfoodsaver/Reward%20System%20Module/invite.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile.dart';
 
 class RewardSystem extends StatelessWidget {
+  TextEditingController _emailTextController = TextEditingController();
+
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return VoucherPage();
@@ -18,7 +20,7 @@ class RewardSystem extends StatelessWidget {
 
   void navigateNextPage3(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Createuserprofile();
+      return CreateUserProfile(userEmail: _emailTextController.text);
     }));
   }
 

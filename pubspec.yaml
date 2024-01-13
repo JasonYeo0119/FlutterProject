@@ -48,6 +48,8 @@ dependencies:
   open_file: ^3.3.2
   base64: ^1.0.0
   mime: ^1.0.4
+  timer_count_down: ^2.2.2
+
 
 dev_dependencies:
   flutter_test:

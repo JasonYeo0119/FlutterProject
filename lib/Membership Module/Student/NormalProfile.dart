@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 
-class Normalprofile2 extends StatelessWidget {
+class Normalprofile extends StatelessWidget {
   /*void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return Premiumplan();
