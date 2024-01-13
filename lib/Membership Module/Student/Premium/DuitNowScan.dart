@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'PaymentMethod.dart';
 import 'UploadSS.dart';
+import 'PaymentMethod.dart';
 
 class Duitnowqr extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {

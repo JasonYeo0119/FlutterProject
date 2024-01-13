@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'DuitNowScan.dart';
-import 'PremiumPrice.dart';
 import 'tngScan.dart';
+import 'PremiumPrice.dart';
 
 class Paymentmethod extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/Profile.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/SignupProfile.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile.dart';
-import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 import 'package:usmfoodsaver/Membership%20Module/utils/color_utils.dart';
+import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
+
 
 
 class StudentSignUp extends StatefulWidget {

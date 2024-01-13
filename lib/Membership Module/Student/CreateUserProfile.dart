@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 
 class CreateUserProfile extends StatefulWidget {
   final String userEmail; // Add this line to receive the email address

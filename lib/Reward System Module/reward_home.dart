@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:usmfoodsaver/Reward%20System%20Module/voucher.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/invite.dart';
+import 'package:usmfoodsaver/Reward%20System%20Module/voucher.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile.dart';
 
 class RewardSystem extends StatelessWidget {

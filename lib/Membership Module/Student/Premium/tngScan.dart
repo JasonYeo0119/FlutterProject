@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'UploadSS.dart';
+import 'package:flutter/material.dart';
 
 class Tngscan extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {

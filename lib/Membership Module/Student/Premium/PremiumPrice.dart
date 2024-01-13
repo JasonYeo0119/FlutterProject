@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'PaymentMethod.dart';
 import 'PremiumPlan.dart';
+import 'PaymentMethod.dart';
 
 class Premiumprice extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {

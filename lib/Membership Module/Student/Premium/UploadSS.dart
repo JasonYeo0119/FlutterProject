@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:typed_data'; // Add this import for Uint8List
 import 'package:open_file/open_file.dart';
 import 'dart:html' as html;
-import 'dart:convert';// Import dart:html for web-specific functionality
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:file_picker/file_picker.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/foundation.dart' show kIsWeb; // Add this import for kIs
 import 'package:flutter/material.dart';
 import 'PaymentMethod.dart';
 import 'Successful.dart';
+import 'dart:convert';// Import dart:html for web-specific functionality
 
 class UploadSS extends StatefulWidget {
   const UploadSS({Key? key}) : super(key: key);

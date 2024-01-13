@@ -65,7 +65,7 @@ class Successful extends StatelessWidget {
               ),
               Positioned(
                 left: 64,
-                top: 380,
+                top: 381,
                 child: SizedBox(
                   width: 261,
                   height: 155,
