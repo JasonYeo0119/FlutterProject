@@ -8,7 +8,7 @@ class Customerservice extends StatelessWidget {
       return HomePage();
     }));
   }
-  final String facebookProfileUrl = 'https://www.facebook.com/edwine.yee.9/';
+  final String facebookProfileUrl = 'https://www.facebook.com/profile.php?id=61555647896942&mibextid=vk8aRt';
 
   @override
   Widget build(BuildContext context) {

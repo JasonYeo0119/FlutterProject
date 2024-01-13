@@ -11,7 +11,8 @@ import 'package:usmfoodsaver/Food%20Management%20Module/ViewReviewAndRating.dart
 import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/Login.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/TermsofService.dart';
-import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/Premium/PremiumPlan.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/Premium/PremiumPrice.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/student_signin.dart';
 import 'Food Management Module/EditProfile.dart';
 import 'firebase_options.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-        home: HomePage()
+        home: Premiumprice()
     );
   }
 }
