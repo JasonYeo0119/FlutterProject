@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/UploadUserPhoto.dart';
-
+import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
 
 class Createuserprofile extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {
@@ -16,24 +16,24 @@ class Createuserprofile extends StatelessWidget {
     }));
   }
 
- /* void navigateNextPage3(BuildContext ctx) {
-    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Studentsignup();
-    }));
-  }
+  // void navigateNextPage3(BuildContext ctx) {
+  //   Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+  //     return Studentsignup();
+  //   }));
+  // }
 
   void navigateNextPage4(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return RewardSystemScreen();
+      return RewardSystem();
     }));
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: SingleChildScrollView(
-        child: Column(
+        body: Container(
+            child: SingleChildScrollView(
+                child: Column(
       children: [
         Container(
           width: 390,
@@ -233,17 +233,22 @@ class Createuserprofile extends StatelessWidget {
               ),
               Positioned(
                 left: 34,
-                top: 490,
-                child: Text(
-                  'Rewards Centre',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.09,
-                    letterSpacing: -0.50,
+                top: 480,
+                child: TextButton(
+                  onPressed: () {
+                    navigateNextPage4(context);
+                  },
+                  child: Text(
+                    'Rewards Centre',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      height: 0.09,
+                      letterSpacing: -0.50,
+                    ),
                   ),
                 ),
               ),
@@ -448,9 +453,6 @@ class Createuserprofile extends StatelessWidget {
           ),
         ),
       ],
-    )
-    )
-    )
-    );
+    ))));
   }
 }

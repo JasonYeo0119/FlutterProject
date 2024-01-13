@@ -62,6 +62,12 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
+    - lib/assets/images/reward/food.jpg
+    - lib/assets/images/reward/invite.jpg
+    - lib/assets/images/reward/img_frame_2.png
+    - lib/assets/images/reward/img_oval_2.png
+    - lib/assets/images/reward/uncle_hooi.png
+    - lib/assets/images/reward/mcd.png
     - lib/assets/images/make a post.png
     - lib/assets/images/address icon.png
     - lib/assets/images/cancel button.png
