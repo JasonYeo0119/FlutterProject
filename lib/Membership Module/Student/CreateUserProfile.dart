@@ -1,26 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 
 class CreateUserProfile extends StatefulWidget {
-  final String userEmail; // Add this line to receive the email address
-
-  const CreateUserProfile({Key? key, required this.userEmail}) : super(key: key);
+  const CreateUserProfile({Key? key}) : super(key: key);
 
   @override
   State<CreateUserProfile> createState() => _CreateUserProfileState();
 }
 class _CreateUserProfileState extends State<CreateUserProfile> {
-
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController matricNoController = TextEditingController();
+  final StudentEmail = TextEditingController();
+  final StudentName = TextEditingController();
+  final MatricNo = TextEditingController();
   late DatabaseReference dbRef;
 
   @override
   void initState() {
     super.initState();
-    dbRef = FirebaseDatabase.instance.reference().child('Students').child('NormalPlan');
+    dbRef = FirebaseDatabase.instance.ref().child('Students').child('NormalPlan');
+  }
+
+  void navigateNextPage(BuildContext ctx) {
+    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+      return HomePage();
+    }));
+  }
+
+  void navigateNextPage2(BuildContext ctx) {
+    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+      return Normalprofile();
+    }));
   }
 
   @override
@@ -53,7 +64,7 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
                   width: 230,
                   height: 19,
                   child: Text(
-                    'My Profile',
+                    'Create Profile',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
@@ -67,95 +78,34 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
                 ),
               ),
 
-              // Nickname
               Positioned(
-                left: 215,
-                top: 100,
+                left: 20,
+                top: 250,
                 child: Container(
-                  width: 165,
-                  height: 34,
+                  width: 353,
+                  height: 180,
                   decoration: BoxDecoration(
-                    color: Color(0xFFFFCBCB), // FFCBCB
+                    color: Color(0xFFFFCBCB),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: TextField(
-                    controller: nameController,
-                    keyboardType: TextInputType.text,
-                    style: TextStyle(
-                      color: Color(0xFF794832), // FF7D7D
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      hintText: 'Nickname...',
-                      hintStyle: TextStyle(fontSize: 18),
-                      contentPadding: EdgeInsets.zero,
-                      border: InputBorder.none,
-                    ),
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      buildInputField('Name', 'Please input your name...', StudentName),
+                      buildInputField('MatricNo.', 'Please input your MatricNo...', MatricNo),
+                      buildInputField('Email', 'Please input your email...', StudentEmail),
+                    ],
                   ),
                 ),
               ),
-
-
-
-              /// Matric No
-              Positioned(
-                left: 215,
-                top: 150,
-                child: Container(
-                  width: 165,
-                  height: 34,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFFFCBCB), // FFCBCB
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: TextField(
-                    controller: matricNoController,
-                    keyboardType: TextInputType.text,
-                    style: TextStyle(
-                      color: Color(0xFF794832), // FF7D7D
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      hintText: 'MatricNo...',
-                      hintStyle: TextStyle(fontSize: 18),
-                      contentPadding: EdgeInsets.zero,
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ),
-
-
-              Positioned(
-                left: 25,
-                top: 282,
-                child: Text(
-                  widget.userEmail,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w800,
-                    decoration: TextDecoration.none,
-                    height: 0.06,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-
-
 
               Positioned(
                 left: 20,
-                top: 341,
+                top: 456,
                 child: Container(
                   width: 148,
-                  height: 92,
+                  height: 85,
                   decoration: ShapeDecoration(
                     color: Color(0xFFFFCD92),
                     shape: RoundedRectangleBorder(
@@ -166,13 +116,13 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
               ),
               Positioned(
                 left: 33,
-                top: 365,
+                top: 480,
                 child: Text(
                   'Reward Coins',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 17,
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
                     height: 0.09,
@@ -181,8 +131,8 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
                 ),
               ),
               Positioned(
-                left: 20,
-                top: 390,
+                left: 18,
+                top: 500,
                 child: SizedBox(
                   width: 80,
                   child: Text(
@@ -190,7 +140,7 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 17,
+                      fontSize: 15,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
                       height: 0.09,
@@ -201,7 +151,7 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
               ),
               Positioned(
                 left: 192,
-                top: 346,
+                top: 455,
                 child: Container(
                   width: 180,
                   height: 87,
@@ -215,13 +165,13 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
               ),
               Positioned(
                 left: 206,
-                top: 368,
+                top: 477,
                 child: Text(
                   'Order History',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 17,
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
                     height: 0.09,
@@ -231,7 +181,7 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
               ),
               Positioned(
                 left: 196,
-                top: 390,
+                top: 499,
                 child: SizedBox(
                   width: 126,
                   child: Text(
@@ -250,7 +200,7 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
               ),
               Positioned(
                 left: 20,
-                top: 466,
+                top: 565,
                 child: Container(
                   width: 352,
                   height: 87,
@@ -264,7 +214,7 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
               ),
               Positioned(
                 left: 34,
-                top: 490,
+                top: 589,
                 child: Text(
                   'Rewards Centre',
                   textAlign: TextAlign.center,
@@ -280,7 +230,7 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
               ),
               Positioned(
                 left: 34,
-                top: 512,
+                top: 611,
                 child: SizedBox(
                   width: 322,
                   height: 35,
@@ -300,8 +250,8 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
 
               //Upload photo button
               Positioned(
-                left: 25,
-                top: 80,
+                left: 135,
+                top: 60,
                 child: TextButton(
                   onPressed: () {
                     /*navigateNextPage2(context);*/
@@ -310,8 +260,8 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
                     padding: EdgeInsets.zero,
                   ),
                   child: Container(
-                    width: 170,
-                    height: 171,
+                    width: 130,
+                    height: 130,
                     decoration: ShapeDecoration(
                       color: Color(0xFFD9D9D9),
                       shape: OvalBorder(),
@@ -320,15 +270,18 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
                 ),
               ),
               Positioned(
-                left: 83,
-                top: 135,
+                left: 185,
+                top: 110,
                 child: Opacity(
                   opacity: 0.2,
                   child: Image.asset('lib/assets/images/upload symbol.png'),
                 ),
-                width: 50,
-                height: 50,
+                width: 30,
+                height: 30,
               ),
+
+
+
               Positioned(
                 left: 88,
                 top: 149,
@@ -355,29 +308,44 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
               // Confirm button
               Positioned(
                 left: 108,
-                top: 593,
-                child: TextButton(
+                top: 680,
+                /*child: TextButton(
                   onPressed: () {
-                    Map<String, dynamic> profile = {
-                      'UserID': widget.userEmail.replaceAll('.', ','),
-                      'Useremail': widget.userEmail,
-                      'dt': DateTime.now().millisecondsSinceEpoch,
-                      'profilename': nameController.text,
-                      'nickname': nameController.text,
-                      'matricNo': matricNoController.text,
+                    // Get the input values
+                    String email = StudentEmail.text;
+                    String name = StudentName.text;
+                    String matric = MatricNo.text;
+
+                    // Create a map with the input values
+                    Map<String, dynamic> NormalProfile = {
+                      'Useremail': email,
+                      'profilename': name,
+                      'matricNo': matric,
                     };
-                    dbRef.child(widget.userEmail.replaceAll('.', ',')).set(profile);
-                    // Navigate to the normal profile screen
-                    Navigator.push(
+
+                    // Store the data in the database
+                    dbRef.push().set(NormalProfile);
+
+                    // Navigate to the normal profile screen and pass the input values
+                    navigateNextPage(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => Normalprofile(), // Replace NormalProfileScreen with your actual profile screen widget
-                      ),
+                      email: email,
+                      name: name,
+                      matric: matric,
                     );
+                  },*/
+
+
+                child: MaterialButton(
+                  onPressed: () {
+                    Map<String, String> StudentProfile = {
+                      'Useremail': StudentEmail.text,
+                      'profilename': StudentName.text,
+                      'matricNo': MatricNo.text,
+                    };
+                    dbRef.push().set(StudentProfile);
+                    navigateNextPage2(context);
                   },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
                   child: Container(
                     width: 175,
                     height: 56,
@@ -402,8 +370,8 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
 
 
               Positioned(
-                left: 130,
-                top: 630,
+                left: 135,
+                top: 715,
                 child: SizedBox(
                   width: 131,
                   height: 38,
@@ -427,7 +395,7 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
                 top: 0,
                 child: InkWell(
                   onTap: () {
-                    /*navigateNextPage(context);*/
+                    navigateNextPage(context);
                   },
                   borderRadius: BorderRadius.circular(12), // Adjust the value as needed
                   child: Container(
@@ -451,7 +419,7 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
 
               //Normal member section
               Positioned(
-                left: 220,
+                left: 125,
                 top: 199,
                 child: Container(
                   width: 154,
@@ -465,7 +433,7 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
                 ),
               ),
               Positioned(
-                left: 239,
+                left: 145,
                 top: 222,
                 child: Text(
                   'Normal Member',
@@ -474,15 +442,17 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
                     color: Colors.black,
                     fontSize: 17,
                     fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.bold,
                     height: 0.09,
                     letterSpacing: -0.50,
                   ),
                 ),
               ),
+
+              // Contact Us
               Positioned(
-                left: 75,
-                top: 720,
+                left: 80,
+                top: 770,
                 child: InkWell(
                   onTap: () {
                     launchEmail('usmfoodsaver@gmail.com');
@@ -510,9 +480,57 @@ class _CreateUserProfileState extends State<CreateUserProfile> {
           ),
         ),
       ],
-    )
-    )
+        )
+        ),
     )
     );
+
   }
+
+  Widget buildInputField(String label, String placeholder, TextEditingController controller) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '$label:',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+          ),
+          SizedBox(width: 4),  // Add some space between label and text field
+          Expanded(
+            child: Container(
+              height: 34,
+              decoration: BoxDecoration(
+                color: Color(0xFFFFCBCB),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: TextField(
+                  controller: controller,
+                  keyboardType: TextInputType.text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xFF794832),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                  decoration: InputDecoration(
+                    hintText: placeholder,
+                    hintStyle: TextStyle(fontSize: 16, color: Colors.black.withOpacity(0.5)),
+                    contentPadding: EdgeInsets.zero,
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+
 }

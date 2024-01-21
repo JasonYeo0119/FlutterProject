@@ -243,7 +243,7 @@ class _HomepageStaffState extends State<HomepageStaff> {
                   onPressed: () {
                     FirebaseAuth.instance.signOut().then((value) {
                       print("Signed Out");
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => HomePage()),
                       );

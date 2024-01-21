@@ -205,7 +205,7 @@ class _GiveFeedBack1State extends State<GiveFeedBack1> {
                 // Cancel button
                 MaterialButton(
                   onPressed: () {
-                    navigateNextPage2(context);
+                   navigateNextPage2(context);
                   },
                   color: Color(0xFFDB9A9A),
                   shape: RoundedRectangleBorder(

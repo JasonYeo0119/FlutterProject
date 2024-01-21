@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
 import "package:usmfoodsaver/Food%20Management%20Module/Profile.dart";
-import "HomepageStaff.dart";
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key, required this.Profilekey}) : super(key: key);
@@ -15,27 +16,28 @@ class _EditProfileState extends State<EditProfile> {
   final name = TextEditingController();
   final address = TextEditingController();
   final email = TextEditingController();
-  final password = TextEditingController();
-
-  late DatabaseReference dbRef;
+  User? user;
+  late DatabaseReference userRef;
 
   @override
   void initState() {
     super.initState();
-    dbRef = FirebaseDatabase.instance.ref().child(
-        'Profile'); //represents the location 'Profile' within the database
+
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      userRef = FirebaseDatabase.instance.reference().child('Staff').child(user!.uid).child('Staff Info');
+    }
     getProfileData();
   }
 
   void getProfileData() async {
-    DataSnapshot snapshot = await dbRef.child(widget.Profilekey).get();
+    DataSnapshot snapshot = await userRef.child(widget.Profilekey).get();
 
     Map Profile = snapshot.value as Map;
 
-    name.text = Profile['Name'];
-    address.text = Profile['Address'];
-    email.text = Profile['Email'];
-    password.text = Profile['Password'];
+    name.text = Profile['fullName'];
+    address.text = Profile['address'];
+    email.text = Profile['email'];
   }
 
   @override
@@ -274,13 +276,19 @@ class _EditProfileState extends State<EditProfile> {
                 height: 34,
                 child: TextField(
                   controller: email,
+                  enabled: false, // Set this property to make the TextField not editable
                   keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      //labelText: 'Name',
-                      hintText: 'Please enter your email...',
-                      hintStyle: TextStyle(fontSize: 15),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Please enter your email...',
+                    hintStyle: TextStyle(fontSize: 15),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 15.0),
+                    // Customize the appearance for a disabled TextField
+                    disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey.shade200,
                   ),
                 ),
               ),
@@ -322,76 +330,6 @@ class _EditProfileState extends State<EditProfile> {
               ),
             ),
             Positioned(
-              left: 26,
-              top: 454,
-              child: Container(
-                width: 338,
-                height: 34,
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 118,
-              top: 454,
-              child: Container(
-                width: 245,
-                height: 34,
-                child: TextField(
-                  controller: password,
-                  keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      //labelText: 'Name',
-                      hintText: 'Please enter your password...',
-                      hintStyle: TextStyle(fontSize: 15),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 15.0)
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 119,
-              top: 454,
-              child: Transform(
-                transform: Matrix4.identity()
-                  ..translate(0.0, 0.0)
-                  ..rotateZ(1.57),
-                child: Container(
-                  width: 33,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 1,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 45,
-              top: 474,
-              child: Text(
-                'Password',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
-                  height: 0.15,
-                  letterSpacing: -0.50,
-                ),
-              ),
-            ),
-            Positioned(
               left: 15,
               top: 13,
               child: TextButton(
@@ -412,12 +350,11 @@ class _EditProfileState extends State<EditProfile> {
               child: MaterialButton(
                 onPressed: () {
                   Map<String, String> Profile = {
-                    'Name': name.text,
-                    'Address': address.text,
-                    'Email': email.text,
-                    'Password': password.text,
+                    'fullName': name.text,
+                    'address': address.text,
+                    'email': email.text,
                   };
-                  dbRef.child(widget.Profilekey).update(Profile)
+                  userRef.child(widget.Profilekey).update(Profile)
                       .then((value) => {
                     Navigator.pop(context),
                     navigateNextPage(context)

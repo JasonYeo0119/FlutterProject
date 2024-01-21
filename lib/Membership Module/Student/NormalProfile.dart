@@ -1,191 +1,435 @@
+import "package:flutter/material.dart";
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:usmfoodsaver/Booking%20&%20Engagement%20Module/Menu.dart';
+import 'package:usmfoodsaver/Booking%20&%20Engagement%20Module/OrderHistory.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
-import 'package:flutter/material.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/Premium/PremiumPlan.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/StudentEdit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
+import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
 
-class Normalprofile extends StatelessWidget {
-  /*void navigateNextPage(BuildContext ctx) {
+class Normalprofile extends StatefulWidget {
+  const Normalprofile({Key? key}) : super(key: key);
+
+  @override
+  State<Normalprofile> createState() => _NormalprofileState();
+}
+
+class _NormalprofileState extends State<Normalprofile> {
+  User? user;
+  late Query userRef;
+
+  @override
+  void initState() {
+    super.initState();
+
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      userRef = FirebaseDatabase.instance.reference().child('Student').child(user!.uid).child('Student Info');
+    }
+  }
+  @override
+  State<Normalprofile> createState() => _NormalprofileState();
+
+  @override
+
+  void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return Premiumplan();
     }));
-  }*/
+  }
 
-  /*void navigateNextPage2(BuildContext ctx) {
+  /*void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return CreateUserProfile();
+      return StudentEdit(StudentProfilekey: '',);
     }));
   }*/
 
-  void navigateNextPage3(BuildContext ctx) {
+  void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return HomePage();
+      return OrderHistory();
     }));
   }
 
-  /*void navigateNextPage4(BuildContext ctx) {
+  void navigateNextPage3(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return RewardSystemScreen();
+      return RewardSystem();
     }));
-  }*/
+  }
+
+  void navigateNextPage4(BuildContext ctx) {
+    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+      return Menu();
+    }));
+  }
+
+  Widget listItem({required Map StudentProfile}) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    return Container(
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: [
+          Card(
+            color: Color(0xFFFFCBCB),
+            margin: const EdgeInsets.all(10),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            elevation: 0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Name\t\t\t\t\t\t\t\t:',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        '${StudentProfile['fullName']}',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'MatricNo. :',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        '${StudentProfile['matricNo']}',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Email\t\t\t\t\t\t\t\t\t:',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        '${StudentProfile['email']}',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10), // Adjust the spacing as needed
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) =>
+                        StudentEdit(StudentProfilekey: StudentProfile['key'])),
+                  );
+                },
+                child: Container(
+                  width: 90,
+                  height: 40,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xFFFBEB9A), // Adjust the color as needed
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Text(
+                    'Edit',
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 390,
-          height: 777,
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(color: Color(0xFFE5FFFC)),
-          child: Stack(
-            children: [
-              Positioned(
-                left: 0,
-                top: 0,
-                child: Container(
+    return Scaffold(
+      body: Container(
+        width: 390,
+        height: 777,
+        color: Color(0xFFE5FFFC),
+        child: Stack( // Wrap your content in a Stack
+          children: [
+            Column(
+              children: [
+                Container(
                   width: 390,
                   height: 50,
-                  decoration: BoxDecoration(color: Color(0xFFFB9A9A)),
-                ),
-              ),
-              Positioned(
-                left: 81,
-                top: 32,
-                child: SizedBox(
-                  width: 230,
-                  height: 19,
-                  child: Text(
-                    'My Profile',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      height: 0.05,
-                      letterSpacing: -0.50,
+                  color: Color(0xFFFB9A9A),
+                  child: Center(
+                    child: Text(
+                      'My Profile',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
-              ),
-
-              //Menu button
-              Positioned(
-                left: 321,
-                top: 2,
-                child: Icon(
-                  Icons.food_bank,
-                  size: 40,
-                  color: Colors.black,
-                ),
-                width: 34,
-                height: 34,
-              ),
-              Positioned(
-                left: 215,
-                top: 130,
-                child: Text(
-                  'Yeo Min Sheng ',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.06,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-
-              // Normal member button
-              Positioned(
-                left: 207,
-                top: 199,
-                child: TextButton(
-                  onPressed: () {
-                   /* navigateNextPage(context);*/
-                  },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
-                  child: Container(
-                    width: 157,
-                    height: 37,
-                    decoration: ShapeDecoration(
-                      color: Color(0xFF908E8E),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                SizedBox(height: 25), // Add a SizedBox for spacing
+                Positioned(
+                  left: 207,
+                  top: 60,
+                  child: TextButton(
+                    onPressed: () {
+                      navigateNextPage(context);
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: Container(
+                      width: 170,
+                      height: 45,
+                      decoration: ShapeDecoration(
+                        color: Color(0xFFB2EBF2),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        shadows: [
+                          BoxShadow(
+                            color: Color(0x3F000000),
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                            spreadRadius: 0,
+                          )
+                        ],
                       ),
-                      shadows: [
-                        BoxShadow(
-                          color: Color(0x3F000000),
-                          blurRadius: 4,
-                          offset: Offset(0, 4),
-                          spreadRadius: 0,
-                        )
-                      ],
+                      child: Center(
+                        child: Text(
+                          'Normal Member',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FirebaseAnimatedList(
+                      query: userRef,
+                      itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                          Animation<double> animation, int index) {
+                        Map StudentProfile = snapshot.value as Map;
+                        StudentProfile['key'] = snapshot.key;
+                        return listItem(StudentProfile: StudentProfile);
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            // Reward Coins Section
+            Positioned(
+              left: 30,
+              top: 370,
+              child: Container(
+                width: 150,
+                height: 70,
+                decoration: ShapeDecoration(
+                  color: Color(0xFFFFCD92),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Reward Coins',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(height: 5), // Add vertical spacing
+                    Text(
+                      '0 coins',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Positioned(
-                left: 228,
-                top: 227,
-                child: Text(
-                  'Normal Member',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    height: 0.09,
-                    letterSpacing: -0.50,
+            ),
+
+            // Order History Button
+            Positioned(
+              left: 200,
+              top: 370,
+              child: TextButton(
+                onPressed: () {
+                  navigateNextPage2(context);
+                },
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+              child: Container(
+                width: 160,
+                height: 70,
+                decoration: ShapeDecoration(
+                  color: Color(0xFFFFCD92),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  shadows: [
+                    BoxShadow(
+                      color: Color(0x3F000000),
+                      blurRadius: 4,
+                      offset: Offset(0, 4),
+                      spreadRadius: 0,
+                    ),
+                  ],
+                ),
+                // Your content for Order History and Check your order
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Order History',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(height: 5), // Add vertical spacing
+                    SizedBox(
+                      width: 126,
+                      child: Text(
+                        'Check your order',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            ),
+
+            // Rewards Centre Button
+            Positioned(
+              left: 30,
+              top: 466,
+              child: TextButton(
+                onPressed: () {
+                  navigateNextPage3(context);
+                },
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                child: Container(
+                  width: 330,
+                  height: 87,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFCD92),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    shadows: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 12),
+                      Text(
+                        'Rewards Centre',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 10), // Add vertical spacing
+                      SizedBox(
+                        width: 322,
+                        height: 35,
+                        child: Text(
+                          'Daily check-in and redeem your e-voucher',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              Positioned(
-                left: 215,
-                top: 165,
-                child: Text(
-                  '157975',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    height: 0.06,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 25,
-                top: 282,
-                child: Text(
-                  'yeo0606.jy@student.usm.my',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
-                    height: 0.06,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 25,
-                top: 80,
-                child: Image.asset('lib/assets/images/Oppa1.png'),
-                width: 170,
-                height: 170,
-              ),
-              Positioned(
-                left: 158,
-                top: 720,
+            ),
+
+            // Contact Us
+            Positioned(
+              left: 150,
+              top: 695,
+              child: InkWell(
+                onTap: () {
+                  launchEmail('usmfoodsaver@gmail.com');
+                },
                 child: Text(
                   'Contact Us',
                   textAlign: TextAlign.center,
@@ -200,248 +444,64 @@ class Normalprofile extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                left: 166,
-                top: 731,
-                child: TextButton(
-                  onPressed: () {
-                    navigateNextPage3(context);
-                  },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
-                  child: Text(
-                    'Log out',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xFFF21C1C),
-                      fontSize: 17,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      height: 0.09,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 20,
-                top: 341,
-                child: Container(
-                  width: 148,
-                  height: 92,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFFFCD92),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 33,
-                top: 365,
-                child: Text(
-                  'Reward Coins',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.09,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 20,
-                top: 390,
-                child: SizedBox(
-                  width: 80,
-                  child: Text(
-                    '0 coins',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                      height: 0.09,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 192,
-                top: 346,
-                child: Container(
-                  width: 180,
-                  height: 87,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFFFCD92),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 205,
-                top: 369,
-                child: Text(
-                  'Order History',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.09,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 194,
-                top: 390,
-                child: SizedBox(
-                  width: 126,
-                  child: Text(
-                    'Check your order',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      height: 0.11,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 20,
-                top: 466,
-                child: Container(
-                  width: 352,
-                  height: 87,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFFFCD92),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 34,
-                top: 490,
-                child: Text(
-                  'Rewards Centre',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.09,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 34,
-                top: 512,
-                child: SizedBox(
-                  width: 322,
-                  height: 35,
-                  child: Text(
-                    'Daily check-in and redeem your e-voucher',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      height: 0.07,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
-                ),
-              ),
+            ),
 
-              //Edit button
-              Positioned(
-                left: 298,
-                top: 56,
-                child: TextButton(
+            // Logout Button
+            Positioned(
+              left: 163,
+              top: 710,
+              child: TextButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut().then((value) {
+                    print("Signed Out");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  });
+                },
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                child: Text(
+                  'Log out',
+                  style: TextStyle(
+                    color: Color(0xFFF21C1C),
+                    fontSize: 16,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.09,
+                    letterSpacing: -0.50,
+                  ),
+                ),
+              ),
+            ),
+
+
+
+            Positioned(
+              right: 25,
+              top: 3,
+              child: Container(
+                width: 40,
+                height: 40,
+                child: MaterialButton(
                   onPressed: () {
-                    /*navigateNextPage2(context);*/
+                    navigateNextPage4(context);
                   },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
-                  child: Container(
-                    width: 80,
-                    height: 38,
-                    decoration: ShapeDecoration(
-                      color: Color(0xFFFBEB9A),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      shadows: [
-                        BoxShadow(
-                          color: Color(0x3F000000),
-                          blurRadius: 4,
-                          offset: Offset(0, 4),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
+                  child: Icon(
+                    Icons.food_bank,
+                    size: 40,
+                    color: Colors.black,
                   ),
                 ),
               ),
-              Positioned(
-                left: 273,
-                top: 85,
-                child: SizedBox(
-                  width: 131,
-                  height: 38,
-                  child: Text(
-                    'Edit',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      height: 0.09,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
+
+
 }

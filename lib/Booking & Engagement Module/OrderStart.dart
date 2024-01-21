@@ -71,7 +71,7 @@ class _OrderStartState extends State<OrderStart> {
     }));
   }
 
-  void navigateNextPage2(BuildContext ctx) {
+ void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return Normalprofile();
     }));
