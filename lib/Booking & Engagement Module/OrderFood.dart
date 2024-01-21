@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:usmfoodsaver/Food%20Management%20Module/Profile.dart';
 import 'Confirmation.dart';
 import 'Menu.dart';
 
@@ -43,7 +44,7 @@ class _OrderFoodState extends State<OrderFood> {
 
   void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Menu();
+      return Profile();
     }));
   }
 
