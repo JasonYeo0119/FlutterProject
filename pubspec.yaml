@@ -99,6 +99,12 @@ flutter:
     - lib/assets/images/Oppa1.png
     - lib/assets/images/USM FoodSaver Logo2.png
     - lib/assets/images/Logo Remove Background.png
+    - lib/assets/images/reward/food.jpg
+    - lib/assets/images/reward/invite.jpg
+    - lib/assets/images/reward/img_frame_2.png
+    - lib/assets/images/reward/img_oval_2.png
+    - lib/assets/images/reward/uncle_hooi.png
+    - lib/assets/images/reward/mcd.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
