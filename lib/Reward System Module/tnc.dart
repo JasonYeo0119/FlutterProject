@@ -531,18 +531,23 @@ class Tnc extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 38,
-                  top: 85,
-                  child: Transform(
-                    transform: Matrix4.identity()
-                      ..translate(0.0, 0.0)
-                      ..rotateZ(-1.57),
+                  left: 0,
+                  top: 43,
+                  child: GestureDetector(
                     child: Container(
-                      width: 24,
-                      height: 23,
-                      decoration: ShapeDecoration(
-                        color: Colors.black,
-                        shape: StarBorder.polygon(sides: 3),
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                      ),
+                      child: Transform.rotate(
+                        angle: -1.57,
+                        child: Icon(
+                          Icons.arrow_upward,
+                          size: 28,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
