@@ -1,4 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:timer_count_down/timer_controller.dart';
@@ -18,13 +19,17 @@ class _ConfirmationState extends State<Confirmation> {
   late DatabaseReference HistorydbRef;
   Map<String, dynamic>? FoodMenu;
   Map<String, dynamic>? OrderHistory;
+  User? user;
 
   @override
   void initState() {
     super.initState();
     dbRef = FirebaseDatabase.instance.ref().child('FoodMenu');
-    HistorydbRef = FirebaseDatabase.instance.ref().child('OrderHistory');
 
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      HistorydbRef = FirebaseDatabase.instance.ref().child('Student').child(user!.uid).child('OrderHistory');
+    }
     getMenuData();
   }
 

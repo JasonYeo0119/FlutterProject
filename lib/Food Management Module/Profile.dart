@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:firebase_auth/firebase_auth.dart';
 import "package:usmfoodsaver/Food%20Management%20Module/EditProfile.dart";
 import "HomepageStaff.dart";
 import 'package:firebase_database/firebase_database.dart';
@@ -12,10 +13,19 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  User? user;
+  late Query userRef;
 
-  Query dbRef = FirebaseDatabase.instance.ref().child('Profile');
-  DatabaseReference reference = FirebaseDatabase.instance.ref().child(
-      'Profile');
+  @override
+  void initState() {
+    super.initState();
+
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      userRef = FirebaseDatabase.instance.reference().child('Staff').child(user!.uid).child('Staff Info');
+    }
+  }
+
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -27,11 +37,11 @@ class _ProfileState extends State<Profile> {
     }));
   }
 
-  void navigateNextPage2(BuildContext ctx) {
+  /*void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return EditProfile(Profilekey: '',);
     }));
-  }
+  }*/
 
   Widget listItem({required Map Profile}) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -52,7 +62,7 @@ class _ProfileState extends State<Profile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Name:\n\n${Profile['Name']}',
+                  'Name:\n\n${Profile['fullName']}',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
                 ),
               ],
@@ -75,7 +85,7 @@ class _ProfileState extends State<Profile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Address:\n\n${Profile['Address']}',
+                  'Address:\n\n${Profile['address']}',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
                 ),
               ],
@@ -98,36 +108,13 @@ class _ProfileState extends State<Profile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Email:\n\n${Profile['Email']}',
+                  'Email:\n\n${Profile['email']}',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
                 ),
               ],
             ),
           ),
           ),
-        ),
-        Card(
-          color: Color(0xFFB2EBF2),
-          margin: const EdgeInsets.all(10),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12), // Adding rounded corners
-          ),
-          elevation: 5,
-          child: SizedBox(
-            width: screenWidth - 20,
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Password:\n\n${Profile['Password']}',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
-                ),
-              ],
-            ),
-          ),
-        ),
         ),
        Padding(
           padding: const EdgeInsets.all(10),
@@ -163,15 +150,6 @@ class _ProfileState extends State<Profile> {
                   ),
                   ),
                   const SizedBox(width: 12),
-                    // GestureDetector(  //delete button
-                    // onTap: () {
-                    // reference.child(Profile['key']).remove();
-                    // },
-                    // child: Icon(
-                    // Icons.delete,
-                    // color: Colors.red[700]!.withOpacity(0.5),
-                    // ),
-                    // ),
                 ],
               ),
              ],
@@ -222,7 +200,7 @@ class _ProfileState extends State<Profile> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: FirebaseAnimatedList(
-                    query: dbRef,
+                    query: userRef,
                     itemBuilder: (BuildContext context, DataSnapshot snapshot,
                         Animation<double> animation, int index) {
                       Map Profile = snapshot.value as Map;

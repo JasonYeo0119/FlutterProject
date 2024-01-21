@@ -1,11 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:usmfoodsaver/Food%20Management%20Module/Profile.dart';
-import 'package:usmfoodsaver/Food%20Management%20Module/SignupProfile.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile.dart';
-import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 import 'package:usmfoodsaver/Membership%20Module/utils/color_utils.dart';
+import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
+
 
 
 class StudentSignUp extends StatefulWidget {
@@ -97,18 +96,19 @@ class _StudentSignUpState extends State<StudentSignUp> {
                     // Successfully created a new account
 
                     // Store user information in Realtime Database
-                    DatabaseReference userRef =
-                    FirebaseDatabase.instance.reference().child('Students').child('NormalPlan');
+                   /* DatabaseReference userRef =
+                    FirebaseDatabase.instance.ref().child('Students').child('NormalPlan');
 
                     String uid = userCredential.user!.uid;
                     int dt = DateTime.now().millisecondsSinceEpoch;
-
-                    await userRef.child(uid).set({
-                      'email': email,
+                    String emailKey = _emailTextController.text.replaceAll('.', ',');
+                    
+                    await userRef.child(uid).child(emailKey).set({
+                      'email': _emailTextController.text,
                       'uid': uid,
                       'dt': dt,
                       'profileImage': '',
-                    });
+                    });*/
 
                     // Successfully created a new account
                     setState(() {
@@ -116,7 +116,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                     });
                     // Navigate to the home screen or perform any other actions
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Createuserprofile()),
+                        MaterialPageRoute(builder: (context) => CreateUserProfile()),
                     );
                     })
                         .onError((error, stackTrace) {

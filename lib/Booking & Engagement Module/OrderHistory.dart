@@ -3,6 +3,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'GiveFeedBack1.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'Menu.dart';
 
 class OrderHistory extends StatefulWidget {
@@ -13,10 +14,18 @@ class OrderHistory extends StatefulWidget {
 }
 
 class _OrderHistoryState extends State<OrderHistory> {
+  User? user;
+  late DatabaseReference HistorydbRef;
 
-  Query dbRef = FirebaseDatabase.instance.ref().child('OrderHistory');
-  DatabaseReference reference = FirebaseDatabase.instance.ref().child(
-      'OrderHistory');
+  @override
+  void initState() {
+    super.initState();
+
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      HistorydbRef = FirebaseDatabase.instance.reference().child('Student').child(user!.uid).child('OrderHistory');
+    }
+  }
 
   void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
@@ -174,8 +183,9 @@ class _OrderHistoryState extends State<OrderHistory> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.of(context)
-                              .pop(); // Navigate to previous page
+                          /*Navigator.of(context)
+                              .pop(); // Navigate to previous page*/
+                          navigateNextPage3(context);
                         },
                         icon: Icon(Icons.arrow_back, size: 30,),
                         color: Colors.black,
@@ -209,7 +219,7 @@ class _OrderHistoryState extends State<OrderHistory> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: FirebaseAnimatedList(
-                  query: dbRef,
+                  query: HistorydbRef,
                   itemBuilder: (BuildContext context, DataSnapshot snapshot,
                       Animation<double> animation, int index) {
                     Map OrderHistory = snapshot.value as Map;

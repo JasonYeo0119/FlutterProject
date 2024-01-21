@@ -1,39 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
+import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
-import 'package:usmfoodsaver/Membership%20Module/Student/UploadUserPhoto.dart';
-import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
 
-class Createuserprofile extends StatelessWidget {
+class CreateUserProfile extends StatefulWidget {
+  const CreateUserProfile({Key? key}) : super(key: key);
+
+  @override
+  State<CreateUserProfile> createState() => _CreateUserProfileState();
+}
+class _CreateUserProfileState extends State<CreateUserProfile> {
+  final StudentEmail = TextEditingController();
+  final StudentName = TextEditingController();
+  final MatricNo = TextEditingController();
+  late DatabaseReference dbRef;
+
+  @override
+  void initState() {
+    super.initState();
+    dbRef = FirebaseDatabase.instance.ref().child('Students').child('NormalPlan');
+  }
+
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Normalprofile();
+      return HomePage();
     }));
   }
 
   void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Uploaduserprofile();
-    }));
-  }
-
-  // void navigateNextPage3(BuildContext ctx) {
-  //   Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-  //     return Studentsignup();
-  //   }));
-  // }
-
-  void navigateNextPage4(BuildContext ctx) {
-    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return RewardSystem();
+      return Normalprofile();
     }));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            child: SingleChildScrollView(
-                child: Column(
+      body: Container(
+        child: SingleChildScrollView(
+        child: Column(
       children: [
         Container(
           width: 390,
@@ -58,7 +64,7 @@ class Createuserprofile extends StatelessWidget {
                   width: 230,
                   height: 19,
                   child: Text(
-                    'My Profile',
+                    'Create Profile',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
@@ -71,60 +77,35 @@ class Createuserprofile extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                left: 215,
-                top: 120,
-                child: Text(
-                  'Nickname',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFF908E8E),
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.06,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 215,
-                top: 155,
-                child: Text(
-                  'Matric No.',
-                  style: TextStyle(
-                    color: Color(0xFF908E8E),
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    height: 0.06,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 25,
-                top: 282,
-                child: Text(
-                  'yeo0606.jy@student.usm.my',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
-                    height: 0.06,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
+
               Positioned(
                 left: 20,
-                top: 341,
+                top: 250,
+                child: Container(
+                  width: 353,
+                  height: 180,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFFCBCB),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      buildInputField('Name', 'Please input your name...', StudentName),
+                      buildInputField('MatricNo.', 'Please input your MatricNo...', MatricNo),
+                      buildInputField('Email', 'Please input your email...', StudentEmail),
+                    ],
+                  ),
+                ),
+              ),
+
+              Positioned(
+                left: 20,
+                top: 456,
                 child: Container(
                   width: 148,
-                  height: 92,
+                  height: 85,
                   decoration: ShapeDecoration(
                     color: Color(0xFFFFCD92),
                     shape: RoundedRectangleBorder(
@@ -135,13 +116,13 @@ class Createuserprofile extends StatelessWidget {
               ),
               Positioned(
                 left: 33,
-                top: 365,
+                top: 480,
                 child: Text(
                   'Reward Coins',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 17,
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
                     height: 0.09,
@@ -150,8 +131,8 @@ class Createuserprofile extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 20,
-                top: 390,
+                left: 18,
+                top: 500,
                 child: SizedBox(
                   width: 80,
                   child: Text(
@@ -159,7 +140,7 @@ class Createuserprofile extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 17,
+                      fontSize: 15,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
                       height: 0.09,
@@ -170,7 +151,7 @@ class Createuserprofile extends StatelessWidget {
               ),
               Positioned(
                 left: 192,
-                top: 346,
+                top: 455,
                 child: Container(
                   width: 180,
                   height: 87,
@@ -184,13 +165,13 @@ class Createuserprofile extends StatelessWidget {
               ),
               Positioned(
                 left: 206,
-                top: 368,
+                top: 477,
                 child: Text(
                   'Order History',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 17,
+                    fontSize: 16,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
                     height: 0.09,
@@ -200,7 +181,7 @@ class Createuserprofile extends StatelessWidget {
               ),
               Positioned(
                 left: 196,
-                top: 390,
+                top: 499,
                 child: SizedBox(
                   width: 126,
                   child: Text(
@@ -219,7 +200,7 @@ class Createuserprofile extends StatelessWidget {
               ),
               Positioned(
                 left: 20,
-                top: 466,
+                top: 565,
                 child: Container(
                   width: 352,
                   height: 87,
@@ -233,28 +214,23 @@ class Createuserprofile extends StatelessWidget {
               ),
               Positioned(
                 left: 34,
-                top: 480,
-                child: TextButton(
-                  onPressed: () {
-                    navigateNextPage4(context);
-                  },
-                  child: Text(
-                    'Rewards Centre',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      height: 0.09,
-                      letterSpacing: -0.50,
-                    ),
+                top: 589,
+                child: Text(
+                  'Rewards Centre',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    height: 0.09,
+                    letterSpacing: -0.50,
                   ),
                 ),
               ),
               Positioned(
                 left: 34,
-                top: 512,
+                top: 611,
                 child: SizedBox(
                   width: 322,
                   height: 35,
@@ -274,18 +250,18 @@ class Createuserprofile extends StatelessWidget {
 
               //Upload photo button
               Positioned(
-                left: 25,
-                top: 80,
+                left: 135,
+                top: 60,
                 child: TextButton(
                   onPressed: () {
-                    navigateNextPage2(context);
+                    /*navigateNextPage2(context);*/
                   },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,
                   ),
                   child: Container(
-                    width: 170,
-                    height: 171,
+                    width: 130,
+                    height: 130,
                     decoration: ShapeDecoration(
                       color: Color(0xFFD9D9D9),
                       shape: OvalBorder(),
@@ -294,15 +270,18 @@ class Createuserprofile extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 83,
-                top: 135,
+                left: 185,
+                top: 110,
                 child: Opacity(
                   opacity: 0.2,
                   child: Image.asset('lib/assets/images/upload symbol.png'),
                 ),
-                width: 50,
-                height: 50,
+                width: 30,
+                height: 30,
               ),
+
+
+
               Positioned(
                 left: 88,
                 top: 149,
@@ -326,17 +305,47 @@ class Createuserprofile extends StatelessWidget {
                 ),
               ),
 
-              //Confirm button
+              // Confirm button
               Positioned(
                 left: 108,
-                top: 593,
-                child: TextButton(
+                top: 680,
+                /*child: TextButton(
                   onPressed: () {
-                    navigateNextPage(context);
+                    // Get the input values
+                    String email = StudentEmail.text;
+                    String name = StudentName.text;
+                    String matric = MatricNo.text;
+
+                    // Create a map with the input values
+                    Map<String, dynamic> NormalProfile = {
+                      'Useremail': email,
+                      'profilename': name,
+                      'matricNo': matric,
+                    };
+
+                    // Store the data in the database
+                    dbRef.push().set(NormalProfile);
+
+                    // Navigate to the normal profile screen and pass the input values
+                    navigateNextPage(
+                      context,
+                      email: email,
+                      name: name,
+                      matric: matric,
+                    );
+                  },*/
+
+
+                child: MaterialButton(
+                  onPressed: () {
+                    Map<String, String> StudentProfile = {
+                      'Useremail': StudentEmail.text,
+                      'profilename': StudentName.text,
+                      'matricNo': MatricNo.text,
+                    };
+                    dbRef.push().set(StudentProfile);
+                    navigateNextPage2(context);
                   },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
                   child: Container(
                     width: 175,
                     height: 56,
@@ -357,9 +366,12 @@ class Createuserprofile extends StatelessWidget {
                   ),
                 ),
               ),
+
+
+
               Positioned(
-                left: 130,
-                top: 630,
+                left: 135,
+                top: 715,
                 child: SizedBox(
                   width: 131,
                   height: 38,
@@ -377,36 +389,40 @@ class Createuserprofile extends StatelessWidget {
                 ),
               ),
 
-              //Back button
+              // Back button
               Positioned(
-                  left: 0,
-                  top: 25,
-                  child: TextButton(
-                    onPressed: () {
-                      /*navigateNextPage3(context);*/
-                    },
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
+                left: 0,
+                top: 0,
+                child: InkWell(
+                  onTap: () {
+                    navigateNextPage(context);
+                  },
+                  borderRadius: BorderRadius.circular(12), // Adjust the value as needed
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.transparent,
                     ),
-                    child: Transform(
-                      transform: Matrix4.identity()
-                        ..translate(0.0, 0.0)
-                        ..rotateZ(-1.57),
-                      child: Container(
-                        width: 24,
-                        height: 23,
-                        decoration: ShapeDecoration(
-                          color: Colors.black,
-                          shape: StarBorder.polygon(sides: 3),
-                        ),
+                    child: Transform.rotate(
+                      angle: -1.57,
+                      child: Icon(
+                        Icons.arrow_upward,
+                        size:28,
+                        color: Colors.black,
                       ),
                     ),
-                  )),
+                  ),
+                ),
+              ),
+
+              //Normal member section
               Positioned(
-                left: 207,
+                left: 125,
                 top: 199,
                 child: Container(
-                  width: 157,
+                  width: 154,
                   height: 37,
                   decoration: ShapeDecoration(
                     color: Color(0xFF908E8E),
@@ -417,7 +433,7 @@ class Createuserprofile extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 228,
+                left: 145,
                 top: 222,
                 child: Text(
                   'Normal Member',
@@ -426,15 +442,24 @@ class Createuserprofile extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 17,
                     fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.bold,
                     height: 0.09,
                     letterSpacing: -0.50,
                   ),
                 ),
               ),
+
+              // Contact Us
               Positioned(
-                left: 158,
-                top: 720,
+                left: 80,
+                top: 770,
+                child: InkWell(
+                  onTap: () {
+                    launchEmail('usmfoodsaver@gmail.com');
+                  },
+                  child: SizedBox(
+                    width: 235,
+                    height: 30,
                 child: Text(
                   'Contact Us',
                   textAlign: TextAlign.center,
@@ -449,10 +474,63 @@ class Createuserprofile extends StatelessWidget {
                   ),
                 ),
               ),
+              )
+              )
             ],
           ),
         ),
       ],
-    ))));
+        )
+        ),
+    )
+    );
+
   }
+
+  Widget buildInputField(String label, String placeholder, TextEditingController controller) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '$label:',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+          ),
+          SizedBox(width: 4),  // Add some space between label and text field
+          Expanded(
+            child: Container(
+              height: 34,
+              decoration: BoxDecoration(
+                color: Color(0xFFFFCBCB),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: TextField(
+                  controller: controller,
+                  keyboardType: TextInputType.text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xFF794832),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                  decoration: InputDecoration(
+                    hintText: placeholder,
+                    hintStyle: TextStyle(fontSize: 16, color: Colors.black.withOpacity(0.5)),
+                    contentPadding: EdgeInsets.zero,
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+
 }

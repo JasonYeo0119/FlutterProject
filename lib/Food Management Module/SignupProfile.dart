@@ -151,7 +151,7 @@ class _SignupProfileState extends State<SignupProfile> {
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
                         width: 1,
-                        strokeAlign: BorderSide.strokeAlignCenter,
+                        strokeAlign: BorderSide.strokeAlignInside
                       ),
                     ),
                   ),
