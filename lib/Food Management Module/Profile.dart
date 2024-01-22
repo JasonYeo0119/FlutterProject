@@ -85,13 +85,36 @@ class _ProfileState extends State<Profile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Address:\n\n${Profile['address']}',
+                  'PhoneNo:\n\n${Profile['phone']}',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
                 ),
               ],
             ),
           ),
         ),
+        ),
+        Card(
+          color: Color(0xFFB2EBF2),
+          margin: const EdgeInsets.all(10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12), // Adding rounded corners
+          ),
+          elevation: 5,
+          child: SizedBox(
+            width: screenWidth - 20,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Eateria Address:\n\n${Profile['address']}',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
         Card(
           color: Color(0xFFB2EBF2),
@@ -170,7 +193,7 @@ class _ProfileState extends State<Profile> {
               Container(
                 width: 390,
                 height: 50,
-                color: Color(0xFF9ADBBF),
+                color: Color(0x99F21E37),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -186,9 +209,9 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 130),
+                      padding: const EdgeInsets.only(right: 200),
                       child: Text(
-                        'Edit Profile',
+                        'Staff Profile',
                         style: TextStyle(
                             fontSize: 22, fontWeight: FontWeight.bold),
                       ),
@@ -196,6 +219,16 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ),
+
+              Positioned(
+                left: 120,
+                top: 120,
+                child: Image.asset('lib/assets/images/profile.png'),
+                width: 100,
+                height: 100,
+              ),
+
+
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

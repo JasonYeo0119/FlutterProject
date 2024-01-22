@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/invite.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/voucher.dart';
-import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile.dart';
 
 class RewardSystem extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {
@@ -18,7 +18,7 @@ class RewardSystem extends StatelessWidget {
 
   void navigateNextPage3(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return CreateUserProfile();
+      return Normalprofile();
     }));
   }
 

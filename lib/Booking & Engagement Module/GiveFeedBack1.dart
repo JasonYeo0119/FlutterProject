@@ -2,6 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'GiveFeedback2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // import 'UserProfile.dart';
 
 class GiveFeedBack1 extends StatefulWidget {
@@ -20,12 +21,16 @@ class _GiveFeedBack1State extends State<GiveFeedBack1> {
   Map<String, dynamic>? OrderHistory;
   Map<String, dynamic>? Feedback;
   int selectedStars = 0; // Initially, no stars are selected
+  User? user;
 
   @override
   void initState() {
     super.initState();
-    dbRef = FirebaseDatabase.instance.ref().child('OrderHistory');
     FeedbackdbRef = FirebaseDatabase.instance.ref().child('Feedback');
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      dbRef = FirebaseDatabase.instance.ref().child('Student').child(user!.uid).child('OrderHistory');
+    }
     getHistoryData();
   }
 
@@ -96,7 +101,7 @@ class _GiveFeedBack1State extends State<GiveFeedBack1> {
                 Positioned(
                   left: 180,
                   top: 40,
-                  child: Image.asset('lib/assets/images/fajarLocation.jpg', width: 150, height: 150),
+                  child: Image.asset('lib/assets/images/FajarLocation.png', width: 150, height: 150),
                 ),
               ],
             ),

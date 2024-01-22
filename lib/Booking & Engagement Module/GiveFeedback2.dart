@@ -106,7 +106,7 @@ class Givefeedback2 extends StatelessWidget {
                       left: 135,
                       top: 10, // Adjust top position as needed
                       child: Image.asset(
-                        'lib/assets/images/tick.jpg',
+                        'lib/assets/images/tick.png',
                         width: 80,
                         height: 80,
                       ),
