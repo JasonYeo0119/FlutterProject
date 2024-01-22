@@ -180,22 +180,25 @@ class Redeemed extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 27,
-                  top: 70,
-                  child: TextButton(
-                    onPressed: () {
+                  left: 0,
+                  top: 43,
+                  child: GestureDetector(
+                    onTap: () {
                       navigateNextPage(context);
                     },
-                    child: Transform(
-                      transform: Matrix4.identity()
-                        ..translate(0.0, 0.0)
-                        ..rotateZ(-1.57),
-                      child: Container(
-                        width: 24,
-                        height: 23,
-                        decoration: ShapeDecoration(
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                      ),
+                      child: Transform.rotate(
+                        angle: -1.57,
+                        child: Icon(
+                          Icons.arrow_upward,
+                          size: 28,
                           color: Colors.black,
-                          shape: StarBorder.polygon(sides: 3),
                         ),
                       ),
                     ),
