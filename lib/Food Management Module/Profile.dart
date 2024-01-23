@@ -53,7 +53,7 @@ class _ProfileState extends State<Profile> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12), // Adding rounded corners
           ),
-          elevation: 5,
+          elevation: 0,
           child: SizedBox(
             width: screenWidth - 20,
           child: Padding(
@@ -76,7 +76,7 @@ class _ProfileState extends State<Profile> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12), // Adding rounded corners
           ),
-          elevation: 5,
+          elevation: 0,
           child: SizedBox(
             width: screenWidth - 20,
           child: Padding(
@@ -99,7 +99,7 @@ class _ProfileState extends State<Profile> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12), // Adding rounded corners
           ),
-          elevation: 5,
+          elevation: 0,
           child: SizedBox(
             width: screenWidth - 20,
             child: Padding(
@@ -122,7 +122,7 @@ class _ProfileState extends State<Profile> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12), // Adding rounded corners
           ),
-          elevation: 5,
+          elevation: 0,
           child: SizedBox(
             width: screenWidth - 20,
           child: Padding(
@@ -155,19 +155,28 @@ class _ProfileState extends State<Profile> {
                           EditProfile(Profilekey: Profile['key'])),
                   );
                   },
-                  child: Container(
-                    width: 50,
-                    height: 30,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Color(0xFF01579B)!.withOpacity(0.8),
-                  ),
+                    child: Container(
+                      width: 90,
+                      height: 40,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color(0xFF01579B)!.withOpacity(0.8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x3F000000),
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                            spreadRadius: 0,
+                          ),
+                        ],
+                      ),
                   child: Text(
                     'Edit',
                     style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 17,
                     color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   ),
@@ -220,14 +229,13 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
 
-              Positioned(
-                left: 120,
-                top: 120,
-                child: Image.asset('lib/assets/images/profile.png'),
-                width: 100,
-                height: 100,
+              // Add the Image widget for the chef.png
+              Image.asset(
+                'lib/assets/images/chef.png', // Set the correct image path
+                width: 200, // Set the width as needed
+                height: 200, // Set the height as needed
+                fit: BoxFit.contain, // Adjust the fit as needed
               ),
-
 
               Expanded(
                 child: Padding(

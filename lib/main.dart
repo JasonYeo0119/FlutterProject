@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:usmfoodsaver/Food%20Management%20Module/PostFood.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/PremiumProfile.dart';
 import 'firebase_options.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';

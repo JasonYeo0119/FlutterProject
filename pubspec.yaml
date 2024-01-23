@@ -104,9 +104,14 @@ flutter:
     - lib/assets/images/reward/img_oval_2.png
     - lib/assets/images/reward/uncle_hooi.png
     - lib/assets/images/reward/mcd.png
-    - lib/assets/images/profile.png
     - lib/assets/images/FajarLocation.png
     - lib/assets/images/tick.png
+    - lib/assets/images/boygirl.png
+    - lib/assets/images/arrow.png
+    - lib/assets/images/chef.png
+    - lib/assets/images/chef2.png
+    - lib/assets/images/foodcartoon.png
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

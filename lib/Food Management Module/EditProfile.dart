@@ -90,11 +90,11 @@ class _EditProfileState extends State<EditProfile> {
               ),
             ),
             Positioned(
-              left: 120,
-              top: 80,
-              child: Image.asset('lib/assets/images/profile.png'),
-              width: 160,
-              height: 160,
+              left: 100,
+              top: 70,
+              child: Image.asset('lib/assets/images/chef2.png'),
+              width: 180,
+              height: 180,
             ),
 
 
@@ -420,7 +420,7 @@ class _EditProfileState extends State<EditProfile> {
               height: 25,
             ),
             Positioned(
-              left: 154,
+              left: 134,
               top: 630,
               child: MaterialButton(
                 onPressed: () {
@@ -437,18 +437,33 @@ class _EditProfileState extends State<EditProfile> {
                   }
                   );
                 },
-                child: const Text('Update',
-                  style: TextStyle(
-                    fontSize: 15,
+                child: Container(
+                  width: 90,
+                  height: 40,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xFF01579B)!.withOpacity(0.8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Text(
+                    'Update',
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold, // Adjust font weight as needed
+                    ),
                   ),
                 ),
-                color: Colors.lightBlueAccent,
-                textColor: Colors.black,
-                minWidth: 80,
-                height: 40,
-                elevation: 6,
+              )
               ),
-            ),
           ],
         ),
       ),
