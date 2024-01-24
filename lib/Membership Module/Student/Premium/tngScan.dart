@@ -1,10 +1,13 @@
+import 'package:usmfoodsaver/Membership%20Module/Student/Premium/PaymentMethod.dart';
+import 'package:usmfoodsaver/Membership%20Module/Student/Premium/PremiumPrice.dart';
+
 import 'UploadSS.dart';
 import 'package:flutter/material.dart';
 
 class Tngscan extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Tngscan();
+      return Paymentmethod();
     }));
   }
 
@@ -13,6 +16,7 @@ class Tngscan extends StatelessWidget {
       return UploadSS();
     }));
   }
+
 
   @override
   Widget build(BuildContext context) {

@@ -504,7 +504,7 @@ class _NormalprofileState extends State<Normalprofile> {
                   padding: EdgeInsets.zero,
                 ),
                 child: Text(
-                  'Log out',
+                  'Log Out',
                   style: TextStyle(
                     color: Color(0xFFF21C1C),
                     fontSize: 16,

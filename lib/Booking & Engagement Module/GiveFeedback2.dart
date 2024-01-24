@@ -45,7 +45,7 @@ class Givefeedback2 extends StatelessWidget {
               top: 30,
               child: Container(
                 width: 371,
-                height: 300,
+                height: 350,
                 decoration: ShapeDecoration(
                   color: Color(0xFFF2E6C7),
                   shape: RoundedRectangleBorder(
@@ -107,8 +107,8 @@ class Givefeedback2 extends StatelessWidget {
                       top: 10, // Adjust top position as needed
                       child: Image.asset(
                         'lib/assets/images/tick.png',
-                        width: 80,
-                        height: 80,
+                        width: 160,
+                        height: 160,
                       ),
                     ),
                     SizedBox(height: 30), // Adjust spacing between title and content

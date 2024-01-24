@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:usmfoodsaver/Booking%20&%20Engagement%20Module/GiveFeedback2.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/PostFood.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-          home: HomePage()
+          home: Givefeedback2()
     );
   }
 }

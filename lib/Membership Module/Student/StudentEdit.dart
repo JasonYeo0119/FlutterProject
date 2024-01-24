@@ -129,7 +129,7 @@ class _StudentEditState extends State<StudentEdit> {
                               children: [
                                 buildInputField('Name', 'Please input your name...', StudentName),
                                 buildInputField('MatricNo.', 'Please input your MatricNo...', MatricNo),
-                                buildInputField('Email', 'Please input your email...', StudentEmail),
+                                buildInputField('Email (Fix)', 'Please input your email...', StudentEmail),
                               ],
                             ),
                           ),
@@ -248,7 +248,7 @@ class _StudentEditState extends State<StudentEdit> {
                         // Contact Us
                         Positioned(
                             left: 80,
-                            top: 675,
+                            top: 725,
                             child: InkWell(
                               onTap: () {
                                 launchEmail('usmfoodsaver@gmail.com');
