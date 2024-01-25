@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-/*import 'PremiumProfile.dart';*/
+import 'package:usmfoodsaver/Membership%20Module/Student/PremiumProfile.dart';
 
 class Successful extends StatelessWidget {
-  /*void navigateNextPage(BuildContext ctx) {
+  void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return Premiumprofile();
+      return PremiumProfile();
     }));
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class Successful extends StatelessWidget {
                 top: 677,
                 child: TextButton(
                   onPressed: () {
-                   /* navigateNextPage(context);*/
+                   navigateNextPage(context);
                   },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/HomepageStaff.dart';
-import 'package:usmfoodsaver/Food%20Management%20Module/Profile.dart';
 import 'package:usmfoodsaver/Membership%20Module/ResetPassword/reset_password.dart';
 import 'package:usmfoodsaver/Membership%20Module/Staff/staff_signup.dart';
 import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
@@ -60,7 +59,7 @@ class _StaffSignInState extends State<StaffSignIn> {
                       .then((value) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Profile()),
+                      MaterialPageRoute(builder: (context) => HomepageStaff()),
                     );
                   })
                       .onError((error, stackTrace) {

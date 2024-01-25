@@ -53,7 +53,7 @@ class _ProfileState extends State<Profile> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12), // Adding rounded corners
           ),
-          elevation: 5,
+          elevation: 0,
           child: SizedBox(
             width: screenWidth - 20,
           child: Padding(
@@ -76,7 +76,7 @@ class _ProfileState extends State<Profile> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12), // Adding rounded corners
           ),
-          elevation: 5,
+          elevation: 0,
           child: SizedBox(
             width: screenWidth - 20,
           child: Padding(
@@ -85,7 +85,7 @@ class _ProfileState extends State<Profile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Address:\n\n${Profile['address']}',
+                  'PhoneNo:\n\n${Profile['phone']}',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
                 ),
               ],
@@ -99,7 +99,30 @@ class _ProfileState extends State<Profile> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12), // Adding rounded corners
           ),
-          elevation: 5,
+          elevation: 0,
+          child: SizedBox(
+            width: screenWidth - 20,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Eateria Address:\n\n${Profile['address']}',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Card(
+          color: Color(0xFFB2EBF2),
+          margin: const EdgeInsets.all(10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12), // Adding rounded corners
+          ),
+          elevation: 0,
           child: SizedBox(
             width: screenWidth - 20,
           child: Padding(
@@ -132,19 +155,28 @@ class _ProfileState extends State<Profile> {
                           EditProfile(Profilekey: Profile['key'])),
                   );
                   },
-                  child: Container(
-                    width: 50,
-                    height: 30,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Color(0xFF01579B)!.withOpacity(0.8),
-                  ),
+                    child: Container(
+                      width: 90,
+                      height: 40,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color(0xFF01579B)!.withOpacity(0.8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x3F000000),
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                            spreadRadius: 0,
+                          ),
+                        ],
+                      ),
                   child: Text(
                     'Edit',
                     style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 17,
                     color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   ),
@@ -170,7 +202,7 @@ class _ProfileState extends State<Profile> {
               Container(
                 width: 390,
                 height: 50,
-                color: Color(0xFF9ADBBF),
+                color: Color(0x99F21E37),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -186,9 +218,9 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 130),
+                      padding: const EdgeInsets.only(right: 200),
                       child: Text(
-                        'Edit Profile',
+                        'Staff Profile',
                         style: TextStyle(
                             fontSize: 22, fontWeight: FontWeight.bold),
                       ),
@@ -196,6 +228,15 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ),
+
+              // Add the Image widget for the chef.png
+              Image.asset(
+                'lib/assets/images/chef.png', // Set the correct image path
+                width: 200, // Set the width as needed
+                height: 200, // Set the height as needed
+                fit: BoxFit.contain, // Adjust the fit as needed
+              ),
+
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

@@ -139,7 +139,7 @@ class Customerservice extends StatelessWidget {
                           width: 330,
                           height: 600,
                           child: Text(
-                            'Hi, my dear user. Please provide a screenshot of the login issue and the account ID within the app and tap "Contact Support" in the top right corner for further assistance. ',
+                            'Hi, my dear user. Please provide a screenshot of the login issue along with the email address associated with your app registration and tap "Contact Support (CS)" in the top right corner for further assistance. ',
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                               color: Colors.black,
