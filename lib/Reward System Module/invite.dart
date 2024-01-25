@@ -66,7 +66,25 @@ class InviteFriends extends StatelessWidget {
                             width: 105.58,
                             height: 19.36,
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                // Show a Dialog
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('Copied to keyboard!'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('OK'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                               child: Text(
                                 'Invite Friends',
                                 textAlign: TextAlign.center,

@@ -3,7 +3,6 @@ import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/invite.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/voucher.dart';
 
-class RewardSystem extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return VoucherPage();
@@ -340,7 +339,7 @@ class RewardSystem extends StatelessWidget {
                     width: 249,
                     height: 118,
                     child: Text(
-                      '3050',
+                      '${pointsController.text}',
                       style: TextStyle(
                         color: Color(0xCE1DB9CF),
                         fontSize: 96,
@@ -370,7 +369,9 @@ class RewardSystem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            incrementPoints();
+                          },
                           child: Text(
                             'Check-in',
                             textAlign: TextAlign.center,
