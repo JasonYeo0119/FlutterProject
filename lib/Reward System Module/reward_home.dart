@@ -577,10 +577,10 @@ class _RewardSystem extends State<RewardSystem> {
                   top: 685,
                   child: ElevatedButton(
                     child: Text(
-                      'Invite friends ',
+                      'Invite/Refer',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 15,
                         fontFamily: 'Space Grotesk',
                         fontWeight: FontWeight.w700,
                         height: 0,

@@ -5,8 +5,6 @@ import 'package:usmfoodsaver/Membership%20Module/Student/CreateUserProfile.dart'
 import 'package:usmfoodsaver/Membership%20Module/utils/color_utils.dart';
 import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 
-
-
 class StudentSignUp extends StatefulWidget {
   const StudentSignUp({Key? key}) : super(key: key);
 
@@ -21,22 +19,22 @@ class _StudentSignUpState extends State<StudentSignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          width: 390,
-          height: 777,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-            hexStringToColor("FFFCCE"),
-            hexStringToColor("FFBC57"),
-            hexStringToColor("FF5757"),
-          ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-          child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(
-                    20, MediaQuery.of(context).size.height * 0.1, 20, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+        width: 390,
+        height: 777,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+          hexStringToColor("FFFCCE"),
+          hexStringToColor("FFBC57"),
+          hexStringToColor("FF5757"),
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                20, MediaQuery.of(context).size.height * 0.1, 20, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                    logoWidget("lib/assets/images/Logo Remove Background.png"),
+                logoWidget("lib/assets/images/Logo Remove Background.png"),
                 Text(
                   'Sign Up \n Student Account',
                   style: TextStyle(
@@ -52,8 +50,8 @@ class _StudentSignUpState extends State<StudentSignUp> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField2("Enter User Email", Icons.person_outline, false,
-                    _emailTextController),
+                reusableTextField2("Enter User Email", Icons.person_outline,
+                    false, _emailTextController),
                 const SizedBox(
                   height: 20,
                 ),
@@ -73,7 +71,8 @@ class _StudentSignUpState extends State<StudentSignUp> {
                       builder: (context) {
                         return AlertDialog(
                           title: Text('Validation Error'),
-                          content: Text('Please enter both email and password.'),
+                          content:
+                              Text('Please enter both email and password.'),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -87,7 +86,8 @@ class _StudentSignUpState extends State<StudentSignUp> {
                     );
                     return; // Stop further execution if fields are empty
                   }
-                  String registrationStatus = ''; // Declare a variable to hold the registration status
+                  String registrationStatus =
+                      ''; // Declare a variable to hold the registration status
                   FirebaseAuth.instance
                       .createUserWithEmailAndPassword(
                           email: _emailTextController.text,
@@ -96,7 +96,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                     // Successfully created a new account
 
                     // Store user information in Realtime Database
-                   /* DatabaseReference userRef =
+                    /* DatabaseReference userRef =
                     FirebaseDatabase.instance.ref().child('Students').child('NormalPlan');
 
                     String uid = userCredential.user!.uid;
@@ -115,27 +115,30 @@ class _StudentSignUpState extends State<StudentSignUp> {
                       registrationStatus = "Account successfully created!";
                     });
                     // Navigate to the home screen or perform any other actions
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CreateUserProfile()),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CreateUserProfile()),
                     );
-                    })
-                        .onError((error, stackTrace) {
-                                    setState(() {
-                                      registrationStatus =
-                                      ''; // Reset the registration status on error
-                                    });
+                  }).onError((error, stackTrace) {
+                    setState(() {
+                      registrationStatus =
+                          ''; // Reset the registration status on error
+                    });
 
                     print("Error ${error.toString()}");
-                    if (error is FirebaseAuthException && error.code == 'email-already-in-use') {
-                      showValidationMessage(context, 'The email address is already in use.');// Email is already in use, show a validation message
+                    if (error is FirebaseAuthException &&
+                        error.code == 'email-already-in-use') {
+                      showValidationMessage(context,
+                          'The email address is already in use.'); // Email is already in use, show a validation message
                     }
                   });
                 })
               ],
             ),
           ),
-          ),
-       ),
-      );
+        ),
+      ),
+    );
   }
 }

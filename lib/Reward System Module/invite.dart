@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
+import 'package:usmfoodsaver/Reward%20System%20Module/refer.dart';
 
 class InviteFriends extends StatelessWidget {
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return RewardSystem();
+    }));
+  }
+
+  void navigateNextPage2(BuildContext ctx) {
+    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+      return ReferFriends();
     }));
   }
 
@@ -72,7 +79,7 @@ class InviteFriends extends StatelessWidget {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: Text('Copied to keyboard!'),
+                                      title: Text('Code copied to keyboard!'),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
@@ -214,10 +221,10 @@ class InviteFriends extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 124,
+                  left: 114,
                   top: 55,
                   child: Text(
-                    'Invite Friends',
+                    'Invite/Refer Friends',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
@@ -248,6 +255,36 @@ class InviteFriends extends StatelessWidget {
                           Icons.arrow_upward,
                           size: 28,
                           color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: 0,
+                  top: 43,
+                  child: MouseRegion(
+                    child: GestureDetector(
+                      onTap: () {
+                        navigateNextPage2(context);
+                      },
+                      child: Tooltip(
+                        message: 'Insert Invitation Code',
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.transparent,
+                          ),
+                          child: Transform.rotate(
+                            angle: -1.57,
+                            child: Icon(
+                              Icons.insert_invitation_outlined,
+                              size: 28,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ),
