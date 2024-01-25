@@ -2,7 +2,79 @@ import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/invite.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/voucher.dart';
+//import 'package:usmfoodsaver/Reward%20System%20Module/services/FirestoreDatabase.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
+class RewardSystem extends StatefulWidget {
+  // const RewardSystem({Key? key, required this.Profilekey}) : super(key: key);
+  // final String Profilekey;
+
+  @override
+  State<RewardSystem> createState() => _RewardSystem();
+}
+
+class _RewardSystem extends State<RewardSystem> {
+  final pointsController = TextEditingController();
+  User? user;
+  late DatabaseReference userRef;
+  int executionCounter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      userRef = FirebaseDatabase.instance
+          .reference()
+          .child('Student')
+          .child(user!.uid)
+          .child('Student Info');
+    }
+    getPointsData();
+  }
+
+  void getPointsData() async {
+    DataSnapshot snapshot = await userRef.child('points').get();
+    dynamic pointsData = snapshot.value;
+    if (pointsData != null) {
+      setState(() {
+        pointsController.text = pointsData.toString();
+      });
+    }
+  }
+
+  void incrementPoints() async {
+    if (executionCounter < 3) {
+      // Retrieve current points value
+      int currentPoints = int.parse(pointsController.text);
+      // print(currentPoints);
+
+      // Increment by 1
+      int newPoints = currentPoints + 1;
+
+      // Update the UI immediately
+      setState(() {
+        pointsController.text = newPoints.toString();
+      });
+
+      // Write the updated value back to the database
+      userRef.child('points').set(newPoints).then((_) {
+        // Success callback
+        print('Points updated successfully!');
+      }).catchError((error) {
+        // Error callback
+        print('Error updating points: $error');
+        // Rollback the UI update in case of an error
+        setState(() {
+          pointsController.text = currentPoints.toString();
+        });
+      });
+      executionCounter++;
+    }
+  }
+  
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return VoucherPage();
