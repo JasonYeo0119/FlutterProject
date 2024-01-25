@@ -456,7 +456,7 @@ class RewardSystem extends StatelessWidget {
                 ),
                 Positioned(
                   left: 145,
-                  top: 57,
+                  top: 58,
                   child: Text(
                     'Rewards',
                     textAlign: TextAlign.center,
@@ -464,7 +464,7 @@ class RewardSystem extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 24,
                       fontFamily: 'Space Grotesk',
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                       height: 0,
                     ),
                   ),
@@ -571,24 +571,16 @@ class RewardSystem extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 27,
-                  top: 70,
+                  left: 2,
+                  top: 60,
                   child: TextButton(
                     onPressed: () {
                       navigateNextPage3(context);
                     },
-                    child: Transform(
-                      transform: Matrix4.identity()
-                        ..translate(0.0, 0.0)
-                        ..rotateZ(-1.57),
-                      child: Container(
-                        width: 24,
-                        height: 23,
-                        decoration: ShapeDecoration(
-                          color: Colors.black,
-                          shape: StarBorder.polygon(sides: 3),
-                        ),
-                      ),
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.black,
+                      size: 28,
                     ),
                   ),
                 ),

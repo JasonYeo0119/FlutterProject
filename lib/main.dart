@@ -5,6 +5,7 @@ import 'package:usmfoodsaver/Food%20Management%20Module/PostFood.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/PremiumProfile.dart';
+import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
 import 'firebase_options.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-          home: Givefeedback2()
+          home: HomePage()
     );
   }
 }

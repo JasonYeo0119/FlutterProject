@@ -52,8 +52,8 @@ class _RealtimeUpdate2State extends State<RealtimeUpdate2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-        Container(
+      body: SingleChildScrollView(
+        child: Container(
           width: 390,
           height: 777,
           clipBehavior: Clip.antiAlias,
@@ -90,33 +90,20 @@ class _RealtimeUpdate2State extends State<RealtimeUpdate2> {
                 ),
               ),
               Positioned(
-                left: 134,
-                top: 100,
-                child: Container(
-                  width: 122,
-                  height: 141,
-                  decoration: BoxDecoration(color: Color(0xB7D9D9D9)),
-                ),
-              ),
-              Positioned(
-                left: 141,
-                top: 141,
-                child: SizedBox(
-                  width: 108,
-                  child: Text(
-                    'Tap here to add photo',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      height: 1.5,
-                      letterSpacing: -0.50,
-                    ),
+                left: 26,
+                top: 20,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    'lib/assets/images/BowlFood.png', // Set the correct image path
+                    width: 338,
+                    height: 280, // Set the desired height
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
+
+
               Positioned(
                 left: 26,
                 top: 277,
@@ -626,6 +613,7 @@ class _RealtimeUpdate2State extends State<RealtimeUpdate2> {
             ],
           ),
         ),
+    )
     );
   }
 }

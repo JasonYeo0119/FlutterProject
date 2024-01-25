@@ -48,7 +48,7 @@ class _HomepageStaffState extends State<HomepageStaff> {
       body:
         Container(
           width: 390,
-          height: 777,
+          height: 900,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(color: Color(0xFFE5FFFC)),
           child: Stack(
