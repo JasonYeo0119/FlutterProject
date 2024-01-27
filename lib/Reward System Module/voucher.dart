@@ -25,9 +25,11 @@ class VoucherPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return MaterialApp(
+      home: Scaffold(
+      body: SingleChildScrollView(
       child: Column(
-        children: [
+      children: [
           Container(
             width: 390,
             height: 777,
@@ -610,6 +612,8 @@ class VoucherPage extends StatelessWidget {
           ),
         ],
       ),
+      )
+      )
     );
   }
 }

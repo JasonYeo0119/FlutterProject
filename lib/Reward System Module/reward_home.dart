@@ -95,9 +95,11 @@ class _RewardSystem extends State<RewardSystem> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return MaterialApp(
+      home: Scaffold(
+      body: SingleChildScrollView(
       child: Column(
-        children: [
+      children: [
           Container(
             width: 390,
             height: 777,
@@ -656,12 +658,14 @@ class _RewardSystem extends State<RewardSystem> {
                       size: 28,
                     ),
                   ),
-                ),
+                )
               ],
             ),
           ),
         ],
       ),
+    )
+    )
     );
   }
 }

@@ -10,9 +10,11 @@ class InviteFriends extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return MaterialApp(
+      home: Scaffold(
+      body: SingleChildScrollView(
       child: Column(
-        children: [
+      children: [
           Container(
             width: 390,
             height: 815,
@@ -61,7 +63,7 @@ class InviteFriends extends StatelessWidget {
                         ),
                         Positioned(
                           left: 144.26,
-                          top: 162.41,
+                          top: 170,
                           child: SizedBox(
                             width: 105.58,
                             height: 19.36,
@@ -274,6 +276,8 @@ class InviteFriends extends StatelessWidget {
           ),
         ],
       ),
+      )
+      )
     );
   }
 }
