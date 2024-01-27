@@ -22,7 +22,7 @@ class _HomepageStaffState extends State<HomepageStaff> {
     }));
     }
 
-    //yellow button
+   // yellow button
   void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return ViewReviewAndRating();

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:usmfoodsaver/Booking%20&%20Engagement%20Module/GiveFeedback2.dart';
+import 'package:usmfoodsaver/Booking%20&%20Engagement%20Module/ViewStaffProfile.dart';
+import 'package:usmfoodsaver/Food%20Management%20Module/HomepageStaff.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/PostFood.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/Login.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/PremiumProfile.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
@@ -31,6 +34,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Login());
+        home: ViewStaffProfile());
   }
 }
