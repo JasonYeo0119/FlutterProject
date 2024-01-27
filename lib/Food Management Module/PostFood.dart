@@ -86,6 +86,17 @@ class _PostFoodState extends State<PostFood> {
                 ),
               ),
               Positioned(
+                left: 26,
+                top: 70,
+                child: Image.asset(
+                  'lib/assets/images/foodcartoon.png', // Set the correct image path
+                  width: 338,
+                  height: 180, // Set the desired height
+                  fit: BoxFit.cover,
+                ),
+              ),
+
+              /*Positioned(
                 left: 134,
                 top: 100,
                 child: Container(
@@ -112,7 +123,7 @@ class _PostFoodState extends State<PostFood> {
                     ),
                   ),
                 ),
-              ),
+              ),*/
               Positioned(
                 left: 26,
                 top: 277,

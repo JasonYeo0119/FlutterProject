@@ -89,9 +89,33 @@ class _StudentEditState extends State<StudentEdit> {
                           ),
                         ),
 
+                        SizedBox(height: 10), // Add a SizedBox for spacing
+                        Positioned(
+                          left: 95, // Adjusted the left value to center the image based on your layout
+                          top: 85,
+                          child: Container(
+                            width: 200, // Set the width as needed
+                            height: 200, // Set the height as needed
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('lib/assets/images/boygirl.png'), // Set the correct image path
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+
+
+
+
+
+
+
+
+
                         Positioned(
                           left: 20,
-                          top: 85,
+                          top: 300,
                           child: Container(
                             width: 353,
                             height: 180,
@@ -105,7 +129,7 @@ class _StudentEditState extends State<StudentEdit> {
                               children: [
                                 buildInputField('Name', 'Please input your name...', StudentName),
                                 buildInputField('MatricNo.', 'Please input your MatricNo...', MatricNo),
-                                buildInputField('Email', 'Please input your email...', StudentEmail),
+                                buildInputField('Email (Fix)', 'Please input your email...', StudentEmail),
                               ],
                             ),
                           ),
@@ -137,7 +161,7 @@ class _StudentEditState extends State<StudentEdit> {
                         // Update button
                         Positioned(
                           left: 145,
-                          top: 300,
+                          top: 515,
                           child: MaterialButton(
                             onPressed: () {
                               Map<String, String> StudentProfile = {
@@ -175,7 +199,7 @@ class _StudentEditState extends State<StudentEdit> {
 
                         Positioned(
                           left: 133,
-                          top: 325,
+                          top: 540,
                           child: SizedBox(
                             width: 131,
                             height: 38,
@@ -224,7 +248,7 @@ class _StudentEditState extends State<StudentEdit> {
                         // Contact Us
                         Positioned(
                             left: 80,
-                            top: 695,
+                            top: 725,
                             child: InkWell(
                               onTap: () {
                                 launchEmail('usmfoodsaver@gmail.com');

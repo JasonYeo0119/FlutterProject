@@ -22,7 +22,7 @@ class InviteFriends extends StatelessWidget {
         children: [
           Container(
             width: 390,
-            height: 777,
+            height: 815,
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(color: Color(0xFFE5FFFC)),
             child: Stack(
@@ -230,7 +230,7 @@ class InviteFriends extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 24,
                       fontFamily: 'Space Grotesk',
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                       height: 0,
                     ),
                   ),

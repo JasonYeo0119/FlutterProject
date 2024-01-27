@@ -525,14 +525,14 @@ class Tnc extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 24,
                       fontFamily: 'Space Grotesk',
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                       height: 0,
                     ),
                   ),
                 ),
                 Positioned(
                   left: 0,
-                  top: 43,
+                  top: 50,
                   child: GestureDetector(
                     child: Container(
                       width: 50,

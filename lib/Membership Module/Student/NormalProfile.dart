@@ -7,8 +7,8 @@ import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/Premium/PremiumPlan.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/StudentEdit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
+import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 
 class Normalprofile extends StatefulWidget {
   const Normalprofile({Key? key}) : super(key: key);
@@ -27,14 +27,18 @@ class _NormalprofileState extends State<Normalprofile> {
 
     user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      userRef = FirebaseDatabase.instance.reference().child('Student').child(user!.uid).child('Student Info');
+      userRef = FirebaseDatabase.instance
+          .reference()
+          .child('Student')
+          .child(user!.uid)
+          .child('Student Info');
     }
   }
+
   @override
   State<Normalprofile> createState() => _NormalprofileState();
 
   @override
-
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return Premiumplan();
@@ -87,7 +91,8 @@ class _NormalprofileState extends State<Normalprofile> {
                     children: [
                       Text(
                         'Name\t\t\t\t\t\t\t\t:',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w800),
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -103,7 +108,8 @@ class _NormalprofileState extends State<Normalprofile> {
                     children: [
                       Text(
                         'MatricNo. :',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w800),
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -119,7 +125,8 @@ class _NormalprofileState extends State<Normalprofile> {
                     children: [
                       Text(
                         'Email\t\t\t\t\t\t\t\t\t:',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w800),
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -132,7 +139,7 @@ class _NormalprofileState extends State<Normalprofile> {
               ],
             ),
           ),
-          SizedBox(height: 10), // Adjust the spacing as needed
+          SizedBox(height: 5), // Adjust the spacing as needed
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -140,8 +147,9 @@ class _NormalprofileState extends State<Normalprofile> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) =>
-                        StudentEdit(StudentProfilekey: StudentProfile['key'])),
+                    MaterialPageRoute(
+                        builder: (_) => StudentEdit(
+                            StudentProfilekey: StudentProfile['key'])),
                   );
                 },
                 child: Container(
@@ -177,15 +185,16 @@ class _NormalprofileState extends State<Normalprofile> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+        body: SingleChildScrollView(
+      child: Container(
         width: 390,
-        height: 777,
+        height: 930,
         color: Color(0xFFE5FFFC),
-        child: Stack( // Wrap your content in a Stack
+        child: Stack(
+          // Wrap your content in a Stack
           children: [
             Column(
               children: [
@@ -196,11 +205,52 @@ class _NormalprofileState extends State<Normalprofile> {
                   child: Center(
                     child: Text(
                       'My Profile',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
-                SizedBox(height: 25), // Add a SizedBox for spacing
+                SizedBox(height: 10), // Add a SizedBox for spacing
+                // BoyGirl image
+                Container(
+                  width: 200, // Set the width as needed
+                  height: 200, // Set the height as needed
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                          'lib/assets/images/boygirl.png'), // Set the correct image path
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                // Text indicating to click the normal member
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          'Click To See Our Premium Plan!',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF392A75),
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        // Arrow image
+                        Image.asset(
+                          'lib/assets/images/arrow.png', // Set the correct image path
+                          width: 50, // Set the width as needed
+                          height: 50, // Set the height as needed
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5),
                 Positioned(
                   left: 207,
                   top: 60,
@@ -215,7 +265,7 @@ class _NormalprofileState extends State<Normalprofile> {
                       width: 170,
                       height: 45,
                       decoration: ShapeDecoration(
-                        color: Color(0xFFB2EBF2),
+                        color: Color(0xFFFB9A9A),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -243,7 +293,7 @@ class _NormalprofileState extends State<Normalprofile> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(1.0),
                     child: FirebaseAnimatedList(
                       query: userRef,
                       itemBuilder: (BuildContext context, DataSnapshot snapshot,
@@ -261,7 +311,7 @@ class _NormalprofileState extends State<Normalprofile> {
             // Reward Coins Section
             Positioned(
               left: 30,
-              top: 370,
+              top: 615,
               child: Container(
                 width: 150,
                 height: 70,
@@ -302,7 +352,7 @@ class _NormalprofileState extends State<Normalprofile> {
             // Order History Button
             Positioned(
               left: 200,
-              top: 370,
+              top: 615,
               child: TextButton(
                 onPressed: () {
                   navigateNextPage2(context);
@@ -310,60 +360,60 @@ class _NormalprofileState extends State<Normalprofile> {
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),
-              child: Container(
-                width: 160,
-                height: 70,
-                decoration: ShapeDecoration(
-                  color: Color(0xFFFFCD92),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  shadows: [
-                    BoxShadow(
-                      color: Color(0x3F000000),
-                      blurRadius: 4,
-                      offset: Offset(0, 4),
-                      spreadRadius: 0,
+                child: Container(
+                  width: 160,
+                  height: 70,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFCD92),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ],
-                ),
-                // Your content for Order History and Check your order
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Order History',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
+                    shadows: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
                       ),
-                    ),
-                    SizedBox(height: 5), // Add vertical spacing
-                    SizedBox(
-                      width: 126,
-                      child: Text(
-                        'Check your order',
-                        textAlign: TextAlign.center,
+                    ],
+                  ),
+                  // Your content for Order History and Check your order
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Order History',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 15,
+                          fontSize: 16,
                           fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 5), // Add vertical spacing
+                      SizedBox(
+                        width: 126,
+                        child: Text(
+                          'Check your order',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
             ),
 
             // Rewards Centre Button
             Positioned(
               left: 30,
-              top: 466,
+              top: 710,
               child: TextButton(
                 onPressed: () {
                   navigateNextPage3(context);
@@ -393,7 +443,7 @@ class _NormalprofileState extends State<Normalprofile> {
                     children: [
                       SizedBox(height: 12),
                       Text(
-                        'Rewards Centre',
+                        'Reward Centre',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -424,8 +474,8 @@ class _NormalprofileState extends State<Normalprofile> {
 
             // Contact Us
             Positioned(
-              left: 150,
-              top: 695,
+              left: 152,
+              top: 875,
               child: InkWell(
                 onTap: () {
                   launchEmail('usmfoodsaver@gmail.com');
@@ -449,7 +499,7 @@ class _NormalprofileState extends State<Normalprofile> {
             // Logout Button
             Positioned(
               left: 163,
-              top: 710,
+              top: 890,
               child: TextButton(
                 onPressed: () {
                   FirebaseAuth.instance.signOut().then((value) {
@@ -464,7 +514,7 @@ class _NormalprofileState extends State<Normalprofile> {
                   padding: EdgeInsets.zero,
                 ),
                 child: Text(
-                  'Log out',
+                  'Log Out',
                   style: TextStyle(
                     color: Color(0xFFF21C1C),
                     fontSize: 16,
@@ -476,8 +526,6 @@ class _NormalprofileState extends State<Normalprofile> {
                 ),
               ),
             ),
-
-
 
             Positioned(
               right: 25,
@@ -500,8 +548,6 @@ class _NormalprofileState extends State<Normalprofile> {
           ],
         ),
       ),
-    );
+    ));
   }
-
-
 }
