@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
-import 'package:usmfoodsaver/Reward%20System%20Module/fail.dart';
-import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
 import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 
 Future<void> main() async {
