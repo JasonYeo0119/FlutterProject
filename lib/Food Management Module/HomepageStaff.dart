@@ -88,7 +88,7 @@ class _HomepageStaffState extends State<HomepageStaff> {
           child: Row(
             children: [
                 Image.asset(
-                  (Profile['fullName'] ?? '') == 'Uncle Hooi cafe'
+                  (Profile['fullName'] ?? '') == 'Uncle Hooi Cafe'
                       ? 'lib/assets/images/restaurant.png'
                       : 'lib/assets/images/restaurant1.png',
                   width: 50,
