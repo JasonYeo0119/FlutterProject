@@ -66,11 +66,9 @@ class _InviteFriends extends State<InviteFriends> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
-      children: [
+        children: [
           Container(
             width: 390,
             height: 815,
@@ -80,7 +78,7 @@ class _InviteFriends extends State<InviteFriends> {
               children: [
                 Positioned(
                   left: 0,
-                  top: 0,
+                  top: 50,
                   child: Container(
                     width: 390,
                     height: 50,
@@ -119,7 +117,7 @@ class _InviteFriends extends State<InviteFriends> {
                         ),
                         Positioned(
                           left: 144.26,
-                          top: 170,
+                          top: 162.41,
                           child: SizedBox(
                             width: 105.58,
                             height: 19.36,
@@ -250,10 +248,10 @@ class _InviteFriends extends State<InviteFriends> {
                         ),
                         Positioned(
                           left: 16.69,
-                          top: 330.74,
+                          top: 368.74,
                           child: SizedBox(
                             width: 352.28,
-                            height: 70,
+                            height: 65.70,
                             child: Text(
                               'Invite Friends\nto get more points!',
                               textAlign: TextAlign.center,
@@ -289,7 +287,7 @@ class _InviteFriends extends State<InviteFriends> {
                 ),
                 Positioned(
                   left: 0,
-                  top: 0,
+                  top: 43,
                   child: GestureDetector(
                     onTap: () {
                       navigateNextPage(context);
@@ -344,7 +342,7 @@ class _InviteFriends extends State<InviteFriends> {
                 ),
                 Positioned(
                   left: 48,
-                  top: 110,
+                  top: 150,
                   child: Container(
                     width: 310,
                     height: 285,
@@ -363,8 +361,6 @@ class _InviteFriends extends State<InviteFriends> {
           ),
         ],
       ),
-      )
-      )
     );
   }
 }
