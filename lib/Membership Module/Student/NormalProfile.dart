@@ -7,8 +7,8 @@ import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/Premium/PremiumPlan.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/StudentEdit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
+import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 
 class Normalprofile extends StatefulWidget {
   const Normalprofile({Key? key}) : super(key: key);
@@ -27,14 +27,18 @@ class _NormalprofileState extends State<Normalprofile> {
 
     user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      userRef = FirebaseDatabase.instance.reference().child('Student').child(user!.uid).child('Student Info');
+      userRef = FirebaseDatabase.instance
+          .reference()
+          .child('Student')
+          .child(user!.uid)
+          .child('Student Info');
     }
   }
+
   @override
   State<Normalprofile> createState() => _NormalprofileState();
 
   @override
-
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return Premiumplan();
@@ -87,7 +91,8 @@ class _NormalprofileState extends State<Normalprofile> {
                     children: [
                       Text(
                         'Name\t\t\t\t\t\t\t\t:',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w800),
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -103,7 +108,8 @@ class _NormalprofileState extends State<Normalprofile> {
                     children: [
                       Text(
                         'MatricNo. :',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w800),
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -119,7 +125,8 @@ class _NormalprofileState extends State<Normalprofile> {
                     children: [
                       Text(
                         'Email\t\t\t\t\t\t\t\t\t:',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w800),
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -140,8 +147,9 @@ class _NormalprofileState extends State<Normalprofile> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) =>
-                        StudentEdit(StudentProfilekey: StudentProfile['key'])),
+                    MaterialPageRoute(
+                        builder: (_) => StudentEdit(
+                            StudentProfilekey: StudentProfile['key'])),
                   );
                 },
                 child: Container(
@@ -177,7 +185,6 @@ class _NormalprofileState extends State<Normalprofile> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,7 +193,8 @@ class _NormalprofileState extends State<Normalprofile> {
         width: 390,
         height: 930,
         color: Color(0xFFE5FFFC),
-        child: Stack( // Wrap your content in a Stack
+        child: Stack(
+          // Wrap your content in a Stack
           children: [
             Column(
               children: [
@@ -197,7 +205,8 @@ class _NormalprofileState extends State<Normalprofile> {
                   child: Center(
                     child: Text(
                       'My Profile',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -208,7 +217,8 @@ class _NormalprofileState extends State<Normalprofile> {
                   height: 200, // Set the height as needed
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('lib/assets/images/boygirl.png'), // Set the correct image path
+                      image: AssetImage(
+                          'lib/assets/images/boygirl.png'), // Set the correct image path
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -231,11 +241,11 @@ class _NormalprofileState extends State<Normalprofile> {
                         ),
                         SizedBox(height: 5),
                         // Arrow image
-                          Image.asset(
-                            'lib/assets/images/arrow.png', // Set the correct image path
-                            width: 50, // Set the width as needed
-                            height: 50, // Set the height as needed
-                          ),
+                        Image.asset(
+                          'lib/assets/images/arrow.png', // Set the correct image path
+                          width: 50, // Set the width as needed
+                          height: 50, // Set the height as needed
+                        ),
                       ],
                     ),
                   ],
@@ -350,54 +360,54 @@ class _NormalprofileState extends State<Normalprofile> {
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),
-              child: Container(
-                width: 160,
-                height: 70,
-                decoration: ShapeDecoration(
-                  color: Color(0xFFFFCD92),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  shadows: [
-                    BoxShadow(
-                      color: Color(0x3F000000),
-                      blurRadius: 4,
-                      offset: Offset(0, 4),
-                      spreadRadius: 0,
+                child: Container(
+                  width: 160,
+                  height: 70,
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFFFCD92),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ],
-                ),
-                // Your content for Order History and Check your order
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Order History',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
+                    shadows: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
                       ),
-                    ),
-                    SizedBox(height: 5), // Add vertical spacing
-                    SizedBox(
-                      width: 126,
-                      child: Text(
-                        'Check your order',
-                        textAlign: TextAlign.center,
+                    ],
+                  ),
+                  // Your content for Order History and Check your order
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Order History',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 15,
+                          fontSize: 16,
                           fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 5), // Add vertical spacing
+                      SizedBox(
+                        width: 126,
+                        child: Text(
+                          'Check your order',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
             ),
 
             // Rewards Centre Button
@@ -538,9 +548,6 @@ class _NormalprofileState extends State<Normalprofile> {
           ],
         ),
       ),
-    )
-    );
+    ));
   }
-
-
 }
