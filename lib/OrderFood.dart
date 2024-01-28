@@ -1,8 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:usmfoodsaver/Booking%20&%20Engagement%20Module/ViewStaffProfile.dart';
-import 'package:usmfoodsaver/Food%20Management%20Module/Profile.dart';
 import 'Confirmation.dart';
 import 'Menu.dart';
 
@@ -45,7 +43,7 @@ class _OrderFoodState extends State<OrderFood> {
 
   void navigateNextPage2(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return ViewStaffProfile();
+      return Menu();
     }));
   }
 
@@ -54,33 +52,51 @@ class _OrderFoodState extends State<OrderFood> {
       body: Container(
         width: 390,
         height: 777,
-        color: Color(0xFFE5FFFC),
+        decoration: BoxDecoration(
+          color: Color(0xFFE5FFFC), // Background color for the frame
+        ),
         child: Column(
           children: [
             Container(
-              width: 390,
               height: 50,
-              color: Color(0xFF9ADBBF),
+              decoration: BoxDecoration(
+                color: Color(0xFF9ADBBF), // Color for the top bar
+              ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  MaterialButton(
+                    onPressed: () {
+                      // Your navigation logic here
+                      navigateNextPage2(context);
+                    },
+                    padding: EdgeInsets.only(top: 40.0, right: 0.0),
+                      child: Transform(
+                      transform: Matrix4.identity()
+                      ..translate(0.0, 0.0)
+                      ..rotateZ(-1.57),
+                      child: Container(
+                      width: 18,
+                      height: 18,
+                      decoration: ShapeDecoration(
+                      color: Colors.black,
+                      shape: StarBorder.polygon(sides: 3),
+                       ),
+                      ),
+                    ),
+                  ),
                   Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          icon: Icon(Icons.arrow_back, size: 30,),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                        Spacer(),
-                        Text(
-                          'My Order',
-                          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                      ],
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 60.0), // Adjust the left padding as needed
+                      child: Text(
+                        'My Order',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                         ),
+                       ),
+                      ),
                     ),
                   ),
                 ],
@@ -117,6 +133,8 @@ class _OrderFoodState extends State<OrderFood> {
                                 fontSize: 11,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w600,
+                                height: 1.0, // Adjust the height as needed
+                                letterSpacing: -0.50,
                               ),
                             ),
                           ],
@@ -137,7 +155,7 @@ class _OrderFoodState extends State<OrderFood> {
                     Positioned(
                       left: 180,
                       top: 40,
-                      child: Image.asset('lib/assets/images/food.jpg'),
+                      child: Image.asset('lib/assets/images/fajarLocation.jpg'),
                       width: 120,
                       height: 120,
                     ),
@@ -161,7 +179,7 @@ class _OrderFoodState extends State<OrderFood> {
 
                     Positioned(
                       left: 46,
-                      top: 230,
+                      top: 240,
                       child: Text(
                         'Remarks',
                         textAlign: TextAlign.center,
@@ -170,6 +188,8 @@ class _OrderFoodState extends State<OrderFood> {
                           fontSize: 12,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500,
+                          height: 0.10,
+                          letterSpacing: -0.50,
                         ),
                       ),
                     ),
@@ -241,6 +261,8 @@ class _OrderFoodState extends State<OrderFood> {
                                   fontSize: 14,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
+                                  height: 1.0,
+                                  letterSpacing: -0.50,
                                 ),
                               ),
                             ),
@@ -267,6 +289,8 @@ class _OrderFoodState extends State<OrderFood> {
                                       fontSize: 12,
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w600,
+                                      height: 0.13,
+                                      letterSpacing: -0.50,
                                     ),
                                   ),
                                 ),
@@ -385,6 +409,8 @@ class _OrderFoodState extends State<OrderFood> {
                                 fontSize: 18,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w600,
+                                height: 0.05,
+                                letterSpacing: -0.50,
                               ),
                             ),
                           ),

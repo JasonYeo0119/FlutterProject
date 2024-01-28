@@ -25,9 +25,11 @@ class VoucherPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return MaterialApp(
+      home: Scaffold(
+      body: SingleChildScrollView(
       child: Column(
-        children: [
+      children: [
           Container(
             width: 390,
             height: 777,
@@ -37,7 +39,7 @@ class VoucherPage extends StatelessWidget {
               children: [
                 Positioned(
                   left: 0,
-                  top: 52,
+                  top: 0,
                   child: Container(
                     width: 390,
                     height: 50,
@@ -46,7 +48,7 @@ class VoucherPage extends StatelessWidget {
                 ),
                 Positioned(
                   left: 22,
-                  top: 135,
+                  top: 115,
                   child: Container(
                     width: 338,
                     height: 98,
@@ -213,7 +215,7 @@ class VoucherPage extends StatelessWidget {
                 ),
                 Positioned(
                   left: 195,
-                  top: 109,
+                  top: 69,
                   child: TextButton(
                     child: Text(
                       'View Claimed Vouchers',
@@ -233,7 +235,7 @@ class VoucherPage extends StatelessWidget {
                 ),
                 Positioned(
                   left: 24,
-                  top: 270,
+                  top: 250,
                   child: Container(
                     width: 338,
                     height: 98,
@@ -400,7 +402,7 @@ class VoucherPage extends StatelessWidget {
                 ),
                 Positioned(
                   left: 22,
-                  top: 404,
+                  top: 384,
                   child: Container(
                     width: 338,
                     height: 98,
@@ -567,7 +569,7 @@ class VoucherPage extends StatelessWidget {
                 ),
                 Positioned(
                   left: 137,
-                  top: 61,
+                  top: 11,
                   child: Text(
                     'Vouchers',
                     textAlign: TextAlign.center,
@@ -582,7 +584,7 @@ class VoucherPage extends StatelessWidget {
                 ),
                 Positioned(
                   left: 0,
-                  top: 50,
+                  top: 0,
                   child: GestureDetector(
                     onTap: () {
                       navigateNextPage3(context);
@@ -610,6 +612,8 @@ class VoucherPage extends StatelessWidget {
           ),
         ],
       ),
+      )
+      )
     );
   }
 }

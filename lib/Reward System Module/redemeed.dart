@@ -10,9 +10,11 @@ class Redeemed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return MaterialApp(
+      home: Scaffold(
+      body: SingleChildScrollView(
       child: Column(
-        children: [
+      children: [
           Container(
             width: 390,
             height: 777,
@@ -22,7 +24,7 @@ class Redeemed extends StatelessWidget {
               children: [
                 Positioned(
                   left: 0,
-                  top: 49,
+                  top: 0,
                   child: Container(
                     width: 390,
                     height: 50,
@@ -31,7 +33,7 @@ class Redeemed extends StatelessWidget {
                 ),
                 Positioned(
                   left: 27,
-                  top: 143,
+                  top: 93,
                   child: Container(
                     width: 338,
                     height: 98,
@@ -166,7 +168,7 @@ class Redeemed extends StatelessWidget {
                 ),
                 Positioned(
                   left: 91,
-                  top: 58,
+                  top: 10,
                   child: Text(
                     'Claimed Vouchers',
                     textAlign: TextAlign.center,
@@ -181,7 +183,7 @@ class Redeemed extends StatelessWidget {
                 ),
                 Positioned(
                   left: 0,
-                  top: 48,
+                  top: 0,
                   child: GestureDetector(
                     onTap: () {
                       navigateNextPage(context);
@@ -209,6 +211,8 @@ class Redeemed extends StatelessWidget {
           ),
         ],
       ),
+      )
+      )
     );
   }
 }

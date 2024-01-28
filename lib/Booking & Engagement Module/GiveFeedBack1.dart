@@ -237,7 +237,7 @@ class _GiveFeedBack1State extends State<GiveFeedBack1> {
                     Map<String, dynamic> Feedback = {
                       'Star Rating': selectedStars,
                       'Comment': comment.text,
-                      'Food Name': OrderHistory!['Store Name'] ?? 'N/A',
+                      'Food Name': OrderHistory!['Food Name'] ?? 'N/A',
                       'Store Name': OrderHistory!['Store Name'] ?? 'N/A',
                       'Order DateTime': OrderHistory!['Order DateTime'] ?? 'N/A',
                       // Add other details as needed based on your FoodMenu data

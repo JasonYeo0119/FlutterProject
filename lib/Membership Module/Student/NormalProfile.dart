@@ -443,7 +443,7 @@ class _NormalprofileState extends State<Normalprofile> {
                     children: [
                       SizedBox(height: 12),
                       Text(
-                        'Reward Centre',
+                        'Rewards Centre',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,

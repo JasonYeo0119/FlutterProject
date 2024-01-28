@@ -433,7 +433,7 @@ class _PremiumProfileState extends State<PremiumProfile> {
                         children: [
                           SizedBox(height: 12),
                           Text(
-                            'Reward Centre',
+                            'Rewards Centre',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 16,
