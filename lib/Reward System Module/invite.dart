@@ -1,20 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
+import 'package:usmfoodsaver/Reward%20System%20Module/refer.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class InviteFriends extends StatelessWidget {
+class InviteFriends extends StatefulWidget {
+  @override
+  State<InviteFriends> createState() => _InviteFriends();
+}
+
+class _InviteFriends extends State<InviteFriends> {
+  final inviteCodeController = TextEditingController();
+  User? user;
+  late DatabaseReference userRef;
+  int executionCounter = 0;
+  String inviteCodeCopy = "";
+
+  @override
+  void initState() {
+    super.initState();
+
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      userRef = FirebaseDatabase.instance
+          .reference()
+          .child('Student')
+          .child(user!.uid)
+          .child('Student Info')
+          .child(user!.uid);
+    }
+    getinviteCode();
+  }
+
+  void getinviteCode() async {
+    DataSnapshot snapshot = await userRef.child('inviteCode').get();
+    dynamic inviteCode = snapshot.value;
+    if (inviteCode != null) {
+      setState(() {
+        inviteCodeController.text = inviteCode.toString();
+        inviteCodeCopy = inviteCodeController.text;
+      });
+    }
+  }
+
+  void copyToClipboard() {
+    Clipboard.setData(ClipboardData(text: inviteCodeCopy));
+    // Optionally, show a feedback to the user
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Text copied to clipboard')),
+    );
+  }
+
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return RewardSystem();
     }));
   }
 
+  void navigateNextPage2(BuildContext ctx) {
+    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
+      return ReferFriends();
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
-      children: [
+        children: [
           Container(
             width: 390,
             height: 815,
@@ -24,7 +78,7 @@ class InviteFriends extends StatelessWidget {
               children: [
                 Positioned(
                   left: 0,
-                  top: 0,
+                  top: 50,
                   child: Container(
                     width: 390,
                     height: 50,
@@ -63,18 +117,19 @@ class InviteFriends extends StatelessWidget {
                         ),
                         Positioned(
                           left: 144.26,
-                          top: 170,
+                          top: 162.41,
                           child: SizedBox(
                             width: 105.58,
                             height: 19.36,
                             child: TextButton(
                               onPressed: () {
+                                copyToClipboard();
                                 // Show a Dialog
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: Text('Copied to keyboard!'),
+                                      title: Text('Code copied to keyboard!'),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
@@ -127,7 +182,7 @@ class InviteFriends extends StatelessWidget {
                             width: 101.40,
                             height: 26.74,
                             child: Text(
-                              'Y045KG',
+                              '${inviteCodeController.text}',
                               style: TextStyle(
                                 color: Color(0xFF242E42),
                                 fontSize: 24,
@@ -193,10 +248,10 @@ class InviteFriends extends StatelessWidget {
                         ),
                         Positioned(
                           left: 16.69,
-                          top: 330.74,
+                          top: 368.74,
                           child: SizedBox(
                             width: 352.28,
-                            height: 70,
+                            height: 65.70,
                             child: Text(
                               'Invite Friends\nto get more points!',
                               textAlign: TextAlign.center,
@@ -216,10 +271,10 @@ class InviteFriends extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 124,
-                  top: 11,
+                  left: 114,
+                  top: 55,
                   child: Text(
-                    'Invite Friends',
+                    'Invite/Refer Friends',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
@@ -232,7 +287,7 @@ class InviteFriends extends StatelessWidget {
                 ),
                 Positioned(
                   left: 0,
-                  top: 0,
+                  top: 43,
                   child: GestureDetector(
                     onTap: () {
                       navigateNextPage(context);
@@ -256,8 +311,38 @@ class InviteFriends extends StatelessWidget {
                   ),
                 ),
                 Positioned(
+                  right: 0,
+                  top: 43,
+                  child: MouseRegion(
+                    child: GestureDetector(
+                      onTap: () {
+                        navigateNextPage2(context);
+                      },
+                      child: Tooltip(
+                        message: 'Insert Invitation Code',
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.transparent,
+                          ),
+                          child: Transform.rotate(
+                            angle: -1.57,
+                            child: Icon(
+                              Icons.insert_invitation_outlined,
+                              size: 28,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
                   left: 48,
-                  top: 110,
+                  top: 150,
                   child: Container(
                     width: 310,
                     height: 285,
@@ -276,8 +361,6 @@ class InviteFriends extends StatelessWidget {
           ),
         ],
       ),
-      )
-      )
     );
   }
 }

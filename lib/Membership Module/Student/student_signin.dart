@@ -7,7 +7,7 @@ import 'package:usmfoodsaver/Membership%20Module/Student/student_signup.dart';
 import 'package:usmfoodsaver/Membership%20Module/utils/color_utils.dart';
 import 'package:usmfoodsaver/Membership%20Module/reusable_widget/reusable_widget.dart';
 
-  class StudentSignIn extends StatefulWidget {
+class StudentSignIn extends StatefulWidget {
   const StudentSignIn({Key? key}) : super(key: key);
 
   @override
@@ -44,8 +44,8 @@ class _StudentSignInState extends State<StudentSignIn> {
                 const SizedBox(
                   height: 30, // Adjusted the height
                 ),
-                reusableTextField("Enter User Email", Icons.person_outline, false,
-                    _emailTextController),
+                reusableTextField("Enter User Email", Icons.person_outline,
+                    false, _emailTextController),
                 const SizedBox(
                   height: 20,
                 ),
@@ -55,21 +55,21 @@ class _StudentSignInState extends State<StudentSignIn> {
                 firebaseUIButton(context, "Sign In", () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
-                      email: _emailTextController.text,
-                      password: _passwordTextController.text)
+                          email: _emailTextController.text,
+                          password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Menu()),
                     );
-                  })
-                      .onError((error, stackTrace) {
+                  }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
 
                     // Check for specific error codes
                     if (error is FirebaseAuthException) {
-                        // Other errors, show a generic validation message
-                          showValidationMessage(context, 'Sign-in failed. Please try again.');
+                      // Other errors, show a generic validation message
+                      showValidationMessage(
+                          context, 'Sign-in failed. Please try again.');
                     }
                   });
                 }),
@@ -81,11 +81,13 @@ class _StudentSignInState extends State<StudentSignIn> {
       ),
     );
   }
+
   Row signUpOption() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Don't have account?",
+        const Text(
+          "Don't have account?",
           style: TextStyle(color: Color(0xFFFB9A9A)),
         ),
         GestureDetector(
@@ -95,12 +97,14 @@ class _StudentSignInState extends State<StudentSignIn> {
           },
           child: const Text(
             " Sign Up",
-            style: TextStyle(color: Color(0xFFFB9A9A), fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Color(0xFFFB9A9A), fontWeight: FontWeight.bold),
           ),
         )
       ],
     );
   }
+
   Widget forgetPassword(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,

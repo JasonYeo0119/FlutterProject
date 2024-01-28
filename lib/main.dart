@@ -5,7 +5,6 @@ import 'package:usmfoodsaver/Reward%20System%20Module/fail.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
 import 'firebase_options.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
