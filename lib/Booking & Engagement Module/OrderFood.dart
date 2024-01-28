@@ -319,7 +319,7 @@ class _OrderFoodState extends State<OrderFood> {
 
                     Positioned(
                       left: 0,
-                      top: 505,
+                      bottom: 40,
                       child: Container(
                         width: 390,
                         height: 45, // Increase the height to accommodate the content
@@ -337,7 +337,7 @@ class _OrderFoodState extends State<OrderFood> {
                                   fontSize: 16,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
-                                  height: 0.09,
+                                  height: 0.35,
                                   letterSpacing: -0.50,
                                 ),
                               ),
@@ -349,10 +349,10 @@ class _OrderFoodState extends State<OrderFood> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
-                                  height: 0.09,
+                                  height: 0.35,
                                   letterSpacing: -0.50,
                                 ),
                               ),
