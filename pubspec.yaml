@@ -114,6 +114,7 @@ flutter:
     - lib/assets/images/BowlFood.png
     - lib/assets/images/restaurant.png
     - lib/assets/images/restaurant1.png
+    - lib/assets/images/staff3.png
 
 
   # The following line ensures that the Material Icons font is

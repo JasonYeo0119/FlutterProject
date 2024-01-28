@@ -2,7 +2,9 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Booking%20&%20Engagement%20Module/ViewStaffProfile.dart';
+import 'package:usmfoodsaver/Booking%20&%20Engagement%20Module/ViewStaffProfile2.dart';
 import 'package:usmfoodsaver/Food%20Management%20Module/Profile.dart';
+import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 import 'Confirmation.dart';
 import 'Menu.dart';
 
@@ -42,11 +44,16 @@ class _OrderFoodState extends State<OrderFood> {
       return Confirmation(FoodMenukey: widget.FoodMenukey); // Pass FoodMenukey to Confirmation
     }));
   }
-
-  void navigateNextPage2(BuildContext ctx) {
-    Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
-      return ViewStaffProfile();
-    }));
+  void navigateNextPage2(BuildContext context, String storeName) {
+    if (storeName == "Uncle Hooi Cafe") {
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+        return ViewStaffProfile();
+      }));
+    } else {
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+        return ViewStaffProfile2();
+      }));
+    }
   }
 
   Widget build(BuildContext context) {
@@ -251,7 +258,7 @@ class _OrderFoodState extends State<OrderFood> {
                                 child: MaterialButton(
                                   onPressed: () {
                                     // Add your functionality here
-                                    navigateNextPage2(context);
+                                    navigateNextPage2(context, '${FoodMenu?['Store Name']}');
                                   },
                                   minWidth: 70,
                                   height: 38,
