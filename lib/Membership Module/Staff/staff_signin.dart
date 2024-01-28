@@ -52,23 +52,34 @@ class _StaffSignInState extends State<StaffSignIn> {
                     _passwordTextController),
                 forgetPassword(context),
                 firebaseUIButton(context, "Sign In", () {
+                  // Validate email and password
+                  if (_emailTextController.text.isEmpty || _passwordTextController.text.isEmpty) {
+                    // Show a validation message inside the UI
+                    showValidationMessage(context, 'Please fill in both email and password.');
+                    return; // Stop further execution if email or password is empty
+                  }
+
+                  // Perform Firebase authentication
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
-                      email: _emailTextController.text,
-                      password: _passwordTextController.text)
+                      email: _emailTextController.text, password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => HomepageStaff()),
                     );
-                  })
-                      .onError((error, stackTrace) {
+                  }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
 
                     // Check for specific error codes
                     if (error is FirebaseAuthException) {
+                      if (error.code == 'user-not-found' || error.code == 'wrong-password') {
+                        // Handle specific error codes for incorrect email/password
+                        showValidationMessage(context, 'Invalid email or password. Please try again.');
+                      } else {
                         // Other errors, show a generic validation message
-                          showValidationMessage(context, 'Sign-in failed. Please try again.');
+                        showValidationMessage(context, 'Sign-in failed. Please check and re-enter your email and password.');
+                      }
                     }
                   });
                 }),
@@ -84,36 +95,51 @@ class _StaffSignInState extends State<StaffSignIn> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Don't have account?",
-          style: TextStyle(color: Color(0xFF1ECFA5)),
+        const Text(
+          "Don't have an account?",
+          style: TextStyle(color: Color(0xFF1ECFA5), fontSize: 15), // Adjust the fontSize
         ),
         GestureDetector(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => StaffSignUp()));
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => StaffSignUp()),
+            );
           },
           child: const Text(
             " Sign Up",
-            style: TextStyle(color: Color(0xFF1ECFA5), fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: Color(0xFF1ECFA5),
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+            ),
           ),
-        )
+        ),
       ],
     );
   }
+
   Widget forgetPassword(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 35,
       alignment: Alignment.bottomRight,
       child: TextButton(
-        child: const Text(
+        child: Text(
           "Forgot Password?",
-          style: TextStyle(color: Color(0xFF1D593C)),
+          style: TextStyle(
+            color: Color(0xFF1D593C),
+            fontWeight: FontWeight.w900, // Increase font weight
+            fontSize: 15,
+          ),
           textAlign: TextAlign.right,
         ),
         onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ResetPassword())),
+          context,
+          MaterialPageRoute(builder: (context) => ResetPassword()),
+        ),
       ),
     );
   }
+
 }

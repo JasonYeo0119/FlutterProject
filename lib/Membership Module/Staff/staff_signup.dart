@@ -55,7 +55,7 @@ class _StaffSignUpState extends State<StaffSignUp> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField2("Enter Store Name", Icons.person_outline, false,
+                reusableTextField2("Enter Store Name", Icons.add_business, false,
                     fullNameController),
                 const SizedBox(
                   height: 20,

@@ -53,23 +53,34 @@ class _StudentSignInState extends State<StudentSignIn> {
                     _passwordTextController),
                 forgetPassword(context),
                 firebaseUIButton(context, "Sign In", () {
+                  // Validate email and password
+                  if (_emailTextController.text.isEmpty || _passwordTextController.text.isEmpty) {
+                    // Show a validation message inside the UI
+                    showValidationMessage(context, 'Please fill in both email and password.');
+                    return; // Stop further execution if email or password is empty
+                  }
+
+                  // Perform Firebase authentication
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
-                          email: _emailTextController.text,
-                          password: _passwordTextController.text)
+                      email: _emailTextController.text, password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Menu()),
+                      MaterialPageRoute(builder: (context) => HomepageStaff()),
                     );
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
 
                     // Check for specific error codes
                     if (error is FirebaseAuthException) {
-                      // Other errors, show a generic validation message
-                      showValidationMessage(
-                          context, 'Sign-in failed. Please try again.');
+                      if (error.code == 'user-not-found' || error.code == 'wrong-password') {
+                        // Handle specific error codes for incorrect email/password
+                        showValidationMessage(context, 'Invalid email or password. Please try again.');
+                      } else {
+                        // Other errors, show a generic validation message
+                        showValidationMessage(context, 'Sign-in failed. Please check and re-enter your email and password.');
+                      }
                     }
                   });
                 }),
@@ -88,7 +99,7 @@ class _StudentSignInState extends State<StudentSignIn> {
       children: [
         const Text(
           "Don't have account?",
-          style: TextStyle(color: Color(0xFFFB9A9A)),
+          style: TextStyle(color: Color(0xFFFB9A9A), fontSize: 15),
         ),
         GestureDetector(
           onTap: () {
@@ -111,13 +122,19 @@ class _StudentSignInState extends State<StudentSignIn> {
       height: 35,
       alignment: Alignment.bottomRight,
       child: TextButton(
-        child: const Text(
+        child: Text(
           "Forgot Password?",
-          style: TextStyle(color: Color(0xFF6C0909)),
+          style: TextStyle(
+            color: Color(0xFF6C0909),
+            fontWeight: FontWeight.w900, // Increase font weight
+            fontSize: 15,
+          ),
           textAlign: TextAlign.right,
         ),
         onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ResetPassword())),
+          context,
+          MaterialPageRoute(builder: (context) => ResetPassword()),
+        ),
       ),
     );
   }
