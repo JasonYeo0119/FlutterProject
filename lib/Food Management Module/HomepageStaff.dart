@@ -1,18 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Membership%20Module/HomePage/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'PostFood.dart';
 import 'Profile.dart';
 import 'RealtimeUpdate.dart';
 import 'ViewReviewAndRating.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 
 class HomepageStaff extends StatefulWidget {
   const HomepageStaff({Key? key}) : super(key: key);
+
   @override
   State<HomepageStaff> createState() => _HomepageStaffState();
 }
 
 class _HomepageStaffState extends State<HomepageStaff> {
+  late DatabaseReference userRef;
+  User? user;
+
+  @override
+  void initState() {
+    super.initState();
+
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      userRef = FirebaseDatabase.instance.reference().child('Staff').child(user!.uid).child('Staff Info');
+    }
+  }
+
+  @override
+  State<HomepageStaff> createState() => _HomepageStaffState();
 
   @override
   //blue button
@@ -43,16 +61,97 @@ class _HomepageStaffState extends State<HomepageStaff> {
     }));
   }
 
+  Widget listItem({required Map Profile}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 9), // Adjust the left padding as needed
+          child: Material(
+            elevation: 4, // Adjust elevation as needed
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 1),
+              borderRadius: BorderRadius.circular(93), // Adjust border radius as needed
+            ),
+            child: Container(
+              width: 370, // Adjust the width as needed
+              height: 60, // Adjust the height as needed
+              padding: EdgeInsets.all(16), // Adjust padding as needed
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(93), // Adjust border radius as needed
+              ),
+              child: Padding(
+                padding: EdgeInsets.only(left: 65), // Adjust padding as needed
+                child: Text(
+                  '${Profile['fullName']}',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+          ),
+        ),
+        // Add more widgets here if needed
+      ],
+    );
+  }
+
+
+
+
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:
+    return MaterialApp(
+      home: Scaffold(
+      body: SingleChildScrollView(
+      child: Column(
+      children: [
         Container(
           width: 390,
-          height: 900,
+          height: 777,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(color: Color(0xFFE5FFFC)),
           child: Stack(
             children: [
+            Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: 8, top: 65),
+                  child: SizedBox(
+                    width: 379,
+                    height: 86,
+                    child: Text(
+                      'Welcome to USM FoodSaver!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                        height: 0.04,
+                        letterSpacing: -0.50,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 525),
+
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: FirebaseAnimatedList(
+                    query: userRef,
+                    itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                        Animation<double> animation, int index) {
+                      Map Profile = snapshot.value as Map;
+                      Profile['key'] = snapshot.key;
+                      return listItem(Profile: Profile);
+                    },
+                  ),
+                ),
+              ),
+              ],
+            ),
               Positioned(
                 left: 38,
                 top: 106,
@@ -169,7 +268,7 @@ class _HomepageStaffState extends State<HomepageStaff> {
                 ),
                 ),
               ),
-              Positioned(
+              /*Positioned(
                 left: 12,
                 top: 679,
                 child: Container(
@@ -191,32 +290,16 @@ class _HomepageStaffState extends State<HomepageStaff> {
                     ],
                   ),
                 ),
-              ),
+              ),*/
               Positioned(
-                left: 37,
-                top: 688,
+                left: 30,
+                top: 682,
                       child: ClipOval(
-                      child: Image.asset('lib/assets/images/Uncle hooi’s cafe.png',
-                      width:37,
-                      height: 37,
+                      child: Image.asset('lib/assets/images/restaurant.png',
+                      width:50,
+                      height: 50,
                       ),
                     ),
-              ),
-              Positioned(
-                left: 84,
-                top: 714,
-                child: Text(
-                  'Uncle Hooi Cafe',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 0.04,
-                    letterSpacing: -0.50,
-                  ),
-                ),
               ),
               Positioned(
                 left: 276,
@@ -238,7 +321,7 @@ class _HomepageStaffState extends State<HomepageStaff> {
               ),
               Positioned(
                 left: 283,
-                top: 698,
+                top: 700,
                 child: TextButton(
                   onPressed: () {
                     FirebaseAuth.instance.signOut().then((value) {
@@ -258,26 +341,6 @@ class _HomepageStaffState extends State<HomepageStaff> {
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600,
                       height: 0.06,
-                      letterSpacing: -0.50,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 8,
-                top: 65,
-                child: SizedBox(
-                  width: 379,
-                  height: 86,
-                  child: Text(
-                    'Welcome to USM FoodSaver!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      height: 0.04,
                       letterSpacing: -0.50,
                     ),
                   ),
@@ -394,6 +457,12 @@ class _HomepageStaffState extends State<HomepageStaff> {
             ],
           ),
         ),
+        ]
+      )
+    )
+    )
     );
   }
+
+
 }

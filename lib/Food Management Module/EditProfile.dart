@@ -97,35 +97,6 @@ class _EditProfileState extends State<EditProfile> {
               height: 180,
             ),
 
-
-            /*Positioned(
-              left: 134,
-              top: 100,
-              child: Container(
-                width: 122,
-                height: 141,
-                decoration: BoxDecoration(color: Color(0x99F21E37)),
-              ),
-            ),
-            Positioned(
-              left: 141,
-              top: 141,
-              child: SizedBox(
-                width: 108,
-                child: Text(
-                  'Tap here to change photo',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    height: 1.5,
-                    letterSpacing: -0.50,
-                  ),
-                ),
-              ),
-            ),*/
             Positioned(
               left: 26,
               top: 277,

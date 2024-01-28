@@ -24,7 +24,7 @@ class InviteFriends extends StatelessWidget {
               children: [
                 Positioned(
                   left: 0,
-                  top: 50,
+                  top: 0,
                   child: Container(
                     width: 390,
                     height: 50,
@@ -193,10 +193,10 @@ class InviteFriends extends StatelessWidget {
                         ),
                         Positioned(
                           left: 16.69,
-                          top: 368.74,
+                          top: 330.74,
                           child: SizedBox(
                             width: 352.28,
-                            height: 65.70,
+                            height: 70,
                             child: Text(
                               'Invite Friends\nto get more points!',
                               textAlign: TextAlign.center,
@@ -217,7 +217,7 @@ class InviteFriends extends StatelessWidget {
                 ),
                 Positioned(
                   left: 124,
-                  top: 55,
+                  top: 11,
                   child: Text(
                     'Invite Friends',
                     textAlign: TextAlign.center,
@@ -232,7 +232,7 @@ class InviteFriends extends StatelessWidget {
                 ),
                 Positioned(
                   left: 0,
-                  top: 43,
+                  top: 0,
                   child: GestureDetector(
                     onTap: () {
                       navigateNextPage(context);
@@ -257,7 +257,7 @@ class InviteFriends extends StatelessWidget {
                 ),
                 Positioned(
                   left: 48,
-                  top: 150,
+                  top: 110,
                   child: Container(
                     width: 310,
                     height: 285,

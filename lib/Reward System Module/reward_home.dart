@@ -109,7 +109,7 @@ class _RewardSystem extends State<RewardSystem> {
               children: [
                 Positioned(
                   left: 7,
-                  top: 121,
+                  top: 91,
                   child: Container(
                     width: 374,
                     height: 350,
@@ -129,7 +129,7 @@ class _RewardSystem extends State<RewardSystem> {
                 ),
                 Positioned(
                   left: 0,
-                  top: 50,
+                  top: 0,
                   child: Container(
                     width: 390,
                     height: 50,
@@ -426,7 +426,7 @@ class _RewardSystem extends State<RewardSystem> {
                 ),
                 Positioned(
                   left: 124.37,
-                  top: 352,
+                  top: 332,
                   child: Container(
                     width: 142.50,
                     padding: const EdgeInsets.symmetric(
@@ -463,8 +463,8 @@ class _RewardSystem extends State<RewardSystem> {
                   ),
                 ),
                 Positioned(
-                  left: 148.38,
-                  top: 198,
+                  left: 115,
+                  top: 148,
                   child: Transform(
                     transform: Matrix4.identity()
                       ..translate(0.0, 0.0)
@@ -474,9 +474,9 @@ class _RewardSystem extends State<RewardSystem> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xCE1DB9CF),
-                        fontSize: 16.06,
+                        fontSize: 30,
                         fontFamily: 'Space Grotesk',
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w800,
                         height: 0,
                       ),
                     ),
@@ -531,7 +531,7 @@ class _RewardSystem extends State<RewardSystem> {
                 ),
                 Positioned(
                   left: 145,
-                  top: 58,
+                  top: 10,
                   child: Text(
                     'Rewards',
                     textAlign: TextAlign.center,
@@ -647,7 +647,7 @@ class _RewardSystem extends State<RewardSystem> {
                 ),
                 Positioned(
                   left: 2,
-                  top: 60,
+                  top: 10,
                   child: TextButton(
                     onPressed: () {
                       navigateNextPage3(context);
