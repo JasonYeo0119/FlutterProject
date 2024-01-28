@@ -96,11 +96,9 @@ class _RewardSystem extends State<RewardSystem> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
-      children: [
+        children: [
           Container(
             width: 390,
             height: 777,
@@ -110,7 +108,7 @@ class _RewardSystem extends State<RewardSystem> {
               children: [
                 Positioned(
                   left: 7,
-                  top: 91,
+                  top: 121,
                   child: Container(
                     width: 374,
                     height: 350,
@@ -130,7 +128,7 @@ class _RewardSystem extends State<RewardSystem> {
                 ),
                 Positioned(
                   left: 0,
-                  top: 0,
+                  top: 50,
                   child: Container(
                     width: 390,
                     height: 50,
@@ -427,7 +425,7 @@ class _RewardSystem extends State<RewardSystem> {
                 ),
                 Positioned(
                   left: 124.37,
-                  top: 332,
+                  top: 352,
                   child: Container(
                     width: 142.50,
                     padding: const EdgeInsets.symmetric(
@@ -464,8 +462,8 @@ class _RewardSystem extends State<RewardSystem> {
                   ),
                 ),
                 Positioned(
-                  left: 115,
-                  top: 148,
+                  left: 148.38,
+                  top: 198,
                   child: Transform(
                     transform: Matrix4.identity()
                       ..translate(0.0, 0.0)
@@ -475,9 +473,9 @@ class _RewardSystem extends State<RewardSystem> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xCE1DB9CF),
-                        fontSize: 30,
+                        fontSize: 16.06,
                         fontFamily: 'Space Grotesk',
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w500,
                         height: 0,
                       ),
                     ),
@@ -532,7 +530,7 @@ class _RewardSystem extends State<RewardSystem> {
                 ),
                 Positioned(
                   left: 145,
-                  top: 10,
+                  top: 58,
                   child: Text(
                     'Rewards',
                     textAlign: TextAlign.center,
@@ -648,7 +646,7 @@ class _RewardSystem extends State<RewardSystem> {
                 ),
                 Positioned(
                   left: 2,
-                  top: 10,
+                  top: 60,
                   child: TextButton(
                     onPressed: () {
                       navigateNextPage3(context);
@@ -659,14 +657,12 @@ class _RewardSystem extends State<RewardSystem> {
                       size: 28,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
         ],
       ),
-    )
-    )
     );
   }
 }
