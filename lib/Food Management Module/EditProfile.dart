@@ -151,7 +151,7 @@ class _EditProfileState extends State<EditProfile> {
               ),
             ),
             Positioned(
-              left: 52,
+              left: 55,
               top: 297,
               child: Text(
                 'Name',
@@ -220,7 +220,7 @@ class _EditProfileState extends State<EditProfile> {
               ),
             ),
             Positioned(
-              left: 48,
+              left: 45,
               top: 356,
               child: Text(
                 'Phone No.',
@@ -289,7 +289,7 @@ class _EditProfileState extends State<EditProfile> {
               ),
             ),
             Positioned(
-              left: 56,
+              left: 50,
               top: 415,
               child: Text(
                 'Address',
@@ -360,7 +360,7 @@ class _EditProfileState extends State<EditProfile> {
               ),
             ),
             Positioned(
-              left: 45,
+              left: 57,
               top: 474,
               child: Text(
                 'Email',
