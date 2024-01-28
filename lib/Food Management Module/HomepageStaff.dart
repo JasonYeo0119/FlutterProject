@@ -62,40 +62,51 @@ class _HomepageStaffState extends State<HomepageStaff> {
   }
 
   Widget listItem({required Map Profile}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(left: 9), // Adjust the left padding as needed
-          child: Material(
-            elevation: 4, // Adjust elevation as needed
-            shape: RoundedRectangleBorder(
-              side: BorderSide(width: 1),
-              borderRadius: BorderRadius.circular(93), // Adjust border radius as needed
-            ),
-            child: Container(
-              width: 370, // Adjust the width as needed
-              height: 60, // Adjust the height as needed
-              padding: EdgeInsets.all(16), // Adjust padding as needed
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(93), // Adjust border radius as needed
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(left: 65), // Adjust padding as needed
-                child: Text(
-                  '${Profile['fullName']}',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-                  overflow: TextOverflow.ellipsis,
+    if (Profile == null || !Profile.containsKey('fullName')) {
+      // Handle the case where 'fullName' is missing or null
+      return Container(); // You can return an empty container or some default widget
+    }
+
+    String fullName = Profile['fullName'] ?? '';
+
+    return Padding(
+      padding: EdgeInsets.only(left: 9),
+      child: Material(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1),
+          borderRadius: BorderRadius.circular(93),
+        ),
+        child: Container(
+          width: 370,
+          height: 60,
+          padding: EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(93),
+          ),
+          child: Row(
+            children: [
+                Image.asset(
+                  (Profile['fullName'] ?? '') == 'Uncle Hooi cafe'
+                      ? 'lib/assets/images/restaurant.png'
+                      : 'lib/assets/images/restaurant1.png',
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.contain, // Adjust BoxFit as needed
                 ),
+              Text(
+                '$fullName',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
+            ],
           ),
         ),
-        // Add more widgets here if needed
-      ],
+      ),
     );
   }
+
 
 
 
@@ -135,7 +146,6 @@ class _HomepageStaffState extends State<HomepageStaff> {
                   ),
                 ),
                 SizedBox(height: 525),
-
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(1.0),
@@ -269,38 +279,16 @@ class _HomepageStaffState extends State<HomepageStaff> {
                 ),
               ),
               /*Positioned(
-                left: 12,
-                top: 679,
-                child: Container(
-                  width: 368,
-                  height: 56,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(93),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
+                left: 30,
+                top: 682,
+                child: ClipOval(
+                  child: Image.asset(
+                    (Profile['fullName']??'') == 'Uncle Hooi cafe' ? 'lib/assets/images/restaurant.png' : 'lib/assets/images/restaurant1.png',
+                    width: 50,
+                    height: 50,
                   ),
                 ),
               ),*/
-              Positioned(
-                left: 30,
-                top: 682,
-                      child: ClipOval(
-                      child: Image.asset('lib/assets/images/restaurant.png',
-                      width:50,
-                      height: 50,
-                      ),
-                    ),
-              ),
               Positioned(
                 left: 276,
                 top: 691,
