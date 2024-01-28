@@ -1,9 +1,112 @@
 import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/invite.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class ReferFriends extends StatelessWidget {
+class ReferFriends extends StatefulWidget {
+  @override
+  State<ReferFriends> createState() => _ReferFriends();
+}
+
+class _ReferFriends extends State<ReferFriends> {
+  User? user;
+  Future<User?>? user2;
+  late DatabaseReference userRef1;
+  late DatabaseReference userRef2;
+  int executionCounter = 0;
   TextEditingController inviteCodeController = TextEditingController();
+  int referTime = 0;
+  final pointsController = TextEditingController();
+
+  Future<User?> getUserByUid(String uid) async {
+    try {
+      // fetch the user by UID
+      Future<User?> user = FirebaseAuth.instance.userChanges().firstWhere(
+            (user) => user!.uid == uid,
+            orElse: () => null,
+          );
+
+      return user;
+    } catch (e) {
+      print("Error getting user by UID: $e");
+      return null;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      userRef1 = FirebaseDatabase.instance
+          .reference()
+          .child('Student')
+          .child(user!.uid)
+          .child('Student Info')
+          .child(user!.uid);
+    }
+    fetchUserDetails();
+    getReferData();
+  }
+
+  Future<void> fetchUserDetails() async {
+    User? user = await getUserByUid("OsvacXGEXUTgs7HEkA1Xoyy8bqu2");
+
+    if (user != null) {
+      print("User Found.");
+
+      userRef2 = FirebaseDatabase.instance
+          .reference()
+          .child('Student')
+          .child(user.uid)
+          .child('Student Info')
+          .child(user.uid);
+    } else {
+      print("User not found or error occurred.");
+    }
+
+    DataSnapshot snapshot = await userRef2.child('points').get();
+    dynamic pointsData = snapshot.value;
+    if (pointsData != null) {
+      setState(() {
+        pointsController.text = pointsData.toString();
+      });
+    }
+  }
+
+  void getReferData() async {
+    DataSnapshot snapshot2 = await userRef1.child('referTime').get();
+    dynamic referData = snapshot2.value;
+    referTime = referData;
+  }
+
+  void incrementPoints() async {
+    int oldPoints = int.parse(pointsController.text);
+    if (referTime < 1) {
+      // Increment by 1
+      int newPoints = oldPoints + 3;
+
+      // Write the updated value back to the database
+      userRef2.child('points').set(newPoints).then((_) {
+        // Success callback
+        print('Points updated successfully!');
+      }).catchError((error) {
+        // Error callback
+        print('Error updating points: $error');
+      });
+
+      referTime++;
+      userRef1.child('referTime').set(referTime).then((_) {
+        // Success callback
+        print('referTime updated successfully!');
+      }).catchError((error) {
+        // Error callback
+        print('Error updating referTime: $error');
+      });
+    }
+  }
 
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
@@ -70,6 +173,7 @@ class ReferFriends extends StatelessWidget {
                           height: 19.36,
                           child: ElevatedButton(
                             onPressed: () {
+                              incrementPoints();
                               // Show a Dialog
                               showDialog(
                                 context: context,

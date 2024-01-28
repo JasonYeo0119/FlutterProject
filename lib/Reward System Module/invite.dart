@@ -1,8 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/reward_home.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/refer.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class InviteFriends extends StatelessWidget {
+class InviteFriends extends StatefulWidget {
+  @override
+  State<InviteFriends> createState() => _InviteFriends();
+}
+
+class _InviteFriends extends State<InviteFriends> {
+  final inviteCodeController = TextEditingController();
+  User? user;
+  late DatabaseReference userRef;
+  int executionCounter = 0;
+  String inviteCodeCopy = "";
+
+  @override
+  void initState() {
+    super.initState();
+
+    user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      userRef = FirebaseDatabase.instance
+          .reference()
+          .child('Student')
+          .child(user!.uid)
+          .child('Student Info')
+          .child(user!.uid);
+    }
+    getinviteCode();
+  }
+
+  void getinviteCode() async {
+    DataSnapshot snapshot = await userRef.child('inviteCode').get();
+    dynamic inviteCode = snapshot.value;
+    if (inviteCode != null) {
+      setState(() {
+        inviteCodeController.text = inviteCode.toString();
+        inviteCodeCopy = inviteCodeController.text;
+      });
+    }
+  }
+
+  void copyToClipboard() {
+    Clipboard.setData(ClipboardData(text: inviteCodeCopy));
+    // Optionally, show a feedback to the user
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Text copied to clipboard')),
+    );
+  }
+
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return RewardSystem();
@@ -74,6 +123,7 @@ class InviteFriends extends StatelessWidget {
                             height: 19.36,
                             child: TextButton(
                               onPressed: () {
+                                copyToClipboard();
                                 // Show a Dialog
                                 showDialog(
                                   context: context,
@@ -132,7 +182,7 @@ class InviteFriends extends StatelessWidget {
                             width: 101.40,
                             height: 26.74,
                             child: Text(
-                              'Y045KG',
+                              '${inviteCodeController.text}',
                               style: TextStyle(
                                 color: Color(0xFF242E42),
                                 fontSize: 24,

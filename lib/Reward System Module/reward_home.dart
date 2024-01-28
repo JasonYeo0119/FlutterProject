@@ -30,7 +30,8 @@ class _RewardSystem extends State<RewardSystem> {
           .reference()
           .child('Student')
           .child(user!.uid)
-          .child('Student Info');
+          .child('Student Info')
+          .child(user!.uid);
     }
     getPointsData();
   }
@@ -46,7 +47,7 @@ class _RewardSystem extends State<RewardSystem> {
   }
 
   void incrementPoints() async {
-    if (executionCounter < 3) {
+    if (executionCounter < 1) {
       // Retrieve current points value
       int currentPoints = int.parse(pointsController.text);
       // print(currentPoints);
@@ -74,7 +75,7 @@ class _RewardSystem extends State<RewardSystem> {
       executionCounter++;
     }
   }
-  
+
   void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return VoucherPage();
