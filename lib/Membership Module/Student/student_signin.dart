@@ -67,7 +67,7 @@ class _StudentSignInState extends State<StudentSignIn> {
                       .then((value) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomepageStaff()),
+                      MaterialPageRoute(builder: (context) => Menu()),
                     );
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
