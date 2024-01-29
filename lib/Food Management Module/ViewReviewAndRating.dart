@@ -183,7 +183,7 @@ class _ViewReviewAndRatingState extends State<ViewReviewAndRating> {
                   },
                   decoration: InputDecoration(
                     labelText: 'Search',
-                    hintText: 'Enter food name...',
+                    hintText: 'Enter store name...',
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
