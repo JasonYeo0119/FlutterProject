@@ -126,7 +126,7 @@ class _ViewStaffProfileState extends State<ViewStaffProfile> {
                 left: 115,
                 top: 290,
                 child: Text(
-                  'Uncle Hooi',
+                  'Uncle Hooi Cafe',
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     color: Colors.black,
