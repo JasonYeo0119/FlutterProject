@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:usmfoodsaver/Membership%20Module/Student/NormalProfile.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/invite.dart';
 import 'package:usmfoodsaver/Reward%20System%20Module/voucher.dart';
-import 'package:usmfoodsaver/Reward%20System%20Module/voucher2.dart';
 //import 'package:usmfoodsaver/Reward%20System%20Module/services/FirestoreDatabase.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';

@@ -62,10 +62,20 @@ class _ViewReviewAndRatingState extends State<ViewReviewAndRating> {
 
   @override
   //go back
-  void navigateNextPage(BuildContext ctx) {
+  /*void navigateNextPage(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(builder: (_) {
       return HomepageStaff();
     }));
+  }*/
+
+  void navigateNextPage(BuildContext ctx) {
+    Navigator.of(ctx).pushAndRemoveUntil(
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => HomepageStaff(),
+        maintainState: false, // Set maintainState to false
+      ),
+          (route) => false, // Pop all existing routes
+    );
   }
 
   Widget listItem({required Map Feedback}) {
