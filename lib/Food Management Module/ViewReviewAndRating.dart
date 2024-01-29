@@ -81,7 +81,7 @@ class _ViewReviewAndRatingState extends State<ViewReviewAndRating> {
   Widget listItem({required Map Feedback}) {
     int starRating = Feedback['Star Rating'];
     String storeName = Feedback['Store Name'];
-    if(storeName == 'Uncle Hooi') {
+
       return Card(
         color: Color(0xFFB2EBF2),
         margin: const EdgeInsets.all(10),
@@ -135,10 +135,7 @@ class _ViewReviewAndRatingState extends State<ViewReviewAndRating> {
         ),
       );
     }
-    else{
-      return Container();
-    }
-  }
+
     @override
     Widget build(BuildContext context) {
       return Scaffold(
