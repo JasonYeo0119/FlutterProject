@@ -24,7 +24,7 @@ class Tnc extends StatelessWidget {
                   children: [
                     Positioned(
                       left: 0,
-                      top: 52,
+                      top: 0,
                       child: Container(
                         width: 390,
                         height: 50,
@@ -192,12 +192,12 @@ class Tnc extends StatelessWidget {
                     ),
                     Positioned(
                       left: 195,
-                      top: 109,
+                      top: 102,
                       child: Text(
                         'View Claimed Vouchers',
                         style: TextStyle(
-                          color: Color(0xFFEB008A),
-                          fontSize: 16,
+                          color: Color(0xFF000000),
+                          fontSize: 14,
                           fontFamily: 'Space Grotesk',
                           fontWeight: FontWeight.w700,
                           decoration: TextDecoration.underline,
@@ -298,12 +298,12 @@ class Tnc extends StatelessWidget {
                                   ),
                                   Positioned(
                                     left: 218,
-                                    top: 74,
+                                    top: 72,
                                     child: Text(
                                       'Claim Voucher',
                                       style: TextStyle(
                                         color: Color(0xFF9ADBBF),
-                                        fontSize: 16,
+                                        fontSize: 12,
                                         fontFamily: 'Space Grotesk',
                                         fontWeight: FontWeight.w700,
                                         decoration: TextDecoration.underline,
@@ -457,12 +457,12 @@ class Tnc extends StatelessWidget {
                                   ),
                                   Positioned(
                                     left: 218,
-                                    top: 74,
+                                    top: 72,
                                     child: Text(
                                       'Claim Voucher',
                                       style: TextStyle(
                                         color: Color(0xFF9ADBBF),
-                                        fontSize: 16,
+                                        fontSize: 12,
                                         fontFamily: 'Space Grotesk',
                                         fontWeight: FontWeight.w700,
                                         decoration: TextDecoration.underline,
@@ -525,13 +525,13 @@ class Tnc extends StatelessWidget {
                     ),
                     Positioned(
                       left: 137,
-                      top: 61,
+                      top: 11,
                       child: Text(
                         'Vouchers',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 24,
+                          fontSize: 22,
                           fontFamily: 'Space Grotesk',
                           fontWeight: FontWeight.w600,
                           height: 0,
@@ -540,7 +540,7 @@ class Tnc extends StatelessWidget {
                     ),
                     Positioned(
                       left: 0,
-                      top: 50,
+                      top: 0,
                       child: GestureDetector(
                         child: Container(
                           width: 50,
@@ -615,8 +615,8 @@ class Tnc extends StatelessWidget {
                                             'The voucher collected automatically apply at “Claimed Vouchers” page if criteria is met.\nVoucher can be used on food in the cafeteria/eateries.\nThis voucher applies a discount on the food price.\n',
                                         style: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 20,
-                                          fontFamily: 'Space Grotesk',
+                                          fontSize: 18,
+                                          fontFamily: 'poppin',
                                           fontWeight: FontWeight.w400,
                                           height: 0,
                                         ),
@@ -642,11 +642,11 @@ class Tnc extends StatelessWidget {
                                         ),
                                       ),
                                       TextSpan(
-                                        text: '  Nation wide\n',
+                                        text: ' Nation wide\n',
                                         style: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 20,
-                                          fontFamily: 'Space Grotesk',
+                                          fontSize: 18,
+                                          fontFamily: 'Poppin',
                                           fontWeight: FontWeight.w400,
                                           height: 0,
                                         ),
@@ -666,22 +666,18 @@ class Tnc extends StatelessWidget {
                                   onPressed: () {
                                     navigateNextPage(context);
                                   },
-                                  child: Text(
-                                    'X',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontFamily: 'Space Grotesk',
-                                      fontWeight: FontWeight.w700,
-                                      height: 0,
-                                    ),
+                                  child: Icon(
+                                    Icons.close,
+                                    color: Colors.black,
+                                    size: 20,
                                   ),
                                 ),
                               ),
                             ),
+
                             Positioned(
                               left: 67,
-                              top: 41,
+                              top: 38,
                               child: SizedBox(
                                 width: 248,
                                 height: 43,
@@ -689,7 +685,7 @@ class Tnc extends StatelessWidget {
                                   'Terms and Condition',
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 24,
+                                    fontSize: 22,
                                     fontFamily: 'Space Grotesk',
                                     fontWeight: FontWeight.w700,
                                     height: 0,

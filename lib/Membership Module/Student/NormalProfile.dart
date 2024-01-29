@@ -334,20 +334,27 @@ class _NormalprofileState extends State<Normalprofile> {
                       ),
                     ),
                     SizedBox(height: 5), // Add vertical spacing
-                    Text(
-                      '0 coins',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
+                    TextButton( // or ElevatedButton, depending on your design preference
+                      onPressed: () {
+                        // Navigate to the reward page
+                          navigateNextPage3(context);
+                      },
+                      child: Text(
+                        'View More >',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
             ),
+
 
             // Order History Button
             Positioned(

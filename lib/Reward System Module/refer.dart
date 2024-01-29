@@ -137,14 +137,14 @@ class _ReferFriends extends State<ReferFriends> {
           children: [
             Container(
               width: 390,
-              height: 850,
+              height: 777,
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(color: Color(0xFFE5FFFC)),
               child: Stack(
                 children: [
                   Positioned(
                     left: 0,
-                    top: 50,
+                    top: 0,
                     child: Container(
                       width: 390,
                       height: 50,
@@ -170,7 +170,7 @@ class _ReferFriends extends State<ReferFriends> {
                           ),
                           Positioned(
                             left: 20.91,
-                            top: 120.43,
+                            top: 120,
                             child: Container(
                               width: 350.19,
                               height: 41.49,
@@ -183,11 +183,11 @@ class _ReferFriends extends State<ReferFriends> {
                           ),
                           Positioned(
                             left: 144.26,
-                            top: 132.41,
+                            top: 130,
                             child: SizedBox(
                               width: 105.58,
                               height: 19.36,
-                              child: ElevatedButton(
+                              child: TextButton(
                                 onPressed: () {
                                   incrementPoints();
                                   // Show a Dialog
@@ -213,9 +213,9 @@ class _ReferFriends extends State<ReferFriends> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 17,
-                                    fontFamily: 'Space Grotesk',
-                                    fontWeight: FontWeight.w300,
+                                    fontSize: 18,
+                                    fontFamily: 'Poppin',
+                                    fontWeight: FontWeight.bold,
                                     height: 0,
                                   ),
                                 ),
@@ -299,7 +299,7 @@ class _ReferFriends extends State<ReferFriends> {
                           ),
                           Positioned(
                             left: 16.69,
-                            top: 368.74,
+                            top: 320,
                             child: SizedBox(
                               width: 352.28,
                               height: 65.70,
@@ -308,11 +308,10 @@ class _ReferFriends extends State<ReferFriends> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Color(0xFF22BAB8),
-                                  fontSize: 20,
+                                  fontSize: 22,
                                   fontFamily: 'Space Grotesk',
                                   fontWeight: FontWeight.w700,
                                   height: 0,
-                                  letterSpacing: 0.36,
                                 ),
                               ),
                             ),
@@ -323,22 +322,22 @@ class _ReferFriends extends State<ReferFriends> {
                   ),
                   Positioned(
                     left: 125,
-                    top: 55,
+                    top: 11,
                     child: Text(
                       'Refer Friends',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 24,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                         fontFamily: 'Space Grotesk',
-                        fontWeight: FontWeight.w500,
                         height: 0,
                       ),
                     ),
                   ),
                   Positioned(
                     left: 0,
-                    top: 43,
+                    top: 0,
                     child: GestureDetector(
                       onTap: () {
                         navigateNextPage(context);
@@ -363,7 +362,7 @@ class _ReferFriends extends State<ReferFriends> {
                   ),
                   Positioned(
                     left: 48,
-                    top: 150,
+                    top: 100,
                     child: Container(
                       width: 310,
                       height: 285,

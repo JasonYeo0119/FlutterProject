@@ -24,13 +24,30 @@ class Redeemed extends StatelessWidget {
                   children: [
                     Positioned(
                       left: 0,
-                      top: 49,
+                      top: 0,
                       child: Container(
                         width: 390,
                         height: 50,
                         decoration: BoxDecoration(color: Color(0xFF9ADBBF)),
                       ),
                     ),
+                    Positioned(
+                      top: 80,
+                      left: 18,
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          'Your voucher is successfully redeemed!',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontFamily: 'Poppins', // Change to your desired font family
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+
                     Positioned(
                       left: 27,
                       top: 143,
@@ -169,8 +186,8 @@ class Redeemed extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      left: 91,
-                      top: 58,
+                      left: 97,
+                      top: 9,
                       child: Text(
                         'Claimed Vouchers',
                         textAlign: TextAlign.center,
@@ -185,7 +202,7 @@ class Redeemed extends StatelessWidget {
                     ),
                     Positioned(
                       left: 0,
-                      top: 48,
+                      top: 0,
                       child: GestureDetector(
                         onTap: () {
                           navigateNextPage(context);
