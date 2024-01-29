@@ -17,6 +17,48 @@ class _RealtimeUpdateState extends State<RealtimeUpdate> {
   Query dbRef = FirebaseDatabase.instance.ref().child('FoodMenu');
   DatabaseReference reference = FirebaseDatabase.instance.ref().child(
       'FoodMenu');
+  TextEditingController searchController = TextEditingController();
+  List<Map> foodMenuList = [];
+  List<Map> filteredFoodMenuList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    dbRef.once().then((DatabaseEvent event) {
+      DataSnapshot snap =event.snapshot;
+      if (snap != null && snap.value != null) {
+        Map<dynamic, dynamic>? values = snap.value as Map<dynamic, dynamic>?;
+
+        if (values != null) {
+          values.forEach((key, value) {
+            foodMenuList.add(value);
+          });
+          filteredFoodMenuList = List.from(foodMenuList);
+        }
+      }
+    });
+  }
+
+  void filterSearchResults(String query) {
+    List<Map> searchResults = [];
+    if (query.isNotEmpty) {
+      for (Map FoodMenu in foodMenuList) {
+        String foodName = FoodMenu['Store Name'].toString().toLowerCase();
+        if (foodName.contains(query.toLowerCase())) {
+          searchResults.add(FoodMenu);
+        }
+      }
+    } else {
+      searchResults = List.from(foodMenuList);
+    }
+    setState(() {
+      filteredFoodMenuList = List.from(searchResults);
+    });
+
+    // Debug print statement
+    print("Filtered List: $filteredFoodMenuList");
+  }
+
 
   @override
   State<RealtimeUpdate> createState() => _RealtimeUpdateState();
@@ -172,18 +214,35 @@ class _RealtimeUpdateState extends State<RealtimeUpdate> {
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: searchController,
+                onChanged: (value) {
+                  filterSearchResults(value);
+                },
+                decoration: InputDecoration(
+                  labelText: 'Search',
+                  hintText: 'Enter food name...',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+            ),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FirebaseAnimatedList(
-                  query: dbRef,
-                  itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                      Animation<double> animation, int index) {
-                    Map FoodMenu = snapshot.value as Map;
+              child: FirebaseAnimatedList(
+                query: dbRef,
+                itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
+                  if (index < filteredFoodMenuList.length) {
+                    Map FoodMenu = filteredFoodMenuList[index];
                     FoodMenu['key'] = snapshot.key;
                     return listItem(FoodMenu: FoodMenu);
-                  },
-                ),
+                  } else {
+                    return Container(); // Return an empty container if the index is out of bounds
+                  }
+                },
               ),
             ),
           ],
@@ -191,4 +250,6 @@ class _RealtimeUpdateState extends State<RealtimeUpdate> {
       ),
     );
   }
+
+
 }

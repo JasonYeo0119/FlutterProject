@@ -15,6 +15,47 @@ class _ViewReviewAndRatingState extends State<ViewReviewAndRating> {
   Query dbRef = FirebaseDatabase.instance.ref().child('Feedback');
   DatabaseReference reference = FirebaseDatabase.instance.ref().child(
       'Feedback');
+  TextEditingController searchController = TextEditingController();
+  List<Map> feedbackList = [];
+  List<Map> filteredFeedbackList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    dbRef.once().then((DatabaseEvent event) {
+      DataSnapshot snap =event.snapshot;
+      if (snap != null && snap.value != null) {
+        Map<dynamic, dynamic>? values = snap.value as Map<dynamic, dynamic>?;
+
+        if (values != null) {
+          values.forEach((key, value) {
+            feedbackList.add(value);
+          });
+          filteredFeedbackList = List.from(feedbackList);
+        }
+      }
+    });
+  }
+
+  void filterSearchResults(String query) {
+    List<Map> searchResults = [];
+    if (query.isNotEmpty) {
+      for (Map Feedback in feedbackList) {
+        String foodName = Feedback['Store Name'].toString().toLowerCase();
+        if (foodName.contains(query.toLowerCase())) {
+          searchResults.add(Feedback);
+        }
+      }
+    } else {
+      searchResults = List.from(feedbackList);
+    }
+    setState(() {
+      filteredFeedbackList = List.from(searchResults);
+    });
+
+    // Debug print statement
+    print("Filtered List: $filteredFeedbackList");
+  }
 
   @override
   State<ViewReviewAndRating> createState() => _ViewReviewAndRatingState();
@@ -126,18 +167,35 @@ class _ViewReviewAndRatingState extends State<ViewReviewAndRating> {
                   ],
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: searchController,
+                  onChanged: (value) {
+                    filterSearchResults(value);
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Search',
+                    hintText: 'Enter food name...',
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
+              ),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: FirebaseAnimatedList(
-                    query: dbRef,
-                    itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                        Animation<double> animation, int index) {
-                      Map Feedback = snapshot.value as Map;
+                child: FirebaseAnimatedList(
+                  query: dbRef,
+                  itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
+                    if (index < filteredFeedbackList.length) {
+                      Map Feedback = filteredFeedbackList[index];
                       Feedback['key'] = snapshot.key;
                       return listItem(Feedback: Feedback);
-                    },
-                  ),
+                    } else {
+                      return Container(); // Return an empty container if the index is out of bounds
+                    }
+                  },
                 ),
               ),
             ],
