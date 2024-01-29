@@ -46,7 +46,7 @@ class _VoucherPage extends State<VoucherPage> {
                   children: [
                     Positioned(
                       left: 0,
-                      top: 52,
+                      top: 0,
                       child: Container(
                         width: 390,
                         height: 50,
@@ -146,7 +146,7 @@ class _VoucherPage extends State<VoucherPage> {
                                   ),
                                   Positioned(
                                     left: 218,
-                                    top: 74,
+                                    top: 72,
                                     child: TextButton(
                                       onPressed: () {
                                         navigateNextPage2(context);
@@ -155,7 +155,7 @@ class _VoucherPage extends State<VoucherPage> {
                                         'Claim Voucher',
                                         style: TextStyle(
                                           color: Color(0xFF9ADBBF),
-                                          fontSize: 16,
+                                          fontSize: 12,
                                           fontFamily: 'Space Grotesk',
                                           fontWeight: FontWeight.w700,
                                           decoration: TextDecoration.underline,
@@ -224,13 +224,13 @@ class _VoucherPage extends State<VoucherPage> {
                     ),
                     Positioned(
                       left: 195,
-                      top: 109,
+                      top: 102,
                       child: TextButton(
                         child: Text(
                           'View Claimed Vouchers',
                           style: TextStyle(
-                            color: Color(0xFFEB008A),
-                            fontSize: 16,
+                            color: Color(0xFF000000),
+                            fontSize: 14,
                             fontFamily: 'Space Grotesk',
                             fontWeight: FontWeight.w700,
                             decoration: TextDecoration.underline,
@@ -335,7 +335,7 @@ class _VoucherPage extends State<VoucherPage> {
                                   ),
                                   Positioned(
                                     left: 218,
-                                    top: 74,
+                                    top: 72,
                                     child: TextButton(
                                       onPressed: () {
                                         navigateNextPage2(context);
@@ -344,7 +344,7 @@ class _VoucherPage extends State<VoucherPage> {
                                         'Claim Voucher',
                                         style: TextStyle(
                                           color: Color(0xFF9ADBBF),
-                                          fontSize: 16,
+                                          fontSize: 12,
                                           fontFamily: 'Space Grotesk',
                                           fontWeight: FontWeight.w700,
                                           decoration: TextDecoration.underline,
@@ -504,7 +504,7 @@ class _VoucherPage extends State<VoucherPage> {
                                   ),
                                   Positioned(
                                     left: 218,
-                                    top: 74,
+                                    top: 72,
                                     child: TextButton(
                                       onPressed: () {
                                         navigateNextPage2(context);
@@ -513,7 +513,7 @@ class _VoucherPage extends State<VoucherPage> {
                                         'Claim Voucher',
                                         style: TextStyle(
                                           color: Color(0xFF9ADBBF),
-                                          fontSize: 16,
+                                          fontSize: 12,
                                           fontFamily: 'Space Grotesk',
                                           fontWeight: FontWeight.w700,
                                           decoration: TextDecoration.underline,
@@ -581,14 +581,14 @@ class _VoucherPage extends State<VoucherPage> {
                       ),
                     ),
                     Positioned(
-                      left: 137,
-                      top: 61,
+                      left: 142,
+                      top: 11,
                       child: Text(
                         'Vouchers',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 24,
+                          fontSize: 22,
                           fontFamily: 'Space Grotesk',
                           fontWeight: FontWeight.w600,
                           height: 0,
@@ -597,7 +597,7 @@ class _VoucherPage extends State<VoucherPage> {
                     ),
                     Positioned(
                       left: 0,
-                      top: 50,
+                      top: 0,
                       child: GestureDetector(
                         onTap: () {
                           navigateNextPage3(context);

@@ -73,14 +73,14 @@ class _InviteFriends extends State<InviteFriends> {
             children: [
               Container(
                 width: 390,
-                height: 815,
+                height: 777,
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(color: Color(0xFFE5FFFC)),
                 child: Stack(
                   children: [
                     Positioned(
                       left: 0,
-                      top: 50,
+                      top: 0,
                       child: Container(
                         width: 390,
                         height: 50,
@@ -89,7 +89,7 @@ class _InviteFriends extends State<InviteFriends> {
                     ),
                     Positioned(
                       left: -2,
-                      top: 590,
+                      bottom: 40,
                       child: Container(
                         width: 392,
                         height: 260,
@@ -105,11 +105,11 @@ class _InviteFriends extends State<InviteFriends> {
                               ),
                             ),
                             Positioned(
-                              left: 20.91,
-                              top: 160.43,
+                              left: 21,
+                              bottom: 30,
                               child: Container(
-                                width: 350.19,
-                                height: 41.49,
+                                width: 345,
+                                height: 40,
                                 decoration: ShapeDecoration(
                                   color: Color(0xFF22BAB8),
                                   shape: RoundedRectangleBorder(
@@ -118,8 +118,8 @@ class _InviteFriends extends State<InviteFriends> {
                               ),
                             ),
                             Positioned(
-                              left: 144.26,
-                              top: 162.41,
+                              left: 135,
+                              bottom: 40,
                               child: SizedBox(
                                 width: 105.58,
                                 height: 19.36,
@@ -131,8 +131,7 @@ class _InviteFriends extends State<InviteFriends> {
                                       context: context,
                                       builder: (BuildContext context) {
                                         return AlertDialog(
-                                          title:
-                                              Text('Code copied to keyboard!'),
+                                          title: Text('Code copied to keyboard!'),
                                           actions: [
                                             TextButton(
                                               onPressed: () {
@@ -145,23 +144,30 @@ class _InviteFriends extends State<InviteFriends> {
                                       },
                                     );
                                   },
-                                  child: Text(
-                                    'Invite Friends',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 17,
-                                      fontFamily: 'SF UI Display',
-                                      fontWeight: FontWeight.w600,
-                                      height: 0,
+                                  style: ButtonStyle(
+                                    // Adjust the padding if needed
+                                    padding: MaterialStateProperty.all(EdgeInsets.zero),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Invite Friends',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontFamily: 'SF UI Display',
+                                        fontWeight: FontWeight.w600,
+                                        height: 1.0, // Adjust the height to center the text
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
+
                             Positioned(
                               left: 20.91,
-                              top: 43.33,
+                              top: 20,
                               child: SizedBox(
                                 width: 187.11,
                                 height: 19.36,
@@ -169,18 +175,18 @@ class _InviteFriends extends State<InviteFriends> {
                                   'Share Your Invite Code',
                                   style: TextStyle(
                                     color: Color(0xFF242E42),
-                                    fontSize: 17,
+                                    fontSize: 16,
                                     fontFamily: 'SF UI Display',
                                     fontWeight: FontWeight.w600,
                                     height: 0,
-                                    letterSpacing: 0.41,
+
                                   ),
                                 ),
                               ),
                             ),
                             Positioned(
                               left: 20.91,
-                              top: 84.82,
+                              top: 140,
                               child: SizedBox(
                                 width: 101.40,
                                 height: 26.74,
@@ -192,7 +198,7 @@ class _InviteFriends extends State<InviteFriends> {
                                     fontFamily: 'SF UI Display',
                                     fontWeight: FontWeight.w700,
                                     height: 0,
-                                    letterSpacing: 0.41,
+
                                   ),
                                 ),
                               ),
@@ -252,7 +258,7 @@ class _InviteFriends extends State<InviteFriends> {
                             ),
                             Positioned(
                               left: 16.69,
-                              top: 368.74,
+                              top: 320,
                               child: SizedBox(
                                 width: 352.28,
                                 height: 65.70,
@@ -261,11 +267,11 @@ class _InviteFriends extends State<InviteFriends> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Color(0xFF22BAB8),
-                                    fontSize: 30,
+                                    fontSize: 22,
                                     fontFamily: 'Space Grotesk',
                                     fontWeight: FontWeight.w700,
                                     height: 0,
-                                    letterSpacing: 0.36,
+
                                   ),
                                 ),
                               ),
@@ -275,14 +281,14 @@ class _InviteFriends extends State<InviteFriends> {
                       ),
                     ),
                     Positioned(
-                      left: 114,
-                      top: 55,
+                      left: 115,
+                      top: 11,
                       child: Text(
                         'Invite/Refer Friends',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 24,
+                          fontSize: 22,
                           fontFamily: 'Space Grotesk',
                           fontWeight: FontWeight.w600,
                           height: 0,
@@ -291,7 +297,7 @@ class _InviteFriends extends State<InviteFriends> {
                     ),
                     Positioned(
                       left: 0,
-                      top: 43,
+                      top: 0,
                       child: GestureDetector(
                         onTap: () {
                           navigateNextPage(context);
@@ -316,7 +322,7 @@ class _InviteFriends extends State<InviteFriends> {
                     ),
                     Positioned(
                       right: 0,
-                      top: 43,
+                      top: 0,
                       child: MouseRegion(
                         child: GestureDetector(
                           onTap: () {
@@ -346,7 +352,7 @@ class _InviteFriends extends State<InviteFriends> {
                     ),
                     Positioned(
                       left: 48,
-                      top: 150,
+                      top: 100,
                       child: Container(
                         width: 310,
                         height: 285,
