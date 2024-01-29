@@ -34,7 +34,7 @@ class _ViewStaffProfileState extends State<ViewStaffProfile> {
                   ),
                 ),
               Positioned(
-                left: 40,
+                left: 135,
                 top: 32,
                 child: SizedBox(
                   width: 141,
@@ -55,17 +55,13 @@ class _ViewStaffProfileState extends State<ViewStaffProfile> {
                 ),
               Positioned(
                 left: 7,
-                top: 10,
-                  child: TextButton(
-                    onPressed: () {navigateNextPage(context);},
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                    ),
-                  child: Image.asset('lib/assets/images/cancel button.png',
-                width: 25,
-                height: 25,
-                  ),
-              ),
+                top: 0,
+                child:IconButton(
+                  icon: Icon(Icons.arrow_back, size: 30,),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
               ),
               Positioned(
                 left: 105,
