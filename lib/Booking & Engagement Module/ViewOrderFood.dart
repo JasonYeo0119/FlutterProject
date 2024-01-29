@@ -126,7 +126,7 @@ class _ViewOrderFoodState extends State<ViewOrderFood> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
                                     image: DecorationImage(
-                                      image: AssetImage('lib/assets/images/food2.jpg'),
+                                      image: AssetImage('lib/assets/images/food.jpg'),
                                     ),
                                   ),
                                 ),
@@ -225,7 +225,7 @@ class _ViewOrderFoodState extends State<ViewOrderFood> {
                             height: 120,
                             alignment: Alignment.center,
                             child: Image.asset(
-                              'lib/assets/images/FajarLocation.jpg',
+                              'lib/assets/images/FajarLocation.png',
                               width: 120,
                               height: 120,
                             ),
